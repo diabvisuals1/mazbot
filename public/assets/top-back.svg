@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Isolation_Mode">
+<g clip-path="url(#clip0_0_5)">
+<path id="Vector" d="M3.52542 0H44.4746C46.4217 0 48 10.7446 48 24C48 37.2554 46.4217 48 44.4746 48H3.52542C1.57831 48 0 37.2554 0 24C0 10.7446 1.57831 0 3.52542 0Z" fill="#003744"/>
+<path id="Vector_2" d="M27.9268 32.3068L20.0723 23.9991L27.9268 15.6914" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#F3EBDE"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_5">
+<rect width="48" height="48" rx="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>

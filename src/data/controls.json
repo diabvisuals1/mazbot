@@ -1,0 +1,1336 @@
+{
+  "controls": {
+    "I2051:2172;413:515": {
+      "action": "navigate",
+      "label": "Home",
+      "path": "/"
+    },
+    "I2051:2172;413:519": {
+      "action": "navigate",
+      "label": "Store",
+      "path": "/store"
+    },
+    "I2051:2172;413:527": {
+      "action": "navigate",
+      "label": "Schedule",
+      "path": "/schedule"
+    },
+    "I2051:2172;413:531": {
+      "action": "navigate",
+      "label": "Profile",
+      "path": "/account"
+    },
+    "2051:2180": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "2051:1596": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1596"
+    },
+    "2051:1607": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1607"
+    },
+    "2051:1618": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1618"
+    },
+    "2051:1629": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1629"
+    },
+    "2051:1640": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1640"
+    },
+    "2051:1651": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1651"
+    },
+    "2051:1662": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1662"
+    },
+    "2051:1673": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1673"
+    },
+    "2051:1684": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1684"
+    },
+    "2051:1695": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1695"
+    },
+    "2051:1706": {
+      "action": "navigate",
+      "label": "Filter helpers",
+      "path": "/helpers/filters"
+    },
+    "2051:1721": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "2051:2273": {
+      "action": "helper",
+      "label": "View Souad Ibrahim",
+      "person": "Souad Ibrahim"
+    },
+    "2051:2297": {
+      "action": "helper",
+      "label": "View Fatma El-Sayed",
+      "person": "Fatma El-Sayed"
+    },
+    "2051:2320": {
+      "action": "helper",
+      "label": "View Amal Mostafa",
+      "person": "Amal Mostafa"
+    },
+    "2051:2344": {
+      "action": "helper",
+      "label": "View Hoda Mahmoud",
+      "person": "Hoda Mahmoud"
+    },
+    "2051:2368": {
+      "action": "helper",
+      "label": "View Eman Ragab",
+      "person": "Eman Ragab"
+    },
+    "2051:2392": {
+      "action": "helper",
+      "label": "View Shaimaa Ali",
+      "person": "Shaimaa Ali"
+    },
+    "2051:2462": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "I2051:2474;407:420": {
+      "action": "navigate",
+      "label": "Store",
+      "path": "/store"
+    },
+    "I2051:2474;407:424": {
+      "action": "navigate",
+      "label": "Monitoring",
+      "path": "/monitoring"
+    },
+    "I2051:2474;407:428": {
+      "action": "navigate",
+      "label": "Schedule",
+      "path": "/schedule"
+    },
+    "I2051:2474;407:432": {
+      "action": "navigate",
+      "label": "Profile",
+      "path": "/account"
+    },
+    "I2051:2090;413:515": {
+      "action": "navigate",
+      "label": "Home",
+      "path": "/"
+    },
+    "I2051:2090;413:519": {
+      "action": "navigate",
+      "label": "Store",
+      "path": "/store"
+    },
+    "I2051:2090;413:527": {
+      "action": "navigate",
+      "label": "Schedule",
+      "path": "/schedule"
+    },
+    "I2051:2090;413:531": {
+      "action": "navigate",
+      "label": "Profile",
+      "path": "/account"
+    },
+    "2051:2098": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "2051:1880": {
+      "action": "navigate",
+      "label": "Shop offers",
+      "path": "/store"
+    },
+    "I2051:1964;407:420": {
+      "action": "navigate",
+      "label": "Store",
+      "path": "/store"
+    },
+    "I2051:1964;407:424": {
+      "action": "navigate",
+      "label": "Monitoring",
+      "path": "/monitoring"
+    },
+    "I2051:1964;407:428": {
+      "action": "navigate",
+      "label": "Schedule",
+      "path": "/schedule"
+    },
+    "I2051:1964;407:432": {
+      "action": "navigate",
+      "label": "Profile",
+      "path": "/account"
+    },
+    "2051:3071": {
+      "action": "category",
+      "label": "Mobility aids",
+      "category": "Mobility aids"
+    },
+    "2051:3074": {
+      "action": "category",
+      "label": "Monitoring Equipments",
+      "category": "Monitoring Equipments"
+    },
+    "2051:3077": {
+      "action": "category",
+      "label": "Nursing supplies",
+      "category": "Nursing supplies"
+    },
+    "2051:3080": {
+      "action": "category",
+      "label": "Cleaning supplies",
+      "category": "Cleaning supplies"
+    },
+    "2051:3093": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:3083"
+    },
+    "2051:3104": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:3083"
+    },
+    "2051:3114": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:3105"
+    },
+    "2051:3125": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:3105"
+    },
+    "2051:3135": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:3126"
+    },
+    "2051:3146": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:3126"
+    },
+    "2051:3156": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:3147"
+    },
+    "2051:3167": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:3147"
+    },
+    "2051:3177": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:3168"
+    },
+    "2051:3188": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:3168"
+    },
+    "2051:3198": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:3189"
+    },
+    "2051:3209": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:3189"
+    },
+    "2051:3223": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "I2051:3240;413:495": {
+      "action": "navigate",
+      "label": "Home",
+      "path": "/"
+    },
+    "I2051:3240;413:503": {
+      "action": "navigate",
+      "label": "Monitoring",
+      "path": "/monitoring"
+    },
+    "I2051:3240;413:507": {
+      "action": "navigate",
+      "label": "Schedule",
+      "path": "/schedule"
+    },
+    "I2051:3240;413:511": {
+      "action": "navigate",
+      "label": "Profile",
+      "path": "/account"
+    },
+    "2051:2893": {
+      "action": "navigate",
+      "label": "View all products",
+      "path": "/store/mobility"
+    },
+    "2051:2895": {
+      "action": "category",
+      "label": "Mobility aids",
+      "category": "Mobility aids"
+    },
+    "2051:2898": {
+      "action": "category",
+      "label": "Monitoring Equipments",
+      "category": "Monitoring Equipments"
+    },
+    "2051:2901": {
+      "action": "category",
+      "label": "Nursing supplies",
+      "category": "Nursing supplies"
+    },
+    "2051:2904": {
+      "action": "category",
+      "label": "Cleaning supplies",
+      "category": "Cleaning supplies"
+    },
+    "2051:2922": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:2907"
+    },
+    "2051:2927": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:2907"
+    },
+    "2051:2937": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:2928"
+    },
+    "2051:2943": {
+      "action": "save",
+      "label": "Save ",
+      "key": "2051:2942"
+    },
+    "2051:2949": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:2928"
+    },
+    "2051:2959": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:2950"
+    },
+    "2051:2965": {
+      "action": "save",
+      "label": "Save ",
+      "key": "2051:2964"
+    },
+    "2051:2971": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:2950"
+    },
+    "2051:2981": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:2972"
+    },
+    "2051:2987": {
+      "action": "save",
+      "label": "Save ",
+      "key": "2051:2986"
+    },
+    "2051:2993": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:2972"
+    },
+    "2051:3003": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:2994"
+    },
+    "2051:3009": {
+      "action": "save",
+      "label": "Save ",
+      "key": "2051:3008"
+    },
+    "2051:3015": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:2994"
+    },
+    "2051:3025": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:3016"
+    },
+    "2051:3031": {
+      "action": "save",
+      "label": "Save ",
+      "key": "2051:3030"
+    },
+    "2051:3037": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:3016"
+    },
+    "2051:3051": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "I2051:3068;413:495": {
+      "action": "navigate",
+      "label": "Home",
+      "path": "/"
+    },
+    "I2051:3068;413:503": {
+      "action": "navigate",
+      "label": "Monitoring",
+      "path": "/monitoring"
+    },
+    "I2051:3068;413:507": {
+      "action": "navigate",
+      "label": "Schedule",
+      "path": "/schedule"
+    },
+    "I2051:3068;413:511": {
+      "action": "navigate",
+      "label": "Profile",
+      "path": "/account"
+    },
+    "I2051:2251;413:515": {
+      "action": "navigate",
+      "label": "Home",
+      "path": "/"
+    },
+    "I2051:2251;413:519": {
+      "action": "navigate",
+      "label": "Store",
+      "path": "/store"
+    },
+    "I2051:2251;413:527": {
+      "action": "navigate",
+      "label": "Schedule",
+      "path": "/schedule"
+    },
+    "I2051:2251;413:531": {
+      "action": "navigate",
+      "label": "Profile",
+      "path": "/account"
+    },
+    "2051:2259": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "2051:3272": {
+      "action": "cart-add",
+      "label": "Add to cart"
+    },
+    "2051:3282": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "I2051:3299;413:495": {
+      "action": "navigate",
+      "label": "Home",
+      "path": "/"
+    },
+    "I2051:3299;413:503": {
+      "action": "navigate",
+      "label": "Monitoring",
+      "path": "/monitoring"
+    },
+    "I2051:3299;413:507": {
+      "action": "navigate",
+      "label": "Schedule",
+      "path": "/schedule"
+    },
+    "I2051:3299;413:511": {
+      "action": "navigate",
+      "label": "Profile",
+      "path": "/account"
+    },
+    "2051:1816": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "2051:2486": {
+      "action": "chat",
+      "label": "Chat with Souad Ibrahim",
+      "person": "Souad Ibrahim"
+    },
+    "2051:2505": {
+      "action": "chat",
+      "label": "Chat with Fatma EL-Sayed",
+      "person": "Fatma EL-Sayed"
+    },
+    "2051:2524": {
+      "action": "chat",
+      "label": "Chat with Shaimaa Ali",
+      "person": "Shaimaa Ali"
+    },
+    "2051:2543": {
+      "action": "chat",
+      "label": "Chat with Amal Mostafa",
+      "person": "Amal Mostafa"
+    },
+    "2051:2564": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "2051:2572": {
+      "action": "chat",
+      "label": "Chat with Souad Ibrahim",
+      "person": "Souad Ibrahim"
+    },
+    "2051:2577": {
+      "action": "chat",
+      "label": "Chat with Fatma EL-Sayed",
+      "person": "Fatma EL-Sayed"
+    },
+    "2051:2583": {
+      "action": "chat",
+      "label": "Chat with Shaimaa Ali",
+      "person": "Shaimaa Ali"
+    },
+    "2051:2589": {
+      "action": "chat",
+      "label": "Chat with Amal Mostafa",
+      "person": "Amal Mostafa"
+    },
+    "2051:2595": {
+      "action": "chat",
+      "label": "Chat with Eman Ragab",
+      "person": "Eman Ragab"
+    },
+    "I2051:2606;407:420": {
+      "action": "navigate",
+      "label": "Store",
+      "path": "/store"
+    },
+    "I2051:2606;407:424": {
+      "action": "navigate",
+      "label": "Monitoring",
+      "path": "/monitoring"
+    },
+    "I2051:2606;407:428": {
+      "action": "navigate",
+      "label": "Schedule",
+      "path": "/schedule"
+    },
+    "I2051:2606;407:432": {
+      "action": "navigate",
+      "label": "Profile",
+      "path": "/account"
+    },
+    "2051:2624": {
+      "action": "chat",
+      "label": "Chat with Souad Ibrahim",
+      "person": "Souad Ibrahim"
+    },
+    "2051:2643": {
+      "action": "chat",
+      "label": "Chat with Fatma EL-Sayed",
+      "person": "Fatma EL-Sayed"
+    },
+    "2051:2662": {
+      "action": "chat",
+      "label": "Chat with Shaimaa Ali",
+      "person": "Shaimaa Ali"
+    },
+    "2051:2681": {
+      "action": "chat",
+      "label": "Chat with Amal Mostafa",
+      "person": "Amal Mostafa"
+    },
+    "2051:2700": {
+      "action": "chat",
+      "label": "Chat with Eman Ragab",
+      "person": "Eman Ragab"
+    },
+    "2051:2719": {
+      "action": "chat",
+      "label": "Chat with Hoda Mahmoud",
+      "person": "Hoda Mahmoud"
+    },
+    "2051:2739": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "I2051:2751;407:420": {
+      "action": "navigate",
+      "label": "Store",
+      "path": "/store"
+    },
+    "I2051:2751;407:424": {
+      "action": "navigate",
+      "label": "Monitoring",
+      "path": "/monitoring"
+    },
+    "I2051:2751;407:428": {
+      "action": "navigate",
+      "label": "Schedule",
+      "path": "/schedule"
+    },
+    "I2051:2751;407:432": {
+      "action": "navigate",
+      "label": "Profile",
+      "path": "/account"
+    },
+    "2051:1438": {
+      "action": "save",
+      "label": "Save Eman ragab Cleaner EGP 400 / day Ne",
+      "key": "2051:1437"
+    },
+    "2051:1437": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1437"
+    },
+    "2051:1449": {
+      "action": "save",
+      "label": "Save Amal Mostafa Cleaner EGP 475 / day ",
+      "key": "2051:1448"
+    },
+    "2051:1448": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1448"
+    },
+    "2051:1460": {
+      "action": "save",
+      "label": "Save Doaa Samir Cleaner EGP 500 / day 4.",
+      "key": "2051:1459"
+    },
+    "2051:1459": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1459"
+    },
+    "2051:1471": {
+      "action": "save",
+      "label": "Save Naglaa Hassan Cleaner EGP 480 / day",
+      "key": "2051:1470"
+    },
+    "2051:1470": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1470"
+    },
+    "2051:1482": {
+      "action": "save",
+      "label": "Save Shaimaa Ali Cleaner EGP 430 / day 4",
+      "key": "2051:1481"
+    },
+    "2051:1481": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1481"
+    },
+    "2051:1493": {
+      "action": "save",
+      "label": "Save Hoda Mahmoud Cleaner EGP 450 / day ",
+      "key": "2051:1492"
+    },
+    "2051:1492": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1492"
+    },
+    "2051:1504": {
+      "action": "save",
+      "label": "Save Shaimaa Ali Cleaner EGP 430 / day 4",
+      "key": "2051:1503"
+    },
+    "2051:1503": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1503"
+    },
+    "2051:1515": {
+      "action": "save",
+      "label": "Save Rania Fathy Cleaner EGP 430 / day 4",
+      "key": "2051:1514"
+    },
+    "2051:1514": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1514"
+    },
+    "2051:1526": {
+      "action": "save",
+      "label": "Save Rasha Ali Cleaner EGP 430 / day New",
+      "key": "2051:1525"
+    },
+    "2051:1525": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1525"
+    },
+    "2051:1537": {
+      "action": "save",
+      "label": "Save Salma Essam Cleaner EGP 400 / day 4",
+      "key": "2051:1536"
+    },
+    "2051:1536": {
+      "action": "helper",
+      "label": "View helper profile",
+      "card": "2051:1536"
+    },
+    "2051:1547": {
+      "action": "navigate",
+      "label": "Filter helpers",
+      "path": "/helpers/filters"
+    },
+    "2051:1562": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "2051:2755": {
+      "action": "navigate",
+      "label": "Shop offers",
+      "path": "/store/mobility"
+    },
+    "2051:2760": {
+      "action": "navigate",
+      "label": "View all products",
+      "path": "/store/mobility"
+    },
+    "2051:2761": {
+      "action": "navigate",
+      "label": "View all products",
+      "path": "/store/mobility"
+    },
+    "2051:2763": {
+      "action": "category",
+      "label": "Mobility aids",
+      "category": "Mobility aids"
+    },
+    "2051:2766": {
+      "action": "category",
+      "label": "Monitoring Equipments",
+      "category": "Monitoring Equipments"
+    },
+    "2051:2769": {
+      "action": "category",
+      "label": "Nursing supplies",
+      "category": "Nursing supplies"
+    },
+    "2051:2772": {
+      "action": "category",
+      "label": "Cleaning supplies",
+      "category": "Cleaning supplies"
+    },
+    "2051:2778": {
+      "action": "back",
+      "label": "Go back"
+    },
+    "2051:2804": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:2789"
+    },
+    "2051:2809": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:2789"
+    },
+    "2051:2819": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:2810"
+    },
+    "2051:2830": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:2810"
+    },
+    "2051:2840": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:2831"
+    },
+    "2051:2852": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:2831"
+    },
+    "2051:2862": {
+      "action": "product",
+      "label": "View product",
+      "card": "2051:2853"
+    },
+    "2051:2868": {
+      "action": "save",
+      "label": "Save ",
+      "key": "2051:2867"
+    },
+    "2051:2874": {
+      "action": "buy",
+      "label": "Buy now",
+      "card": "2051:2853"
+    },
+    "I2051:2890;413:495": {
+      "action": "navigate",
+      "label": "Home",
+      "path": "/"
+    },
+    "I2051:2890;413:503": {
+      "action": "navigate",
+      "label": "Monitoring",
+      "path": "/monitoring"
+    },
+    "I2051:2890;413:507": {
+      "action": "navigate",
+      "label": "Schedule",
+      "path": "/schedule"
+    },
+    "I2051:2890;413:511": {
+      "action": "navigate",
+      "label": "Profile",
+      "path": "/account"
+    },
+    "2051:1895": {
+      "action": "navigate",
+      "label": "Monitoring",
+      "path": "/monitoring"
+    },
+    "2051:1906": {
+      "action": "navigate",
+      "label": "Chats",
+      "path": "/chats"
+    },
+    "2051:1918": {
+      "action": "navigate",
+      "label": "Browse services",
+      "path": "/services"
+    },
+    "2051:1911": {
+      "action": "navigate",
+      "label": "View schedule",
+      "path": "/schedule"
+    },
+    "2051:1951": {
+      "action": "navigate",
+      "label": "Explore services",
+      "path": "/services"
+    },
+    "2051:1799": {
+      "action": "navigate",
+      "label": "Book now",
+      "path": "/booking"
+    },
+    "2051:1806": {
+      "action": "chat",
+      "label": "Chat with Amal Mostafa"
+    },
+    "2051:1842": {
+      "action": "reviews",
+      "label": "Customer reviews"
+    },
+    "2051:1848": {
+      "action": "checks",
+      "label": "Background checks"
+    },
+    "2051:2026": {
+      "action": "navigate",
+      "label": "Open cameras",
+      "path": "/monitoring/cameras"
+    },
+    "2051:2057": {
+      "action": "navigate",
+      "label": "Track service",
+      "path": "/monitoring/tracking"
+    },
+    "2051:2070": {
+      "action": "navigate",
+      "label": "View schedule",
+      "path": "/schedule"
+    },
+    "2051:2145": {
+      "action": "chat",
+      "label": "Chat with cleaner"
+    },
+    "2051:2146": {
+      "action": "call",
+      "label": "Call cleaner"
+    },
+    "2051:2147": {
+      "action": "issue",
+      "label": "Report issue"
+    },
+    "2051:2166": {
+      "action": "navigate",
+      "label": "View active room",
+      "path": "/monitoring/cameras"
+    },
+    "2051:2191": {
+      "action": "camera",
+      "label": "Open living room"
+    },
+    "2051:2202": {
+      "action": "camera",
+      "label": "Open entrance"
+    },
+    "2051:2214": {
+      "action": "camera",
+      "label": "Open kitchen"
+    },
+    "2051:2224": {
+      "action": "offline",
+      "label": "Bedroom camera is offline"
+    },
+    "2051:2237": {
+      "action": "alerts",
+      "label": "Recent alerts"
+    },
+    "2051:2238": {
+      "action": "settings",
+      "label": "Camera settings"
+    },
+    "2051:3275": {
+      "action": "quantity-up",
+      "label": "Increase quantity"
+    },
+    "2051:3277": {
+      "action": "quantity-down",
+      "label": "Decrease quantity"
+    },
+    "2051:2012": {
+      "action": "notifications",
+      "label": "Notifications"
+    },
+    "2051:1968": {
+      "action": "navigate",
+      "label": "Your profile",
+      "path": "/account"
+    },
+    "2051:3284": {
+      "action": "cart",
+      "label": "Shopping cart"
+    },
+    "2051:1756": {
+      "action": "back",
+      "label": "Close filters"
+    },
+    "2051:1761": {
+      "action": "reset-filters",
+      "label": "Reset filters"
+    },
+    "2051:1923": {
+      "action": "day",
+      "label": "Select 22 April",
+      "day": 22
+    },
+    "2051:1935": {
+      "action": "day",
+      "label": "Select 23 April",
+      "day": 23
+    },
+    "2051:1927": {
+      "action": "day",
+      "label": "Select 24 April",
+      "day": 24
+    },
+    "2051:1939": {
+      "action": "day",
+      "label": "Select 25 April",
+      "day": 25
+    },
+    "2051:1931": {
+      "action": "day",
+      "label": "Select 26 April",
+      "day": 26
+    },
+    "2051:1943": {
+      "action": "day",
+      "label": "Select 27 April",
+      "day": 27
+    },
+    "2051:1947": {
+      "action": "day",
+      "label": "Select 28 April",
+      "day": 28
+    },
+    "2051:2148": {
+      "action": "chat",
+      "label": "Chat"
+    },
+    "2051:2154": {
+      "action": "call",
+      "label": "Call"
+    },
+    "2051:2034": {
+      "action": "chat",
+      "label": "Ask AI"
+    },
+    "2051:2055": {
+      "action": "chat",
+      "label": "Chat"
+    },
+    "2051:2056": {
+      "action": "call",
+      "label": "Call"
+    },
+    "2051:3083": {
+      "action": "product",
+      "label": "View Monitoring Camera",
+      "card": "2051:3083"
+    },
+    "2051:3084": {
+      "action": "save",
+      "label": "Save Monitoring Camera",
+      "key": "2051:3083"
+    },
+    "2051:3098": {
+      "action": "buy",
+      "label": "Add Monitoring Camera to cart",
+      "card": "2051:3083"
+    },
+    "2051:3105": {
+      "action": "product",
+      "label": "View Monitoring Camera",
+      "card": "2051:3105"
+    },
+    "2051:3106": {
+      "action": "save",
+      "label": "Save Monitoring Camera",
+      "key": "2051:3105"
+    },
+    "2051:3119": {
+      "action": "buy",
+      "label": "Add Monitoring Camera to cart",
+      "card": "2051:3105"
+    },
+    "2051:3126": {
+      "action": "product",
+      "label": "View Monitoring Camera",
+      "card": "2051:3126"
+    },
+    "2051:3127": {
+      "action": "save",
+      "label": "Save Monitoring Camera",
+      "key": "2051:3126"
+    },
+    "2051:3140": {
+      "action": "buy",
+      "label": "Add Monitoring Camera to cart",
+      "card": "2051:3126"
+    },
+    "2051:3147": {
+      "action": "product",
+      "label": "View Monitoring Camera",
+      "card": "2051:3147"
+    },
+    "2051:3148": {
+      "action": "save",
+      "label": "Save Monitoring Camera",
+      "key": "2051:3147"
+    },
+    "2051:3161": {
+      "action": "buy",
+      "label": "Add Monitoring Camera to cart",
+      "card": "2051:3147"
+    },
+    "2051:3168": {
+      "action": "product",
+      "label": "View Monitoring Camera",
+      "card": "2051:3168"
+    },
+    "2051:3169": {
+      "action": "save",
+      "label": "Save Monitoring Camera",
+      "key": "2051:3168"
+    },
+    "2051:3182": {
+      "action": "buy",
+      "label": "Add Monitoring Camera to cart",
+      "card": "2051:3168"
+    },
+    "2051:3189": {
+      "action": "product",
+      "label": "View Monitoring Camera",
+      "card": "2051:3189"
+    },
+    "2051:3190": {
+      "action": "save",
+      "label": "Save Monitoring Camera",
+      "key": "2051:3189"
+    },
+    "2051:3203": {
+      "action": "buy",
+      "label": "Add Monitoring Camera to cart",
+      "card": "2051:3189"
+    },
+    "2051:2907": {
+      "action": "product",
+      "label": "View Ramp",
+      "card": "2051:2907"
+    },
+    "2051:2908": {
+      "action": "save",
+      "label": "Save Ramp",
+      "key": "2051:2907"
+    },
+    "2051:2911": {
+      "action": "buy",
+      "label": "Add Ramp to cart",
+      "card": "2051:2907"
+    },
+    "2051:2928": {
+      "action": "product",
+      "label": "View Ramp",
+      "card": "2051:2928"
+    },
+    "2051:2929": {
+      "action": "save",
+      "label": "Save Ramp",
+      "key": "2051:2928"
+    },
+    "2051:2950": {
+      "action": "product",
+      "label": "View Ramp",
+      "card": "2051:2950"
+    },
+    "2051:2951": {
+      "action": "save",
+      "label": "Save Ramp",
+      "key": "2051:2950"
+    },
+    "2051:2972": {
+      "action": "product",
+      "label": "View Ramp",
+      "card": "2051:2972"
+    },
+    "2051:2973": {
+      "action": "save",
+      "label": "Save Ramp",
+      "key": "2051:2972"
+    },
+    "2051:2994": {
+      "action": "product",
+      "label": "View Ramp",
+      "card": "2051:2994"
+    },
+    "2051:2995": {
+      "action": "save",
+      "label": "Save Ramp",
+      "key": "2051:2994"
+    },
+    "2051:3016": {
+      "action": "product",
+      "label": "View Ramp",
+      "card": "2051:3016"
+    },
+    "2051:3017": {
+      "action": "save",
+      "label": "Save Ramp",
+      "key": "2051:3016"
+    },
+    "2051:1807": {
+      "action": "chat",
+      "label": "Chat"
+    },
+    "2051:2789": {
+      "action": "product",
+      "label": "View Ramp",
+      "card": "2051:2789"
+    },
+    "2051:2790": {
+      "action": "save",
+      "label": "Save Ramp",
+      "key": "2051:2789"
+    },
+    "2051:2793": {
+      "action": "buy",
+      "label": "Add Ramp to cart",
+      "card": "2051:2789"
+    },
+    "2051:2810": {
+      "action": "product",
+      "label": "View Monitoring Camera",
+      "card": "2051:2810"
+    },
+    "2051:2811": {
+      "action": "save",
+      "label": "Save Monitoring Camera",
+      "key": "2051:2810"
+    },
+    "2051:2824": {
+      "action": "buy",
+      "label": "Add Monitoring Camera to cart",
+      "card": "2051:2810"
+    },
+    "2051:2831": {
+      "action": "product",
+      "label": "View Blood pressure monitor",
+      "card": "2051:2831"
+    },
+    "2051:2832": {
+      "action": "save",
+      "label": "Save Blood pressure monitor",
+      "key": "2051:2831"
+    },
+    "2051:2853": {
+      "action": "product",
+      "label": "View Ramp",
+      "card": "2051:2853"
+    },
+    "2051:2854": {
+      "action": "save",
+      "label": "Save Ramp",
+      "key": "2051:2853"
+    },
+    "2051:2416": {
+      "action": "service",
+      "label": "Cleaning",
+      "category": "Cleaning"
+    },
+    "2051:2421": {
+      "action": "service",
+      "label": "Chef",
+      "category": "Chef"
+    },
+    "2051:2426": {
+      "action": "service",
+      "label": "Gardening",
+      "category": "Gardening"
+    }
+  },
+  "rows": {
+    "2051:2484": {
+      "text": "Souad Ibrahim Housekeeper \u00b7 Cook Online 12:42 PM",
+      "screen": "2051:2475"
+    },
+    "2051:2503": {
+      "text": "Fatma EL-Sayed Housekeeper \u00b7 Cook Online 9:25 PM",
+      "screen": "2051:2475"
+    },
+    "2051:2522": {
+      "text": "Shaimaa Ali Housekeeper \u00b7 Cook Online 29/5/2025",
+      "screen": "2051:2475"
+    },
+    "2051:2541": {
+      "text": "Amal Mostafa Housekeeper \u00b7 Cook Online 27/5/2025",
+      "screen": "2051:2475"
+    },
+    "2051:2475": {
+      "text": "SI Eman Ragab",
+      "screen": "2051:2475"
+    },
+    "2051:2622": {
+      "text": "Souad Ibrahim Housekeeper \u00b7 Cook Online 12:42 PM",
+      "screen": "2051:2607"
+    },
+    "2051:2641": {
+      "text": "Fatma EL-Sayed Housekeeper \u00b7 Cook Online 9:25 PM",
+      "screen": "2051:2607"
+    },
+    "2051:2660": {
+      "text": "Shaimaa Ali Housekeeper \u00b7 Cook Offline 29/5/2025",
+      "screen": "2051:2607"
+    },
+    "2051:2679": {
+      "text": "Amal Mostafa Housekeeper \u00b7 Cook Online 27/5/2025",
+      "screen": "2051:2607"
+    },
+    "2051:2698": {
+      "text": "Eman Ragab Nanny Offline 26/5/2025",
+      "screen": "2051:2607"
+    },
+    "2051:2717": {
+      "text": "Hoda Mahmoud Elderly care \u00b7 Nursing Online 22/5/2025",
+      "screen": "2051:2607"
+    }
+  },
+  "hides": [
+    "2051:3211",
+    "2051:3039",
+    "2051:3243",
+    "2051:2479",
+    "2051:2611",
+    "2051:2876",
+    "2051:1571",
+    "2051:1730",
+    "2051:1855",
+    "2051:1960",
+    "2051:2089",
+    "2051:2171",
+    "2051:2250",
+    "2051:2470",
+    "2051:2602",
+    "2051:2747",
+    "2051:2885",
+    "2051:3063",
+    "2051:3235",
+    "2051:3294",
+    "2051:1960",
+    "2051:1571",
+    "2051:1730",
+    "2051:1855",
+    "2051:2089",
+    "2051:2171",
+    "2051:2250",
+    "2051:2470",
+    "2051:2602",
+    "2051:2747",
+    "2051:2885",
+    "2051:3063",
+    "2051:3235",
+    "2051:3294",
+    "2051:1884",
+    "2051:1958",
+    "2051:2043",
+    "2051:2107",
+    "2051:2189",
+    "2051:2270",
+    "2051:1779",
+    "2051:2879",
+    "2051:3042",
+    "2051:3214",
+    "2051:3246",
+    "2051:2614"
+  ],
+  "paths": {
+    "2051:1878": "/",
+    "2051:2267": "/services",
+    "2051:1435": "/helpers",
+    "2051:1594": "/helpers/filters",
+    "2051:1778": "/helpers/profile",
+    "2051:2475": "/chats",
+    "2051:2607": "/chats/all",
+    "2051:2752": "/store",
+    "2051:2892": "/store/mobility",
+    "2051:3069": "/store/monitoring",
+    "2051:3241": "/store/product",
+    "2051:2015": "/monitoring",
+    "2051:2106": "/monitoring/tracking",
+    "2051:2188": "/monitoring/cameras"
+  }
+}

@@ -1,0 +1,471 @@
+{
+  "viewport": "375x810",
+  "routesChecked": 58,
+  "checks": "Rendered text, no Vite error overlay, no broken loaded images, no horizontal document overflow",
+  "routes": [
+    {
+      "role": "owner",
+      "path": "/start",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\nYour home, organized\nA LITTLE HELP, A BETTER DAY\nLife feels better with a little help.\n\nFind truste"
+    },
+    {
+      "role": "owner",
+      "path": "/onboarding",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nWelcome to MAZBOT\nA LITTLE HELP, A BETTER DAY\nOne home for every role.\n\nBook reliable help, find "
+    },
+    {
+      "role": "owner",
+      "path": "/auth",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nLet's get you connected\n\nSign up or return to your local account\n\nPhone number\nI agree to use the"
+    },
+    {
+      "role": "owner",
+      "path": "/verify",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nVerify your phone\n\n+201012345678\n\nLocal preview code\n\n123456\n\nThis does not verify ownership of a"
+    },
+    {
+      "role": "owner",
+      "path": "/complete-profile",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nMake yourself at home\nFull name\nEmail (optional)\nCity / area\nChoose your role\n→"
+    },
+    {
+      "role": "owner",
+      "path": "/roles",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nHow will you use MAZBOT?\n\nYou can switch roles to preview the connected journey.\n\nA LITTLE HELP, "
+    },
+    {
+      "role": "owner",
+      "path": "/",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "Shop offers\n\nHome & Care Store\n\nSpecial offers for your home\n\nYour home, organized\n\nMonitoring\n\nStay Connected to home\n\n"
+    },
+    {
+      "role": "owner",
+      "path": "/services",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nFind your kind of help\n\nServices for everyday life\n\nA LITTLE HELP, A BETTER DAY\nA helping hand, j"
+    },
+    {
+      "role": "owner",
+      "path": "/flow/requirements",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nService requirements\n\n01 / 03 · Cleaning\n\nWhat do you need help with?\nHours per visit\n2\n4\n6\n8\nSta"
+    },
+    {
+      "role": "owner",
+      "path": "/flow/prepare/location",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nWhere & when?\n\n02 / 03 · Location and schedule\n\nHome address\nPreferred date\nStart time\nContinue\n→"
+    },
+    {
+      "role": "owner",
+      "path": "/flow/prepare/budget",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nYour budget\n\n03 / 03 · Set a daily limit\n\nA LITTLE HELP, A BETTER DAY\nThe right help, at the righ"
+    },
+    {
+      "role": "owner",
+      "path": "/helpers",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nCleaning helpers\n\n10 matching helpers\n\nFilters\nChange service\n\nSample profiles · Availability is "
+    },
+    {
+      "role": "owner",
+      "path": "/helpers/filters",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nCleaning helpers\n\n10 matching helpers\n\nFilters\nChange service\n\nSample profiles · Availability is "
+    },
+    {
+      "role": "owner",
+      "path": "/helpers/profile",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "9:41\n‹\nHelper Profile\n♡\n⋮\nEman ragab\n\nCleaning New ★\n\nReliable, neat, and always on time.\n▣\n24\nJobs\n▦\n2\nYears\nQuick Acti"
+    },
+    {
+      "role": "owner",
+      "path": "/booking",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nBooking registration\n\nReview your request before sending\n\nEman ragab\n\nCleaning\n\nEGP 400 / day\nCha"
+    },
+    {
+      "role": "owner",
+      "path": "/schedule",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nYour schedule\n\nFollow every request from start to finish\n\nA LITTLE HELP, A BETTER DAY\nEverything "
+    },
+    {
+      "role": "owner",
+      "path": "/flow/bookings/db02fa85-fac5-4cc5-8d38-7538ae51c8d3",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nBooking details\n\nRequest db02fa85\n\nReviewed\nCleaning\n\nEman ragab · 2026-11-19 at 10:00\n\n12 Exampl"
+    },
+    {
+      "role": "owner",
+      "path": "/chats",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "Souad Ibrahim\n\nHousekeeper · Cook\n\nOnline\n\n12:42 PM\n\nSI\n\nFatma EL-Sayed\n\nHousekeeper · Cook\n\nOnline\n\n9:25 PM\n\nFE\n\nShaima"
+    },
+    {
+      "role": "owner",
+      "path": "/chats/all",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "Souad Ibrahim\n\nHousekeeper · Cook\n\nOnline\n\n12:42 PM\n\nSI\n\nFatma EL-Sayed\n\nHousekeeper · Cook\n\nOnline\n\n9:25 PM\n\nFE\n\nShaima"
+    },
+    {
+      "role": "owner",
+      "path": "/chats/conversation",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "9:41\nEman ragab\n\nLocal conversation\n\nEman ragab\n\nAsk about services and availability.\n\nHello! How can I help with your h"
+    },
+    {
+      "role": "owner",
+      "path": "/store",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "Shop offers\n\nEverything\nfor a Smarter \nHome\n\nHome devices & services add-ons\n\nShop by Category\n\nRecommended For You\n\nVie"
+    },
+    {
+      "role": "owner",
+      "path": "/store/mobility",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "View All\n\nMobility aids\n\nMonitoring\nEquipments\n\nNursing\nsupplies\n\nCleaning supplies\n\nMobility Aid\n\nRamp\n\nEGP 300\n\n4.7\n\nV"
+    },
+    {
+      "role": "owner",
+      "path": "/store/monitoring",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "Mobility aids\n\nMonitoring\nEquipments\n\nNursing\nsupplies\n\nCleaning supplies\n\nMobility Aid\n\nMonitoring Camera\n\nMonitoring C"
+    },
+    {
+      "role": "owner",
+      "path": "/store/nursing",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "9:41\nNursing supplies\n\nToday 25 Apr\n\nNursing supplies\n\nSample catalog for the local preview.\n\nBlood pressure monitor\n\nEG"
+    },
+    {
+      "role": "owner",
+      "path": "/store/cleaning",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "9:41\nCleaning supplies\n\nToday 25 Apr\n\nCleaning supplies\n\nSample catalog for the local preview.\n\nCleaning spray bottle\n\nE"
+    },
+    {
+      "role": "owner",
+      "path": "/store/product",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "Cleaning spray bottle\n\nKey Benefits\n\nService Add-ons\n\nA refillable spray bottle for everyday home cleaning\n\n4.7\n\n(1.2K R"
+    },
+    {
+      "role": "owner",
+      "path": "/cart",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "9:41\nYour cart\n\nToday 25 Apr\n\nHome & Care Store\n\nYour cart is waiting for a little home care.\n\nExplore store\nHome\nStore\n"
+    },
+    {
+      "role": "owner",
+      "path": "/checkout",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nCheckout\n\nDelivery and order summary\n\nYour cart is empty.\nExplore store\nHome\nStore\nMonitoring\nSch"
+    },
+    {
+      "role": "owner",
+      "path": "/orders",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nYour orders\nOrder 472a4422\n\nConfirmed · EGP 150\n\nView order\nHome\nStore\nMonitoring\nSchedule\nProfil"
+    },
+    {
+      "role": "owner",
+      "path": "/orders/472a4422-eda6-4188-bf4d-995c9d4f3809",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nOrder confirmation\nA LITTLE HELP, A BETTER DAY\nYour order is confirmed.\n\nSaved in your local prev"
+    },
+    {
+      "role": "owner",
+      "path": "/monitoring",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "3 Cameras\n\nOnline\n\nLiving Room\n\nAsk AI\n\nCleaner arrived at 10:05 AM\n\nAll cameras connected\n\n10:05 AM - 11:30 AM\n\nCleanin"
+    },
+    {
+      "role": "owner",
+      "path": "/monitoring/tracking",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nBooking details\n\nRequest db02fa85\n\nReviewed\nCleaning\n\nEman ragab · 2026-11-19 at 10:00\n\n12 Exampl"
+    },
+    {
+      "role": "owner",
+      "path": "/monitoring/cameras",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "Living Room\n\nLive\n\nOnline\n\nEntrance\n\n3 Cameras Online\n\nAll secure\n\nOnline\n\nKitchen\n\nOffline\n\nBedroom\n\nRecent Alerts\n\nCam"
+    },
+    {
+      "role": "owner",
+      "path": "/flow/devices",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nConnected devices\nA LITTLE HELP, A BETTER DAY\nStay close to home.\n\nChoose a device to inspect its"
+    },
+    {
+      "role": "owner",
+      "path": "/flow/device/living",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nLiving Room\nPreview available\n\nStatic room image. Live streaming requires a connected camera serv"
+    },
+    {
+      "role": "owner",
+      "path": "/flow/device/bedroom",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nBedroom\nOffline\nThis camera is offline. Check power and connection.\n\nStatic room image. Live stre"
+    },
+    {
+      "role": "owner",
+      "path": "/flow/assistant",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nHome assistant\nA LITTLE HELP, A BETTER DAY\nWhat can we help you find?\n\nQuick guidance for your MA"
+    },
+    {
+      "role": "owner",
+      "path": "/flow/support",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Owner ⇄\n‹\nSupport\nHow can we help?\nSubmit support request\n→\nHome\nStore\nMonitoring\nSchedule\nProfile"
+    },
+    {
+      "role": "owner",
+      "path": "/account",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "9:41\nProfile\n\nToday 25 Apr\n\nHello, Flow Review\nYour name\nSave profile\nSaved items\n\n0 favorites saved on this device.\n\nVi"
+    },
+    {
+      "role": "helper",
+      "path": "/helper/experience",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Helper ⇄\n‹\nTell us about your work\n\n01 / 03 · Experience & qualifications\n\nHelper name\nPrimary service\nClea"
+    },
+    {
+      "role": "helper",
+      "path": "/helper/documents",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Helper ⇄\n‹\nYour documents\n\n02 / 03 · Supporting documents\n\nExperience & identity documents\nSelect documents"
+    },
+    {
+      "role": "helper",
+      "path": "/helper/verification",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Helper ⇄\n‹\nVerification & rates\n\n03 / 03 · Complete your helper profile\n\nPending review\n\nCompany reviewers "
+    },
+    {
+      "role": "helper",
+      "path": "/helper/home",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Helper ⇄\n‹\nHello, Eman ragab\n\nHouse Helper workspace\n\nA LITTLE HELP, A BETTER DAY\nYour next opportunity sta"
+    },
+    {
+      "role": "helper",
+      "path": "/helper/profile",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Helper ⇄\n‹\nHello, Eman ragab\n\nHouse Helper workspace\n\nA LITTLE HELP, A BETTER DAY\nYour next opportunity sta"
+    },
+    {
+      "role": "helper",
+      "path": "/helper/requests",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Helper ⇄\n‹\nBooking requests\n\nFor Eman ragab\n\nAccepted\nCleaning\n\nEman ragab · Flow Review\n\n2026-11-19 · 10:0"
+    },
+    {
+      "role": "helper",
+      "path": "/helper/jobs",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Helper ⇄\n‹\nFind your next job\nSearch jobs\nService filter\nAll\nCleaning\nHousekeeping\nGardening\nDog walking\nHo"
+    },
+    {
+      "role": "helper",
+      "path": "/helper/jobs/92176747-fde3-43eb-a110-edf57073a265",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Helper ⇄\n‹\nJob details\nWeekly home cleaning\n\nCleaning a family apartment\n\nGiza sample address · 2026-11-19 "
+    },
+    {
+      "role": "helper",
+      "path": "/helper/applications",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Helper ⇄\n‹\nYour applications\nAccepted\nWeekly home cleaning\n\nI have experience in home cleaning\n\nOpen servic"
+    },
+    {
+      "role": "helper",
+      "path": "/helper/payments",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Helper ⇄\n‹\nPayment status\nA LITTLE HELP, A BETTER DAY\nEGP 425\n\nCompleted service earnings · Preview ledger\n"
+    },
+    {
+      "role": "helper",
+      "path": "/schedule",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nHouse Helper ⇄\n‹\nBookings & schedule\n\nFollow every request from start to finish\n\nA LITTLE HELP, A BETTER DAY\nEver"
+    },
+    {
+      "role": "company",
+      "path": "/company/profile",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nCompany ⇄\n‹\nYour company profile\nCompany name\nRegistration number\nContact phone\nService area\nContinue\n→\n⌂\nHome\n♧\n"
+    },
+    {
+      "role": "company",
+      "path": "/company/verification",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nCompany ⇄\n‹\nCompany verification\nBusiness registration documents\nSelect documents\nregistration-preview.pdf\n\nOnly "
+    },
+    {
+      "role": "company",
+      "path": "/company/dashboard",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nCompany ⇄\n‹\nMAZBOT Review Company\n\nYour people. Your services.\n\nA LITTLE HELP, A BETTER DAY\nKeep every home in go"
+    },
+    {
+      "role": "company",
+      "path": "/company/helpers",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nCompany ⇄\n‹\nManage helpers\nHelper document review\n\nEman ragab\n\npreview-document.txt\n\nPending review\nMark reviewed"
+    },
+    {
+      "role": "company",
+      "path": "/company/requests",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nCompany ⇄\n‹\nBooking requests\nCleaning\n\nFlow Review · Accepted\n\nAssign helper for Cleaning\nEman ragab\nAmal Mostafa"
+    },
+    {
+      "role": "company",
+      "path": "/company/active",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nCompany ⇄\n‹\nActive services & support\nNo services in this view yet.\nBack to dashboard\n⌂\nHome\n♧\nHelpers\n▤\nRequests"
+    },
+    {
+      "role": "company",
+      "path": "/company/completion",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nCompany ⇄\n‹\nCompletion history\nReviewed\nCleaning\n\nEman ragab · Flow Review\n\n2026-11-19 · 10:00\n\nEGP 425\nView book"
+    },
+    {
+      "role": "company",
+      "path": "/company/jobs",
+      "broken": 0,
+      "error": false,
+      "overflow": false,
+      "text": "MAZBOT\nCompany ⇄\n‹\nJobs & applications\nPublish a job\nJob title\nService\nCleaning\nHousekeeping\nGardening\nDog walking\nHouse"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+.living-art{position:relative}
+.route-content{animation:content-reveal .2s cubic-bezier(.22,1,.36,1) both}
+@keyframes content-reveal{from{opacity:0}to{opacity:1}}
+.page-skeleton{padding:32px 20px 100px;min-height:810px;background:#fcf8f4}
+.sk{background:#e6e9e2;border-radius:12px;position:relative;overflow:hidden}
+.sk::after{content:'';position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,#ffffff90,transparent);animation:skeleton-sweep 1.2s ease-in-out infinite}
+.sk-heading{width:55%;height:28px;margin:12px 0 28px}
+.sk-banner{height:156px;border-radius:24px;margin-bottom:26px}
+.sk-product{height:275px;border-radius:24px;margin-bottom:26px}
+.sk-line{height:13px;width:90%;margin:12px 0}.sk-line.short{width:58%}
+.sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.sk-card{padding:12px;background:#fff;border-radius:20px}.sk-thumb{height:110px}.sk-copy{flex:1}
+.sk-list{display:grid;gap:14px;margin-top:20px}.sk-list .sk-card{display:flex;align-items:center;gap:14px}.sk-list .sk-thumb{width:64px;height:64px;border-radius:50%}
+.sk-illustration{height:220px;width:80%;margin:24px auto;border-radius:32px}
+.sk-field{height:50px;margin:16px 0}.sk-action{height:52px;border-radius:28px;margin-top:28px;background:#eddfcf}
+@keyframes skeleton-sweep{to{transform:translateX(100%)}}
+@media(prefers-reduced-motion:reduce){.route-content,.sk::after{animation:none}}
+.living-art img{-webkit-user-drag:none;user-select:none}
+.flow-hero>.living-art{flex:0 0 91px;perspective:700px}
+.flow-hero>.living-art img{width:91px;height:116px}
+.animated-number{font-variant-numeric:tabular-nums}
+[data-press-feedback]{scale:var(--press-scale,1)}
+.home-week{position:absolute;left:16px;top:360px;width:343px;display:flex;gap:8px;height:58px}
+.home-week button{position:relative;isolation:isolate;flex:1;border:1px solid #003744;border-radius:24px;font:12px/1.3 Arial,sans-serif;overflow:hidden}
+.home-week button>span:not(.week-selected),.home-week strong{display:block}.home-week button[aria-pressed=true]{color:white;border-color:transparent}.week-selected{position:absolute;inset:0;background:#003744;border-radius:24px;z-index:-1}
+.screen-canvas [data-node-id="2051:2010"]{width:176px;font-size:22px}.screen-canvas [data-node-id="2051:2010"] p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.onboarding-pager{position:absolute;inset:-15px 0;display:flex}.onboarding-pager button{flex:1;min-height:44px;border-radius:20px;background:transparent}
+.cart-flight{position:absolute;left:0;top:0;width:48px;height:48px;object-fit:contain;z-index:90;pointer-events:none;filter:drop-shadow(0 5px 8px #00202730)}
+/* Device chrome belongs to the phone/browser, not to the application. */
+.home-indicator,[data-name="Home Bar"],[data-name="Home Indicator"],[data-name="Home indicator"]{display:none!important}
+.screen-canvas [data-name="Navigation (House Owner)"]{display:none!important}
+[data-name="StatusBar / iPhone 13"],[data-name="Status Bar"]{visibility:hidden}
+.product-art{position:absolute;left:16px;top:213px;width:343px;height:275px;border-radius:23px;background:#f8dfc9;overflow:hidden}
+.product-art>.living-art{width:100%;height:100%}.product-art img{width:100%;height:100%;object-fit:contain;padding:18px}
+.product-art>span{position:absolute;right:12px;bottom:12px;border-radius:18px;background:#ffffffe6;padding:7px 10px;font-size:10px;color:#003744}
+.image-explorer{height:260px;border-radius:22px;background:#f3ebde;overflow:hidden;position:relative;touch-action:none}
+.image-explorer img{width:100%;height:100%;user-select:none;cursor:grab}.image-explorer img:active{cursor:grabbing}
+.image-explorer-controls{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:12px}.image-explorer-controls .btn{width:46px;min-width:46px;margin:0}.image-explorer-controls>button{font-size:12px}
+.auth-page [data-name="Status Bar"],.auth-page [data-name="StatusBar / iPhone 13"],.status-bar,.hp-status{visibility:hidden}
+.hp-list button>b{transition:rotate .2s}.hp-list button[aria-expanded=true]>b{rotate:90deg}
+.hp-list .hp-expanded{overflow:hidden}.hp-title button[aria-pressed=true]{color:#ffac88}
+.flow-button{transition:background .18s,box-shadow .18s}.flow-button:hover,.flow-button:active{transform:none}
+.flow-check input,.toggle-row input{accent-color:#176c5a}
+.flow-check:has(input:checked){color:#176c5a}
+.chips button{transition:background .18s,color .18s,box-shadow .18s}.chips button[aria-pressed=true]{box-shadow:0 3px 8px #00374420}
+.filter-results{position:sticky;bottom:0;background:#fffdf8;padding:12px 0 16px;margin-top:14px;border-top:1px solid #dce4da}
+.filter-results p{font-size:11px;color:#486664;margin:0}.filter-results .btn{margin-bottom:0}
+.composer{position:sticky;bottom:0;z-index:2;background:#fcf8f4;padding-top:10px;padding-bottom:10px}
+.chat-suggestions{display:flex;gap:8px;overflow-x:auto;margin:15px 0;scrollbar-width:none}.chat-suggestions button{white-space:nowrap;background:#e0eee3;border-radius:20px;padding:9px 12px;font-size:11px;color:#22594f}
+.message{overflow-wrap:anywhere}.message-list{scroll-margin-bottom:100px}
+.message-saved{font-size:9px;text-align:right;color:#668078;margin:4px 8px}
+.persona-nav button{position:relative;isolation:isolate}.persona-nav button[aria-current=page]{background:transparent}.persona-nav .persona-highlight{position:absolute;inset:0;background:#f3ebde;border-radius:28px;z-index:-1}
+.nav-cart-count{position:absolute;top:-4px;right:0;background:#f6905b;color:#002027;border:2px solid #002027;border-radius:20px;min-width:18px;font-size:9px;font-weight:800;line-height:14px;text-align:center;padding:0 3px;z-index:2}
+@media(prefers-reduced-motion:reduce){.living-art{will-change:auto}.hp-list button>b,.chips button{transition:none}}
+
+/* Touch feedback never depends on hover or an idle mouse position. */
+.device button,.device a,.device [role=button]{touch-action:manipulation}
+.device .filter-title{touch-action:none}
+.device .btn,.device .flow-button,.filter-title button,.dialog-title button,.image-explorer-controls>button{min-height:48px}
+.image-explorer-controls .btn{min-width:48px;width:48px}
+.stepper button{min-width:44px;min-height:44px}
+.hp-list button{min-height:48px}
+.hp-title button{position:relative;min-width:32px;min-height:44px}
+.hp-title button::before{content:'';position:absolute;inset:0 -6px}
+@media(hover:none){.device .btn:hover,.device .flow-button:hover{transform:none}.screen-canvas [data-interactive]:hover{filter:none}}

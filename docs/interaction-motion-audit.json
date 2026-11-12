@@ -1,0 +1,530 @@
+{
+  "date": "2026-11-12",
+  "scope": "Interaction and motion across owner, helper and company",
+  "errors": [],
+  "routes": [
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/start",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/onboarding",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/auth",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/verify",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/complete-profile",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/roles",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/services",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/flow/requirements",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/flow/prepare/location",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/flow/prepare/budget",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helpers",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helpers/filters",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helpers/profile",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/booking",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/schedule",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/flow/bookings/db02fa85-fac5-4cc5-8d38-7538ae51c8d3",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/chats",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/chats/all",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/chats/conversation",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/store",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/store/mobility",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/store/monitoring",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/store/nursing",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/store/cleaning",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/store/product",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/cart",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/checkout",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/orders",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/orders/472a4422-eda6-4188-bf4d-995c9d4f3809",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/monitoring",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/monitoring/tracking",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/monitoring/cameras",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/flow/devices",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/flow/device/living",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/flow/device/bedroom",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/flow/assistant",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/flow/support",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/account",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helper/experience",
+      "role": "helper"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helper/documents",
+      "role": "helper"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helper/verification",
+      "role": "helper"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helper/home",
+      "role": "helper"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helper/profile",
+      "role": "helper"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helper/requests",
+      "role": "helper"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helper/jobs",
+      "role": "helper"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helper/jobs/92176747-fde3-43eb-a110-edf57073a265",
+      "role": "helper"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helper/applications",
+      "role": "helper"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/helper/payments",
+      "role": "helper"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/schedule",
+      "role": "helper"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/company/profile",
+      "role": "company"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/company/verification",
+      "role": "company"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/company/dashboard",
+      "role": "company"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/company/helpers",
+      "role": "company"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/company/requests",
+      "role": "company"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/company/active",
+      "role": "company"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/company/completion",
+      "role": "company"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/company/jobs",
+      "role": "company"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/onboarding/2",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/onboarding/3",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/signup",
+      "role": "owner"
+    },
+    {
+      "blank": false,
+      "broken": 0,
+      "error": false,
+      "extraChrome": 0,
+      "path": "/forgot-password",
+      "role": "owner"
+    }
+  ],
+  "checks": {
+    "productionBuild": true,
+    "bookingStateTests": 7,
+    "productZoom": true,
+    "cartFlight": true,
+    "cartQuantity": true,
+    "helperAccordion": true,
+    "favorites": true,
+    "filterResultCount": true,
+    "chatSend": true,
+    "onboardingPager": true,
+    "onboardingSwipe": true,
+    "productSearchToResults": true,
+    "realHomeWeekSelection": true,
+    "heroPointerDepth": true
+  },
+  "limitations": [
+    "Local prototype: no real authentication, SMS, payments, external messaging or camera streaming.",
+    "Original raster/vector artwork uses pointer-responsive depth transforms; it is not replaced with fabricated 3D models."
+  ],
+  "changes": [
+    "Removed fake home/status bars and duplicate exported navigation.",
+    "Removed nonfunctional product carousel dots and repeated product image.",
+    "Replaced slide transitions with short fades and action-driven motion.",
+    "Added image zoom/pan, cart feedback, animated totals, expanding helper details, live filter counts, draggable filter dismissal, onboarding swipe/pager, message suggestions, dynamic calendar and workspace notification data."
+  ],
+  "motionReviewSupersededBy": "mobile-interaction-review.json"
+}

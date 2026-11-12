@@ -1,0 +1,129 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/services",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/helpers",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/helpers/filters",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/helpers/profile",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/chats",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/chats/all",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/store",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/store/mobility",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/store/monitoring",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/store/product",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/monitoring",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/monitoring/tracking",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/monitoring/cameras",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/booking",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/schedule",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/account",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/cart",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/chats/conversation",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/store/nursing",
+      "broken": [],
+      "errors": []
+    },
+    {
+      "path": "/store/cleaning",
+      "broken": [],
+      "errors": []
+    }
+  ],
+  "journeyChecks": {
+    "passed": [
+      "Service selection and budget filter",
+      "Favorites survive reload",
+      "Booking validation, selected helper, and persisted schedule",
+      "Chat search, sending, and local persistence",
+      "Product details, quantity, cart total, and cart persistence",
+      "Room preview controls and Escape dismissal",
+      "Profile updates propagate home",
+      "Reduced motion and centered desktop viewport"
+    ],
+    "errors": []
+  },
+  "additionalChecks": [
+    "Nursing category and selected product detail",
+    "Cleaning category empty state",
+    "Search empty state and reset",
+    "Saved-products filtering"
+  ],
+  "productionBuild": "Passed"
+}

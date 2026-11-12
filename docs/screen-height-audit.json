@@ -1,0 +1,144 @@
+{
+  "source": "Figma Main Flow page; measured frame bounds",
+  "frameSize": {
+    "width": 375
+  },
+  "screens": [
+    {
+      "path": "/",
+      "nodeId": "2051:1878",
+      "width": 375,
+      "height": 994,
+      "unit": "Figma CSS px"
+    },
+    {
+      "path": "/services",
+      "nodeId": "2051:2267",
+      "width": 375,
+      "height": 1110,
+      "unit": "Figma CSS px"
+    },
+    {
+      "path": "/helpers",
+      "nodeId": "2051:1435",
+      "width": 375,
+      "height": 1403,
+      "unit": "Figma CSS px"
+    },
+    {
+      "path": "/helpers/profile",
+      "nodeId": "2051:1778",
+      "width": 375,
+      "height": 1099,
+      "unit": "Figma CSS px"
+    },
+    {
+      "path": "/chats",
+      "nodeId": "2051:2475",
+      "width": 375,
+      "height": 812,
+      "unit": "Figma CSS px"
+    },
+    {
+      "path": "/chats/all",
+      "nodeId": "2051:2607",
+      "width": 375,
+      "height": 900,
+      "unit": "Figma CSS px"
+    },
+    {
+      "path": "/store",
+      "nodeId": "2051:2752",
+      "width": 375,
+      "height": 1254,
+      "unit": "Figma CSS px"
+    },
+    {
+      "path": "/store/mobility",
+      "nodeId": "2051:2892",
+      "width": 375,
+      "height": 1254,
+      "unit": "Figma CSS px"
+    },
+    {
+      "path": "/store/monitoring",
+      "nodeId": "2051:3069",
+      "width": 375,
+      "height": 1254,
+      "unit": "Figma CSS px"
+    },
+    {
+      "path": "/store/product",
+      "nodeId": "2051:3241",
+      "width": 375,
+      "height": 1254,
+      "unit": "Figma CSS px"
+    },
+    {
+      "path": "/monitoring",
+      "nodeId": "2051:2015",
+      "width": 375,
+      "height": 934,
+      "unit": "Figma CSS px"
+    },
+    {
+      "path": "/monitoring/tracking",
+      "nodeId": "2051:2106",
+      "width": 375,
+      "height": 810,
+      "unit": "Figma CSS px"
+    },
+    {
+      "path": "/monitoring/cameras",
+      "nodeId": "2051:2188",
+      "width": 375,
+      "height": 835,
+      "unit": "Figma CSS px"
+    }
+  ],
+  "otherRoutes": {
+    "auth": {
+      "paths": [
+        "/start",
+        "/onboarding",
+        "/onboarding/2",
+        "/onboarding/3",
+        "/auth",
+        "/signup",
+        "/forgot-password",
+        "/verify"
+      ],
+      "frame": {
+        "width": 375,
+        "height": 812
+      },
+      "sizing": "design artboard"
+    },
+    "flow": {
+      "paths": "booking, account, cart, support, helper, company and order flows",
+      "sizing": "content-driven with viewport minimum and scroll when content exceeds the screen"
+    }
+  },
+  "corrected": [
+    {
+      "path": "/chats",
+      "from": 1093,
+      "to": 812
+    },
+    {
+      "path": "/chats/all",
+      "from": 1000,
+      "to": 900
+    },
+    {
+      "path": "/monitoring",
+      "from": 1070,
+      "to": 934
+    }
+  ],
+  "home": {
+    "path": "/",
+    "frameHeight": 994,
+    "previousResponsiveOverrideRemoved": true
+  }
+}

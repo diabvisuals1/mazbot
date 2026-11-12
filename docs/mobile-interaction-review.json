@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-12",
+  "scope": "Mobile-first correction of motion and image interaction",
+  "sources": [
+    "https://developer.apple.com/design/human-interface-guidelines/gestures",
+    "https://developer.apple.com/design/human-interface-guidelines/motion",
+    "https://www.nngroup.com/articles/mobile-ux/",
+    "https://developer.android.com/guide/topics/ui/accessibility/apps"
+  ],
+  "changes": [
+    "Removed pointer-driven artwork tilt and decorative tap bounce",
+    "Removed scroll-triggered card entrance animations",
+    "Removed Motion whileHover from shared action buttons",
+    "Press feedback cancels when a pointer moves more than 10 CSS pixels or the container scrolls",
+    "Added two-pointer pinch, bounded pan, and double-tap zoom to image viewer with visible button alternatives",
+    "Expanded key touch controls to 48 CSS pixels; quantity controls to 44 CSS pixels",
+    "Retained action-driven cart feedback, counters and selected navigation states"
+  ],
+  "validation": {
+    "productionBuild": "passed",
+    "gestureMathTests": "3 passed",
+    "browserChecks": [
+      "Artwork transform unchanged on pointer movement",
+      "Image viewer opens",
+      "Zoom-in and reset controls update image state",
+      "Viewer controls measured at 48 CSS pixels high",
+      "No Vite error overlay"
+    ],
+    "physicalDeviceMultitouch": "Not tested"
+  },
+  "limitations": [
+    "This is a React web application. Physical-device gesture behavior still needs verification."
+  ]
+}

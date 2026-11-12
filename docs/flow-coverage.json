@@ -1,0 +1,435 @@
+{
+  "source": "Mazbot ? Complete Connected User Flow.jpg (user attachment)",
+  "scope": "Connected local interactive prototype",
+  "coverage": [
+    {
+      "persona": "common",
+      "nodes": "Splash",
+      "route": "/start",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "common",
+      "nodes": "Onboarding",
+      "route": "/onboarding",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "common",
+      "nodes": "Sign Up / Log In",
+      "route": "/auth",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "common",
+      "nodes": "Phone Verification",
+      "route": "/verify",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "common",
+      "nodes": "Complete Profile",
+      "route": "/complete-profile",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "common",
+      "nodes": "Role",
+      "route": "/roles",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Owner Home",
+      "route": "/",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Categories",
+      "route": "/services",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Service Requirements",
+      "route": "/flow/requirements",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Location / Schedule",
+      "route": "/flow/prepare/location",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Budget",
+      "route": "/flow/prepare/budget",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Profiles List / Filters",
+      "route": "/helpers",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Profile Details / Select Helper",
+      "route": "/helpers/profile",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Chat",
+      "route": "/chats/conversation",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Booking Registration",
+      "route": "/booking",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Submit Request / Request Response",
+      "route": "/flow/bookings/:id",
+      "state": "Requested",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Review Changes / Accept Changes",
+      "route": "/flow/bookings/:id",
+      "state": "Changes proposed",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Browse Other Profiles / New Booking Registration / New Request Submitted",
+      "route": "/helpers",
+      "state": "Declined or Request closed",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Service Agreement",
+      "route": "/flow/bookings/:id",
+      "state": "Accepted",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Equipment Needed / Select Equipment",
+      "route": "/flow/bookings/:id",
+      "state": "Agreement signed",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Booking Summary / Payment",
+      "route": "/flow/bookings/:id",
+      "state": "Summary ready",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Confirmation",
+      "route": "/flow/bookings/:id",
+      "state": "Confirmed",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Tracking / Schedule",
+      "route": "/schedule",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Trial Required / Trial Service / Trial Outcome",
+      "route": "/flow/bookings/:id",
+      "state": "Trial",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Request Replacement / Replacement Profiles / New Booking Registration",
+      "route": "/flow/bookings/:id",
+      "state": "Replacement requested",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "End Agreement",
+      "route": "/flow/bookings/:id",
+      "state": "Ended",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Refund / Compensation Review",
+      "route": "/flow/bookings/:id",
+      "state": "Refund review or Refunded",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Service in Progress",
+      "route": "/flow/bookings/:id",
+      "state": "Active",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Report Issue / Support / Company Intervention",
+      "route": "/flow/bookings/:id",
+      "state": "Issue reported",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Resolution / Resume Service",
+      "route": "/flow/bookings/:id",
+      "state": "Issue reported -> Active",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Completion / Balance / Service Completed",
+      "route": "/flow/bookings/:id",
+      "state": "Completed",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Rate and Review",
+      "route": "/flow/bookings/:id",
+      "state": "Completed -> Reviewed",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Renew or Rebook / New Booking Registration / New Request Submitted",
+      "route": "/booking",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Connected Devices / Select Device",
+      "route": "/flow/devices",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Live View",
+      "route": "/flow/device/:id",
+      "state": "Static preview; live camera integration pending",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Store Categories",
+      "route": "/store",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Product Details",
+      "route": "/store/product",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Cart",
+      "route": "/cart",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Checkout",
+      "route": "/checkout",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Order Confirmation",
+      "route": "/orders/:id",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "owner",
+      "nodes": "Owner Journey Exit",
+      "route": "/",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Experience / Qualifications",
+      "route": "/helper/experience",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Upload Documents",
+      "route": "/helper/documents",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Verification / Rates",
+      "route": "/helper/verification",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Helper Home / Profile",
+      "route": "/helper/home",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Chat / Booking Requests",
+      "route": "/helper/requests",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Request Details / Request Decision",
+      "route": "/flow/bookings/:id",
+      "state": "Requested",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Edit Terms / Send Changes / Changes Accepted",
+      "route": "/flow/bookings/:id",
+      "state": "Changes proposed",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Request Closed / Decline Request",
+      "route": "/flow/bookings/:id",
+      "state": "Request closed or Declined",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Service Agreement",
+      "route": "/flow/bookings/:id",
+      "state": "Accepted",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Schedule",
+      "route": "/schedule",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Booking Details",
+      "route": "/flow/bookings/:id",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Active Service / Mark Complete / Completion",
+      "route": "/flow/bookings/:id",
+      "state": "Active -> Completed",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Payment Status",
+      "route": "/helper/payments",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Jobs List / Filters / Browse Other Jobs",
+      "route": "/helper/jobs",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Job Details / New Application",
+      "route": "/helper/jobs/:id",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Apply / Track Status / Application Outcome / Track Application",
+      "route": "/helper/applications",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "helper",
+      "nodes": "Helper Journey Exit",
+      "route": "/helper/home",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "company",
+      "nodes": "Company Profile",
+      "route": "/company/profile",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "company",
+      "nodes": "Company Verification",
+      "route": "/company/verification",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "company",
+      "nodes": "Dashboard",
+      "route": "/company/dashboard",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "company",
+      "nodes": "Manage Helpers",
+      "route": "/company/helpers",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "company",
+      "nodes": "Booking Requests / Assign Helper",
+      "route": "/company/requests",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "company",
+      "nodes": "Active Services / Company Intervention",
+      "route": "/company/active",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "company",
+      "nodes": "Completion",
+      "route": "/company/completion",
+      "implementation": "implemented locally"
+    },
+    {
+      "persona": "company",
+      "nodes": "Company Journey Exit",
+      "route": "/company/dashboard",
+      "implementation": "implemented locally"
+    }
+  ],
+  "externalIntegrationsPending": [
+    "Real authentication and SMS verification",
+    "Secure document upload and identity/company verification",
+    "Payment gateway, real orders, refunds and payouts",
+    "Live camera/device streams",
+    "Server-backed accounts, cross-device synchronization and real message delivery"
+  ],
+  "validation": {
+    "stateMachine": "node --test tests/booking-flow.test.mjs",
+    "browser": "Owner -> helper change proposal -> owner agreement/payment -> helper trial -> owner issue -> company resolution/completion -> owner review; company job -> helper application -> company acceptance; store checkout and order persistence"
+  }
+}

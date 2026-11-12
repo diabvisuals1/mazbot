@@ -1,0 +1,258 @@
+{
+  "products": {
+    "2051:3083": {
+      "key": "Monitoring Camera",
+      "name": "Monitoring Camera",
+      "price": 300,
+      "image": "/assets/d9dec.png",
+      "screen": "2051:3069"
+    },
+    "2051:3105": {
+      "key": "Monitoring Camera",
+      "name": "Monitoring Camera",
+      "price": 300,
+      "image": "/assets/d9dec.png",
+      "screen": "2051:3069"
+    },
+    "2051:3126": {
+      "key": "Monitoring Camera",
+      "name": "Monitoring Camera",
+      "price": 300,
+      "image": "/assets/d9dec.png",
+      "screen": "2051:3069"
+    },
+    "2051:3147": {
+      "key": "Monitoring Camera",
+      "name": "Monitoring Camera",
+      "price": 300,
+      "image": "/assets/d9dec.png",
+      "screen": "2051:3069"
+    },
+    "2051:3168": {
+      "key": "Monitoring Camera",
+      "name": "Monitoring Camera",
+      "price": 300,
+      "image": "/assets/d9dec.png",
+      "screen": "2051:3069"
+    },
+    "2051:3189": {
+      "key": "Monitoring Camera",
+      "name": "Monitoring Camera",
+      "price": 300,
+      "image": "/assets/d9dec.png",
+      "screen": "2051:3069"
+    },
+    "2051:2907": {
+      "key": "Ramp",
+      "name": "Ramp",
+      "price": 300,
+      "image": "/assets/c6212.png",
+      "screen": "2051:2892"
+    },
+    "2051:2928": {
+      "key": "Ramp",
+      "name": "Ramp",
+      "price": 300,
+      "image": "/assets/c6212.png",
+      "screen": "2051:2892"
+    },
+    "2051:2950": {
+      "key": "Ramp",
+      "name": "Ramp",
+      "price": 300,
+      "image": "/assets/c6212.png",
+      "screen": "2051:2892"
+    },
+    "2051:2972": {
+      "key": "Ramp",
+      "name": "Ramp",
+      "price": 300,
+      "image": "/assets/c6212.png",
+      "screen": "2051:2892"
+    },
+    "2051:2994": {
+      "key": "Ramp",
+      "name": "Ramp",
+      "price": 300,
+      "image": "/assets/c6212.png",
+      "screen": "2051:2892"
+    },
+    "2051:3016": {
+      "key": "Ramp",
+      "name": "Ramp",
+      "price": 300,
+      "image": "/assets/c6212.png",
+      "screen": "2051:2892"
+    },
+    "2051:2789": {
+      "key": "Ramp",
+      "name": "Ramp",
+      "price": 300,
+      "image": "/assets/c6212.png",
+      "screen": "2051:2752"
+    },
+    "2051:2810": {
+      "key": "Monitoring Camera",
+      "name": "Monitoring Camera",
+      "price": 300,
+      "image": "/assets/d9dec.png",
+      "screen": "2051:2752"
+    },
+    "2051:2831": {
+      "key": "Blood pressure monitor",
+      "name": "Blood pressure monitor",
+      "price": 300,
+      "image": "/assets/8edef.png",
+      "screen": "2051:2752"
+    },
+    "2051:2853": {
+      "key": "Ramp",
+      "name": "Ramp",
+      "price": 300,
+      "image": "/assets/c6212.png",
+      "screen": "2051:2752"
+    }
+  },
+  "helpers": {
+    "2051:1437": {
+      "name": "Eman ragab",
+      "price": 400,
+      "image": "/assets/8526c.png",
+      "rating": 0,
+      "rowY": 410
+    },
+    "2051:1448": {
+      "name": "Amal Mostafa",
+      "price": 475,
+      "image": "/assets/b2a63.png",
+      "rating": 4.7,
+      "rowY": 188
+    },
+    "2051:1459": {
+      "name": "Doaa Samir",
+      "price": 500,
+      "image": "/assets/6ceb4.png",
+      "rating": 4.9,
+      "rowY": 632
+    },
+    "2051:1470": {
+      "name": "Naglaa Hassan",
+      "price": 480,
+      "image": "/assets/6ceb4.png",
+      "rating": 4.8,
+      "rowY": 854
+    },
+    "2051:1481": {
+      "name": "Shaimaa Ali",
+      "price": 430,
+      "image": "/assets/867ad.png",
+      "rating": 4.4,
+      "rowY": 521
+    },
+    "2051:1492": {
+      "name": "Hoda Mahmoud",
+      "price": 450,
+      "image": "/assets/e91be.png",
+      "rating": 4.6,
+      "rowY": 299
+    },
+    "2051:1503": {
+      "name": "Shaimaa Ali",
+      "price": 430,
+      "image": "/assets/867ad.png",
+      "rating": 4.4,
+      "rowY": 1074
+    },
+    "2051:1514": {
+      "name": "Rania Fathy",
+      "price": 430,
+      "image": "/assets/6a1c3.png",
+      "rating": 4.2,
+      "rowY": 743
+    },
+    "2051:1525": {
+      "name": "Rasha Ali",
+      "price": 430,
+      "image": "/assets/8526c.png",
+      "rating": 0,
+      "rowY": 965
+    },
+    "2051:1536": {
+      "name": "Salma Essam",
+      "price": 400,
+      "image": "/assets/6a1c3.png",
+      "rating": 4.1,
+      "rowY": 1185
+    },
+    "2051:1596": {
+      "name": "Eman ragab",
+      "price": 400,
+      "image": "/assets/8526c.png",
+      "rating": 0,
+      "rowY": 410
+    },
+    "2051:1607": {
+      "name": "Amal Mostafa",
+      "price": 475,
+      "image": "/assets/b2a63.png",
+      "rating": 4.7,
+      "rowY": 188
+    },
+    "2051:1618": {
+      "name": "Doaa Samir",
+      "price": 500,
+      "image": "/assets/6ceb4.png",
+      "rating": 4.9,
+      "rowY": 632
+    },
+    "2051:1629": {
+      "name": "Naglaa Hassan",
+      "price": 480,
+      "image": "/assets/6ceb4.png",
+      "rating": 4.8,
+      "rowY": 854
+    },
+    "2051:1640": {
+      "name": "Shaimaa Ali",
+      "price": 430,
+      "image": "/assets/867ad.png",
+      "rating": 4.4,
+      "rowY": 521
+    },
+    "2051:1651": {
+      "name": "Hoda Mahmoud",
+      "price": 450,
+      "image": "/assets/e91be.png",
+      "rating": 4.6,
+      "rowY": 299
+    },
+    "2051:1662": {
+      "name": "Shaimaa Ali",
+      "price": 430,
+      "image": "/assets/867ad.png",
+      "rating": 4.4,
+      "rowY": 1074
+    },
+    "2051:1673": {
+      "name": "Rania Fathy",
+      "price": 430,
+      "image": "/assets/6a1c3.png",
+      "rating": 4.2,
+      "rowY": 743
+    },
+    "2051:1684": {
+      "name": "Rasha Ali",
+      "price": 430,
+      "image": "/assets/8526c.png",
+      "rating": 0,
+      "rowY": 965
+    },
+    "2051:1695": {
+      "name": "Salma Essam",
+      "price": 400,
+      "image": "/assets/6a1c3.png",
+      "rating": 4.1,
+      "rowY": 1185
+    }
+  }
+}
