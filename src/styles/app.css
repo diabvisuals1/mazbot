@@ -879,13 +879,23 @@ a:focus-visible {
   font-weight: 700;
   margin-bottom: 20px;
 }
-/* The original service carousel continues beyond its frame; enable touch and keyboard scrolling. */
-[data-node-id="2051:2415"],
+/* Keep room for the Services artwork above its cards while preserving horizontal touch scrolling. */
+[data-node-id="2051:2415"] {
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  touch-action: pan-x;
+  padding-block: 40px;
+  margin-block: -40px;
+}
 [data-node-id="2051:2571"] {
   overflow-x: auto !important;
   overflow-y: visible;
   scrollbar-width: none;
   touch-action: pan-x;
+}
+[data-node-id="2051:2449"] {
+  background-color: #ff8a3d;
 }
 @media (max-width: 420px) {
   #root {

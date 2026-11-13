@@ -68,6 +68,9 @@ export default function On2Screen({ui}) {
       <div className="auth-design-92" data-node-id="2140:2562" data-name="Vector">
         <img alt="" className="auth-design-8" src={imgVector1} />
       </div>
+      <div data-node-id="2184:2506" data-name="Layer_1" style={{position:'absolute',left:75,top:322,width:225,height:257}}>
+        <img src="/assets/auth/on2-chef.svg" alt="Friendly chef holding a cooking pot" style={{width:'100%',height:'100%'}} />
+      </div>
     </div>
   ), ui);
 }

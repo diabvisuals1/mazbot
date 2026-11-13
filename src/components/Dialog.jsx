@@ -61,9 +61,7 @@ export default function Dialog({ title, onClose, children, wide = false }) {
       >
         <div className="dialog-title">
           <h2>{title}</h2>
-          <button aria-label="Close dialog" onClick={onClose}>
-            ×
-          </button>
+          <button type="button" className="dialog-close" aria-label="Close dialog" onClick={onClose}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
         </div>
         {children}
       </motion.section>

@@ -1,3 +1,5 @@
+import StoreCheckout from './StoreCheckout.jsx';
+import RoleSelection from '../components/RoleSelection.jsx';
 import React, { useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ImageExplorer } from '../components/ImageExplorer.jsx';
@@ -50,7 +52,9 @@ export default function FlowPages() {
   if(p.startsWith('/flow/bookings/'))return <BookingDetail key={p} id={p.split('/')[3]}/>;
   if(p.startsWith('/helper/'))return <HelperPages key={p} page={p}/>;
   if(p.startsWith('/company/'))return <CompanyPages key={p} page={p}/>;
-  if(p==='/checkout'||p.startsWith('/orders'))return <Checkout key={p} page={p}/>;
+  if(p==='/checkout')return <StoreCheckout/>;
+  if(p.startsWith('/orders/'))return <StoreCheckout orderId={p.split('/')[2]}/>;
+  if(p.startsWith('/orders'))return <Checkout key={p} page={p}/>;
   if(p==='/flow/devices'||p.startsWith('/flow/device/'))return <Devices page={p}/>;
   if(p==='/flow/assistant')return <Assistant/>;
   if(p==='/flow/support')return <Support/>;
@@ -64,7 +68,7 @@ function Entry({ page }) {
  if(page==='/auth')return <Shell title="Let's get you connected" subtitle="Sign up or return to your local account"><Form label="Continue with phone" submit={v=>{const phone=v.phone.replace(/\s/g,'');if(!/^\+?\d{10,15}$/.test(phone))throw Error('Enter a phone number with 10–15 digits.');patch({phone,authenticated:false,verified:false});go('/verify');}}><Input label="Phone number" name="phone" type="tel" autoComplete="tel" placeholder="+20 10 1234 5678" defaultValue={w.phone} required/><Check required>I agree to use the local preview.</Check><p className="flow-note">No SMS is sent. Use the preview code on the next screen.</p></Form></Shell>;
  if(page==='/verify')return <Shell title="Verify your phone" subtitle={w.phone||'Start with your phone number'}>{!w.phone?<Action to="/auth">Enter phone number</Action>:<Form label="Verify phone" submit={v=>{if(v.code!=='123456')throw Error('Use preview code 123456.');patch({authenticated:true,verified:true});go('/complete-profile');}}><Card tone="mint"><p>Local preview code</p><strong className="flow-code">123456</strong><p>This does not verify ownership of a real phone number.</p></Card><Input label="Verification code" name="code" inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6}" maxLength={6} required/><Action secondary onClick={()=>app.setToast('Your preview code is 123456')}>Show code again</Action></Form>}</Shell>;
  if(page==='/complete-profile')return <Shell title="Make yourself at home"><Form label="Choose your role" submit={v=>{app.setProfile({...app.profile,...v});go('/roles');}}><Input label="Full name" name="name" defaultValue={app.profile.name} required minLength={2}/><Input label="Email (optional)" name="email" type="email" defaultValue={app.profile.email||''}/><Input label="City / area" name="area" defaultValue={app.profile.area||''} required/></Form></Shell>;
- return <Shell title="How will you use MAZBOT?" subtitle="You can switch roles to preview the connected journey."><Hero title="Three roles. One connected home." text="Requests and service updates stay connected across your local workspace." image="/assets/b713a.png"/>{Object.entries(roleNames).map(([role,label])=><button className={'flow-role '+(w.role===role?'selected':'')} key={role} onClick={()=>{patch({role,onboarded:true});go(role==='helper'&&!w.helper.ready?'/helper/experience':role==='company'&&!w.company.ready?'/company/profile':roleHomes[role]);}}><BrandVisual context={role==='owner'?'home':role==='helper'?'helper':'team'}/><div><strong>{label}</strong><small>{role==='owner'?'Find help for your home':role==='helper'?'Your requests, jobs and earnings':'Your team, bookings and services'}</small></div><b>→</b></button>)}<Action secondary to="/complete-profile">Edit account details</Action><Action secondary to="/start">View onboarding</Action></Shell>;
+ return <RoleSelection onChoose={role=>{patch({role,onboarded:true});go(role==='helper'&&!w.helper.ready?'/helper/experience':role==='company'&&!w.company.ready?'/company/profile':roleHomes[role]);}}/>;
 }
 
 function Preparation({ page }) {

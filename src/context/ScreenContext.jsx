@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 import config from "../data/controls.json";
 import catalog from "../data/catalog.json";
 import helperLayout from "../data/helper-layout.json";
+import { helperDirectory, matchesHelper } from "../data/workflow.js";
 export const ScreenContext = createContext(null);
 export function useApp() {
   return useContext(ScreenContext);
@@ -17,17 +18,14 @@ export function useScreen(screen) {
       const result = {};
       const helper = catalog.helpers[helperLayout[id]];
       if (helper) {
-        if (
-          helper.price > app.filters.budget ||
-          helper.rating < app.filters.rating
-        )
-          result.hidden = true;
+        const matched = helperDirectory.find((entry) => entry.name === helper.name) || helper;
+        if (!matchesHelper(matched, app.filters)) result.hidden = true;
         const preceding = Object.entries(catalog.helpers).filter(
           ([key, h]) =>
             key.startsWith("2051:") &&
             Number(key.split(":")[1]) < 1594 &&
             h.rowY < helper.rowY &&
-            (h.price > app.filters.budget || h.rating < app.filters.rating),
+            !matchesHelper(helperDirectory.find((entry) => entry.name === h.name) || h, app.filters),
         ).length;
         if (preceding) result.style = { translate: `0 -${preceding * 111}px` };
       }

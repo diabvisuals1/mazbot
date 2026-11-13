@@ -22,8 +22,9 @@ const imgVector4 = "/assets/be0b9.svg";
 const imgVector5 = "/assets/c94ae.svg";
 
 export default function Component6ProfileDetails() {
-  const { bind, person, helperImage, helperPrice, service } =
+  const { bind, person, helperImage, helperPrice, service, workflow } =
     useScreen("2051:1778");
+  const helper = workflow.selectedHelper;
   return (
     <div
       className="d70d903686"
@@ -127,7 +128,7 @@ export default function Component6ProfileDetails() {
             {...bind("2051:1786")}
           >
             <span className="dec34fe2a2">★</span>
-            <span className="da88e3a345">{` 4.7`}</span>
+            <span className="da88e3a345">{` ${helper?.rating || "4.7"}`}</span>
           </p>
           <p
             className="dd4782899f"
@@ -160,7 +161,7 @@ export default function Component6ProfileDetails() {
               data-node-id="2051:1791"
               {...bind("2051:1791")}
             >
-              4 yrs
+            {helper?.experience ?? 4} yrs
             </p>
             <p
               className="d43a54aa1e"
@@ -441,7 +442,7 @@ export default function Component6ProfileDetails() {
             data-node-id="2051:1828"
             {...bind("2051:1828")}
           >
-            Cleaning ,laundry, kitchen help
+            {helper?.services?.join(" · ") || `${service} service`}
           </p>
           <div
             className="dc074a5cfd"
@@ -528,7 +529,7 @@ export default function Component6ProfileDetails() {
             data-node-id="2051:1840"
             {...bind("2051:1840")}
           >
-            Giza, Egypt
+            {helper?.location ? `${helper.location}, Egypt` : "Giza, Egypt"}
           </p>
           <div
             className="dc074a5cfd"

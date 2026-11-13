@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, useDragControls, useReducedMotion } from "motion/react";
 import { useApp } from "../context/ScreenContext.jsx";
 import { Button, Field } from "./Primitives.jsx";
-import { services, localDate, helperDirectory, matchesHelper } from "../data/workflow.js";
+import { services, localDate, helperDirectory, matchesHelper, normalizeService } from "../data/workflow.js";
 export default function FilterSheet() {
   const ref = useRef(null),dragControls=useDragControls(),reduced=useReducedMotion();
   const app = useApp();
@@ -35,7 +35,18 @@ export default function FilterSheet() {
     return () => el.removeEventListener("keydown", handler);
   }, [navigate]);
   return (
-    <div className="filter-backdrop" onClick={e=>{if(e.target===e.currentTarget)navigate("/helpers")}}>
+    <motion.div
+      className="filter-backdrop"
+      initial={reduced ? false : "hidden"}
+      animate="visible"
+      exit="exit"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { duration: reduced ? 0 : 0.18 } },
+        exit: { opacity: 0, transition: { duration: reduced ? 0 : 0.16 } },
+      }}
+      onClick={e=>{if(e.target===e.currentTarget)navigate("/helpers")}}
+    >
       <motion.section
         ref={ref}
         tabIndex={-1}
@@ -49,9 +60,21 @@ export default function FilterSheet() {
         dragConstraints={{top:0,bottom:0}}
         dragElastic={{top:0,bottom:.25}}
         onDragEnd={(_,info)=>{if(info.offset.y>85||info.velocity.y>600)navigate("/helpers")}}
-        initial={reduced?false:{ y: 120 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", damping: 32, stiffness: 300 }}
+        variants={{
+          hidden: { y: reduced ? 0 : 92 },
+          visible: {
+            y: 0,
+            transition: reduced
+              ? { duration: 0 }
+              : { type: "spring", damping: 34, stiffness: 390, mass: 0.8 },
+          },
+          exit: {
+            y: reduced ? 0 : 72,
+            transition: reduced
+              ? { duration: 0 }
+              : { duration: 0.17, ease: [0.4, 0, 1, 1] },
+          },
+        }}
       >
         <div className="filter-title" style={{touchAction:"none"}} onPointerDown={e=>{if(!e.target.closest("button"))dragControls.start(e)}}>
           <button
@@ -88,15 +111,16 @@ export default function FilterSheet() {
           <h3>Service</h3>
           <p>Choose the service you need</p>
           <div className="chips">
-            {services.map((s) => (
-              <button
+            {services.map((s) => {
+              const label = ({ Gardening: "Gardener", Driving: "Driver", Cooking: "Chef", Nursing: "Nurse", Nanny: "BabySitter" })[s] || s;
+              return <button
                 key={s}
-                aria-pressed={draft.service === s}
-                onClick={() => set("service", s)}
+                aria-pressed={normalizeService(draft.service) === normalizeService(label)}
+                onClick={() => set("service", label)}
               >
-                {s}
-              </button>
-            ))}
+                {label}
+              </button>;
+            })}
           </div>
           <h3>Availability</h3>
           <p>Sun-Thu, 9:00 AM - 5:00 PM</p>
@@ -137,10 +161,10 @@ export default function FilterSheet() {
               navigate("/helpers");
             }}
           >
-            Show {matches} helpers
+            Show {matches} {matches === 1 ? "helper" : "helpers"}
           </Button></div>
         </div>
       </motion.section>
-    </div>
+    </motion.div>
   );
 }

@@ -4,7 +4,7 @@
 .auth-page .auth-artboard{width:375px;height:812px;position:relative;overflow:hidden}
 .auth-page p{margin:0}
 .auth-page .auth-svg{width:auto;height:auto;max-width:none}
-.route-view:has(.auth-page){padding-bottom:0;min-height:812px}
+.route-view:has(.auth-page){padding-bottom:0;min-height:0;height:100%;overflow:hidden}
 .device:has(.auth-page){height:min(812px,100dvh);background:white}
 .auth-page .auth-input{display:block;position:relative;flex:1;width:0;min-width:0;height:24px;padding:0;border:0;background:transparent;color:var(--petrol);font:16px/normal Arial,sans-serif;text-align:left;outline:none}
 .auth-page .auth-input::placeholder{color:rgba(0,55,68,.5);opacity:1}
@@ -15,6 +15,8 @@
 .auth-page .auth-otp{padding:0;background:white;text-align:center;color:var(--petrol);font:24px Arial,sans-serif;outline-color:var(--petrol)}
 .auth-page button:disabled{opacity:1;color:inherit}
 .auth-page [data-node-id="2140:2693"]{line-height:normal}
+.auth-page .auth-design-35,.auth-page [data-name="Status Bar"],.auth-page [data-name="StatusBar / iPhone 13"]{visibility:visible!important}
+.auth-page .auth-design-25,.auth-page [data-name="Home Bar"],.auth-page [data-name="Home Indicator"],.auth-page [data-name="Home indicator"]{display:flex!important}
 .auth-error{position:absolute;z-index:5;top:38px;left:15px;right:15px;display:flex;align-items:center;gap:10px;border-radius:12px;background:#fff3ed;border:1px solid #f06426;padding:12px;color:#752c0f;font:14px/1.4 Arial,sans-serif;box-shadow:0 4px 18px #0002}
 .auth-error button{font-size:24px;margin-left:auto}
 .auth-dialog-backdrop{position:absolute;z-index:10;inset:0;background:#00202766;display:flex;align-items:center;padding:20px}
@@ -23,3 +25,14 @@
 .auth-dialog-close{position:absolute;right:14px;top:8px;font-size:25px}
 .auth-dialog input{display:block;width:100%;padding:12px;border:1px solid #7c9ba2;border-radius:12px;margin:8px 0}
 .auth-dialog-action{padding:12px 20px;background:var(--petrol);color:white;border-radius:28px;width:100%;font-weight:700;margin-top:12px}
+.onboarding-frame{background:white}
+.onboarding-content{position:absolute;inset:0;pointer-events:none}
+.onboarding-back{position:absolute;left:16px;top:48px;width:31px;height:30px;border-radius:50%;background:#003744;color:white;font:28px/26px Arial,sans-serif;z-index:2}
+.onboarding-next{position:absolute;left:18px;top:702px;width:346px;height:52px;border-radius:52px;background:#003744;color:white;font:700 21px Arial,sans-serif;z-index:2}
+.onboarding-dots{position:absolute;top:631px;left:0;right:0;height:44px;display:flex;align-items:center;justify-content:center;gap:13px;z-index:2}
+.onboarding-dots button{height:14px;border-radius:20px;position:relative}
+.onboarding-dots button:before{content:'';position:absolute;inset:-15px -6px}
+.onboarding-frame{overflow:hidden}
+.onboarding-back{display:grid;place-items:center}
+.onboarding-dots{overflow:hidden}
+.onboarding-dot-track{position:absolute;display:flex;align-items:center;justify-content:center;gap:13px;height:44px}

@@ -828,7 +828,7 @@
     },
     "2051:1918": {
       "action": "navigate",
-      "label": "Browse services",
+      "label": "Find a helper",
       "path": "/services"
     },
     "2051:1911": {
@@ -848,7 +848,7 @@
     },
     "2051:1806": {
       "action": "chat",
-      "label": "Chat with Amal Mostafa"
+      "label": "Chat with helper"
     },
     "2051:1842": {
       "action": "reviews",
@@ -1221,6 +1221,21 @@
       "action": "service",
       "label": "Gardening",
       "category": "Gardening"
+    },
+    "2051:2444": {
+      "action": "service",
+      "label": "Nursing",
+      "category": "Nursing"
+    },
+    "2051:2449": {
+      "action": "service",
+      "label": "Driving",
+      "category": "Driving"
+    },
+    "2051:2454": {
+      "action": "service",
+      "label": "Nanny",
+      "category": "Nanny"
     }
   },
   "rows": {

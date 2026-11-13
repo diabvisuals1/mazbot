@@ -38,17 +38,18 @@ import catalog from "./data/catalog.json";
 const AuthPages = lazy(() => import("./pages/AuthPages.jsx"));
 const authPaths = ["/start","/onboarding","/onboarding/2","/onboarding/3","/auth","/signup","/forgot-password","/verify"];
 const FlowPages = lazy(() => import("./pages/FlowPages.jsx"));
-import { initialWorkflow, helperDirectory, roleHomes } from "./data/workflow.js";
+import { initialWorkflow, helperDirectory, roleHomes, matchesHelper } from "./data/workflow.js";
 const Home = lazy(() => import("./pages/Screen2051_1878.jsx"));
-const Services = FlowPages;
-const Helpers = FlowPages;
-const Profile = lazy(() => import("./pages/Screen2051_1778.jsx"));
+const Services = lazy(() => import("./pages/Screen2051_2267.jsx"));
+const Helpers = lazy(() => import("./pages/Screen2051_1435.jsx"));
+const Profile = lazy(() => import("./pages/Screen2051_1778.original.jsx"));
 const Chats = lazy(() => import("./pages/Screen2051_2475.jsx"));
 const AllChats = lazy(() => import("./pages/Screen2051_2607.jsx"));
-const Store = lazy(() => import("./pages/Screen2051_2752.jsx"));
+const StoreCategories = lazy(() => import('./pages/StoreCategories.jsx'));
+const Store = lazy(() => import("./pages/StorePage.jsx"));
 const Mobility = lazy(() => import("./pages/Screen2051_2892.jsx"));
 const Equipment = lazy(() => import("./pages/Screen2051_3069.jsx"));
-const Product = lazy(() => import("./pages/Screen2051_3241.jsx"));
+const Product = lazy(() => import("./pages/ProductPage.jsx"));
 const Monitoring = lazy(() => import("./pages/Screen2051_2015.jsx"));
 const Tracking = FlowPages;
 const Cameras = lazy(() => import("./pages/Screen2051_2188.jsx"));
@@ -93,6 +94,7 @@ export default function App() {
     location = useLocation();
   const reduced = useReducedMotion();
   const scroll = useRef(null);
+  const deviceRef = useRef(null);
   const [query, setQuery] = useState("");
   const [modal, setModal] = useState(null);
   const [chatTransition, setChatTransition] = useState(false);
@@ -102,6 +104,30 @@ export default function App() {
     const device = scroll.current?.parentElement;
     if (device) device.scrollTop = 0;
   }, [chatListExpanded]);
+  useLayoutEffect(() => {
+    const device = deviceRef.current;
+    if (!device) return;
+    const updateScale = () => {
+      const width = device.clientWidth || window.innerWidth;
+      const height = device.clientHeight || window.innerHeight;
+      const designScale = Math.min(1.5, width / 375);
+      const authScale = Math.min(1.35, width / 375);
+      const authHeightScale = Math.max(0.65, Math.min(1.35, height / 812));
+      device.style.setProperty("--design-scale", String(designScale));
+      device.style.setProperty("--auth-scale", String(authScale));
+      device.style.setProperty("--auth-y-adjust", String(authHeightScale / authScale));
+    };
+    updateScale();
+    const observer = new ResizeObserver(updateScale);
+    observer.observe(device);
+    window.visualViewport?.addEventListener("resize", updateScale);
+    window.addEventListener("orientationchange", updateScale);
+    return () => {
+      observer.disconnect();
+      window.visualViewport?.removeEventListener("resize", updateScale);
+      window.removeEventListener("orientationchange", updateScale);
+    };
+  }, []);
   const [toast, setToast] = useState("");
   const [saved, setSaved] = usePersistent("favorites", []);
   const [workflow, setWorkflow] = usePersistent("workflow", initialWorkflow);
@@ -211,7 +237,7 @@ export default function App() {
       case "service":
         setService(c.category);
         setFilters((v) => ({ ...v, service: c.category }));
-        navigate("/flow/requirements");
+        navigate(location.pathname === "/services" ? "/helpers" : "/flow/requirements");
         break;
       case "category":
         setCategory(c.category);
@@ -227,10 +253,31 @@ export default function App() {
         break;
       case "helper": {
         const h = catalog.helpers[c.card] || helperDirectory.find(h=>h.name===c.person);
-        setPerson(h?.name || c.person || "Amal Mostafa");
-        setHelperImage(h?.image || "/assets/b2a63.png");
-        setHelperPrice(h?.price || 475);
-        setWorkflow(old=>({...old,selectedBooking:null,selectedHelper:helperDirectory.find(x=>x.name===h?.name)||h}));
+        const name = h?.name || c.person || "Amal Mostafa";
+        const fallback = {
+          id: `figma-${name.toLowerCase().replaceAll(" ", "-")}`,
+          name,
+          services: [service],
+          price: 475,
+          rating: 4.8,
+          image: ({
+            "Souad Ibrahim": "/assets/e91be.png",
+            "Fatma El-Sayed": "/assets/8526c.png",
+            "Amal Mostafa": "/assets/b2a63.png",
+            "Hoda Mahmoud": "/assets/e91be.png",
+            "Eman Ragab": "/assets/8526c.png",
+            "Shaimaa Ali": "/assets/867ad.png",
+          })[name] || "/assets/b2a63.png",
+          experience: 5,
+          jobs: 42,
+          location: "Cairo",
+          days: [0, 1, 2, 3, 4],
+        };
+        const selected = helperDirectory.find(x=>x.name===name) || { ...fallback, ...h };
+        setPerson(name);
+        setHelperImage(selected.image || "/assets/b2a63.png");
+        setHelperPrice(selected.price || 475);
+        setWorkflow(old=>({...old,selectedBooking:null,selectedHelper:selected}));
         navigate("/helpers/profile");
         break;
       }
@@ -338,24 +385,31 @@ export default function App() {
   };
   const active = screens.find((s) => s[0] === location.pathname);
   const isFilters = location.pathname === "/helpers/filters";
+  const isHelperJourney = ["/services", "/helpers", "/helpers/filters", "/helpers/profile"].includes(location.pathname);
+  const routeLocation = isFilters ? { ...location, pathname: "/helpers" } : location;
+  const routeViewKey = location.pathname === "/helpers/filters"
+    ? "/helpers"
+    : location.pathname.startsWith("/onboarding")
+      ? "onboarding"
+      : location.pathname;
   const canSearch =
-    location.pathname.startsWith("/store") ||
+    (location.pathname.startsWith("/store") && location.pathname !== "/store" && location.pathname !== "/store/product") ||
     location.pathname === "/chats" ||
     location.pathname === "/chats/all";
   return (
     <ScreenContext.Provider value={app}>
-      <div className={"device "+(!authPaths.includes(location.pathname)?"with-topbar":"")} >
+      <div ref={deviceRef} className={"device "+(!authPaths.includes(location.pathname)?"with-topbar":"")} >
         {!authPaths.includes(location.pathname)&&<TopBar/>}
         <div className="app-scroll" ref={scroll} inert={isFilters || !!modal || chatListExpanded}>
           <AnimatePresence mode="wait" custom={chatTransition ? "chat-up" : null}>
             <motion.div
-              key={location.pathname}
+              key={routeViewKey}
               className="route-view"
               custom={location.state?.chatTransition ? "chat-enter" : null}
               variants={{
                 initial: direction => reduced ? { opacity: 1, y: 0 } : direction === "chat-enter" ? { opacity: 1, y: "100%" } : { opacity: 0, y: 10 },
-                animate: { opacity: 1, y: 0, transition: { duration: reduced ? 0 : 0.34, ease: [0.22, 1, 0.36, 1] } },
-                exit: direction => reduced ? { opacity: 1, y: 0 } : direction === "chat-up" ? { opacity: 1, y: "-24%", transition: { duration: 0.3, ease: [0.4, 0, 1, 1] } } : { opacity: 0, y: 0, transition: { duration: 0.09, ease: "easeOut" } },
+                animate: { opacity: 1, y: 0, transition: { duration: reduced ? 0 : isHelperJourney ? 0.27 : 0.34, ease: [0.22, 1, 0.36, 1] } },
+                exit: direction => reduced ? { opacity: 1, y: 0 } : direction === "chat-up" ? { opacity: 1, y: "-24%", transition: { duration: 0.3, ease: [0.4, 0, 1, 1] } } : { opacity: 0, y: 0, transition: { duration: isHelperJourney ? 0.15 : 0.09, ease: [0.4, 0, 1, 1] } },
               }}
               initial="initial"
               animate="animate"
@@ -364,7 +418,7 @@ export default function App() {
               <Suspense
                 fallback={<PageSkeleton path={location.pathname} />}
               >
-                <div className="route-content"><Routes location={location}>
+                <div className="route-content"><Routes location={routeLocation}>
                   {screens.map(([path, id, height, Component]) => (
                     <Route
                       key={path}
@@ -396,8 +450,8 @@ export default function App() {
                               onChange={(e) => setQuery(e.target.value)}
                             />
                           )}
-                          <Enhancements screen={id} />
-                          <ResultsState screen={id} />
+                          {path!=="/store"&&path!=="/store/product"&&<Enhancements screen={id} />}
+                          {path!=="/store"&&path!=="/store/product"&&<ResultsState screen={id} />}
                           {canSearch && path !== "/chats" && (
                             <button
                               className="search-filter-button"
@@ -428,14 +482,14 @@ export default function App() {
                   />
                   <Route path="/booking" element={<FlowPages />} />
                   <Route path="/schedule" element={<FlowPages />} />
-                  {authPaths.map(path=><Route key={path} path={path} element={<AuthPages/>}/>)}
+                  <Route path="/onboarding/*" element={<AuthPages/>}/>{authPaths.filter(path=>!path.startsWith('/onboarding')).map(path=><Route key={path} path={path} element={<AuthPages/>}/>)}
                   {["/complete-profile","/roles","/flow/*","/helper/*","/company/*","/checkout","/orders","/orders/:id"].map(path=><Route key={path} path={path} element={<FlowPages/>}/>)}
                   <Route path="/account" element={<Account />} />
                   <Route
                     path="/chats/conversation"
                     element={<Conversation />}
                   />
-                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/store/categories" element={<StoreCategories/>}/><Route path="/cart" element={<Cart />} />
                   <Route
                     path="/store/nursing"
                     element={<CategoryPage name="Nursing supplies" />}
@@ -462,7 +516,7 @@ export default function App() {
         </div>
         <AnimatePresence>{chatListExpanded && <ChatExpandedSheet app={app} onClose={()=>setChatListExpanded(false)}/>}</AnimatePresence>
         {!isFilters && ![...authPaths,"/complete-profile","/roles"].includes(location.pathname) && <Navigation />}
-        {isFilters && <FilterSheet />}
+        <AnimatePresence>{isFilters && <FilterSheet key="helper-filters" />}</AnimatePresence>
         <AnimatePresence>
           {toast && (
             <motion.div
@@ -477,7 +531,7 @@ export default function App() {
           )}
         </AnimatePresence>
         <AnimatePresence>
-          {modal && modal !== "notifications" && (
+          {modal && modal !== "notifications" && modal !== "cart-sheet" && (
             <Dialog
               title={modalTitles[modal] || "MAZBOT"}
               onClose={closeModal}
@@ -856,6 +910,18 @@ function HelperFilters() {
 
 function ResultsState({ screen }) {
   const app = useApp();
+  const navigate = useNavigate();
+  if (screen === "2051:1435") {
+    const directory = [...helperDirectory, ...app.workflow.team.filter((helper) => helper.active !== false)];
+    if (!directory.some((helper) => matchesHelper(helper, app.filters))) {
+      return <div className="helper-empty" style={{ top: 176, minHeight: 0 }} role="status">
+        <h3>No helpers match these filters</h3>
+        <p>Try a higher budget or choose another service.</p>
+        <Button onClick={() => { app.setFilters({ service: "Cleaning", budget: 600, rating: 0, date: "" }); app.setService("Cleaning"); }}>Reset filters</Button>
+        <Button secondary onClick={() => navigate("/helpers/filters")}>Adjust filters</Button>
+      </div>;
+    }
+  }
   const products = Object.entries(catalog.products).filter(
     ([, p]) => p.screen === screen,
   );

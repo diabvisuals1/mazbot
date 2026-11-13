@@ -9,7 +9,7 @@ const imgImage131 = "/assets/6a1c3.png";
 const imgImage120 = "/assets/4d9d1.png";
 const imgImage132 = "/assets/a130b.png";
 const imgImage124 = "/assets/bc4a7.png";
-const imgImage144 = "/assets/6b0cc.png";
+const imgImage144 = "/assets/service-nurse.png";
 const imgImage119 = "/assets/b5a60.png";
 const imgImage141 = "/assets/5b90e.png";
 const imgVector = "/assets/61537.svg";
@@ -23,8 +23,8 @@ const imgVector2 = "/assets/60a0a.svg";
 const imgVector3 = "/assets/1a62a.svg";
 const imgVector4 = "/assets/145d2.svg";
 const imgGroup175 = "/assets/023d0.svg";
-const imgVector5 = "/assets/3fc82.svg";
-const imgVector6 = "/assets/8acc3.svg";
+const imgVector5 = "/assets/service-nurse-accent.svg";
+const imgVector6 = "/assets/service-driver-accent.svg";
 const imgIsolationMode = "/assets/fab08.svg";
 const imgVector7 = "/assets/fbb38.svg";
 const imgNotch = "/assets/5eb74.svg";
@@ -1234,14 +1234,6 @@ export default function CategoriesHomeOwner() {
                       alt=""
                       className="d1c57ddb43"
                       src={imgImage124}
-                      style={{
-                        position: "absolute",
-                        left: "0.00000%",
-                        top: "-0.00000%",
-                        width: "83.34245%",
-                        height: "100.00000%",
-                        objectFit: "fill",
-                      }}
                     />
                   </div>
                 </div>
@@ -1354,13 +1346,6 @@ export default function CategoriesHomeOwner() {
                 alt=""
                 className="da0fe5557e"
                 src={imgImage119}
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "fill",
-                }}
               />
             </div>
           </div>
@@ -1407,13 +1392,6 @@ export default function CategoriesHomeOwner() {
                     alt=""
                     className="dbf8c736bd"
                     src={imgImage141}
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "fill",
-                    }}
                   />
                 </div>
               </div>
