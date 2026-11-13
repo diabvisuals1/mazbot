@@ -22,3 +22,12 @@
 .phone-frame .device::after{content:"";position:absolute;z-index:200;pointer-events:none;left:0;right:0;bottom:0;height:20px;background:#fff}
 .phone-frame .device .auth-page [data-name="Home Bar"],.phone-frame .device .auth-page .auth-design-25{display:none!important}
 .phone-frame .route-content{width:375px;overflow-x:clip}
+/* Exported artboards end at their last visible element, not the Figma frame. */
+.phone-frame .screen-canvas[data-screen]{height:var(--content-height,auto)!important}
+.phone-frame .screen-canvas>div:first-child{height:auto;min-height:0}
+
+.phone-frame .route-view{padding-bottom:110px}
+.phone-frame .flow-page{min-height:0}
+.phone-frame .flow-content,.phone-frame .new-content{padding-bottom:0}
+.phone-frame .device:not(:has(.bottom-nav)):not(:has(.persona-nav)) .route-view:not(:has(.auth-page)){padding-bottom:36px}
+

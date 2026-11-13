@@ -95,6 +95,33 @@ export default function App() {
   const reduced = useReducedMotion();
   const scroll = useRef(null);
   const deviceRef = useRef(null);
+  useLayoutEffect(() => {
+    const host = scroll.current;
+    if (!host) return;
+    let frame;
+    const measure = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        host.querySelectorAll('.screen-canvas').forEach(canvas => {
+          const content = canvas.firstElementChild;
+          if (!content) return;
+          const children = [...content.children].filter(el => getComputedStyle(el).display !== 'none');
+          const positioned = children.filter(el => getComputedStyle(el).position === 'absolute');
+          if (positioned.length > 2) {
+            const bottom = Math.max(0, ...children.map(el => el.offsetTop + el.offsetHeight));
+            if (bottom) canvas.style.setProperty('--content-height', `${bottom}px`);
+          } else {
+            canvas.style.setProperty('--content-height', 'auto');
+          }
+        });
+      });
+    };
+    const observer = new MutationObserver(measure);
+    observer.observe(host, {childList:true, subtree:true});
+    host.addEventListener('load', measure, true);
+    measure();
+    return () => {observer.disconnect();cancelAnimationFrame(frame);host.removeEventListener('load', measure, true);};
+  }, [location.pathname]);
   const [query, setQuery] = useState("");
   const [modal, setModal] = useState(null);
   const [chatTransition, setChatTransition] = useState(false);
