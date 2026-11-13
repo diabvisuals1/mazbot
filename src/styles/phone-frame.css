@@ -67,3 +67,6 @@
 @keyframes store-dim-in{from{opacity:0}to{opacity:1}}
 @keyframes store-dim-out{from{opacity:1}to{opacity:0}}
 @media(prefers-reduced-motion:reduce){.device .store-sheet-backdrop .store-filter-sheet,.device .store-sheet-backdrop.is-closing .store-filter-sheet,.device .store-sheet-backdrop:before,.device .store-sheet-backdrop.is-closing:before{animation-duration:1ms}}
+/* Keep touch scrolling without exposing desktop scrollbars in phone sheets. */
+.device .dialog,.device .profile-editor{scrollbar-width:none;-ms-overflow-style:none}
+.device .dialog::-webkit-scrollbar,.device .profile-editor::-webkit-scrollbar{display:none;width:0;height:0}
