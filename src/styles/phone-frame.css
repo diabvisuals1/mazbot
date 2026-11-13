@@ -31,3 +31,6 @@
 .phone-frame .flow-content,.phone-frame .new-content{padding-bottom:0}
 .phone-frame .device:not(:has(.bottom-nav)):not(:has(.persona-nav)) .route-view:not(:has(.auth-page)){padding-bottom:36px}
 
+/* Animate the curved reveal without reflowing its contents every frame. */
+.phone-frame .shared-topbar{will-change:clip-path;contain:layout paint;box-shadow:none}
+.phone-frame .shared-topbar .notification-content{position:absolute;inset:129px 0 0;height:auto;min-height:0;overflow-y:auto;padding-bottom:120px}

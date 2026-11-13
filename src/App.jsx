@@ -95,6 +95,19 @@ export default function App() {
   const reduced = useReducedMotion();
   const scroll = useRef(null);
   const deviceRef = useRef(null);
+  const visitedScreens = useRef([location.pathname + location.search]);
+  useLayoutEffect(() => {
+    const path = location.pathname + location.search;
+    const stack = visitedScreens.current;
+    if (stack.at(-1) !== path) stack.push(path);
+  }, [location.pathname, location.search]);
+  function goBack() {
+    if (modal) { setModal(null); return; }
+    if (chatListExpanded) { setChatListExpanded(false); return; }
+    const stack = visitedScreens.current;
+    if (stack.length > 1) stack.pop();
+    navigate(stack.at(-1) !== location.pathname ? stack.at(-1) : '/', {replace:true});
+  }
   useLayoutEffect(() => {
     const host = scroll.current;
     if (!host) return;
@@ -238,17 +251,7 @@ export default function App() {
         navigate(c.path);
         break;
       case "back":
-        navigate(
-          location.pathname.startsWith("/helpers/profile")
-            ? "/helpers"
-            : location.pathname.startsWith("/monitoring/")
-              ? "/monitoring"
-              : location.pathname === "/services"
-                ? "/"
-                : location.pathname.startsWith("/store/")
-                  ? "/store"
-                  : "/",
-        );
+        goBack();
         break;
       case "save":
         setSaved((old) =>
@@ -363,6 +366,7 @@ export default function App() {
     }
   }
   const app = {
+    goBack,
     workflow,
     setWorkflow,
     act,
