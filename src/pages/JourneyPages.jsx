@@ -230,24 +230,25 @@ export function Account() {
 }
 export function Conversation() {
   const app = useApp();
-  const reduced=useReducedMotion(),end=useRef(null),composer=useRef(null);
+  const reduced=useReducedMotion(),list=useRef(null),composer=useRef(null),stickToBottom=useRef(true);
   const navigate = useNavigate();
   const [text, setText] = useState("");
   const booking = app.bookings.find(b=>b.id===app.workflow.selectedBooking && b.helper===app.person);
   const thread = booking ? 'booking:'+booking.id : app.person;
   const messages = app.messages[thread] || [];
-  useEffect(()=>{if(messages.length)end.current?.scrollIntoView({behavior:reduced?'instant':'smooth',block:'nearest'});},[messages.length,reduced]);
+  const [showLatest,setShowLatest]=useState(false);
+  useEffect(()=>{const el=list.current;if(!el||!stickToBottom.current)return;const frame=requestAnimationFrame(()=>el.scrollTo({top:el.scrollHeight,behavior:reduced?'auto':'smooth'}));return()=>cancelAnimationFrame(frame);},[messages.length,reduced]);
+  const onMessageScroll=()=>{const el=list.current;if(!el)return;const near=el.scrollHeight-el.scrollTop-el.clientHeight<64;stickToBottom.current=near;setShowLatest(!near&&messages.length>1);};
   const recipient = app.workflow.role==='helper' ? booking?.owner || 'Home owner' : app.person;
   const send = (e) => {
     e.preventDefault();
     if (!text.trim()) return;
-    app.setMessages({
-      ...app.messages,
-      [thread]: [
-        ...messages,
-        { id: Date.now(), text: text.trim(), own: true, sender: app.workflow.role },
-      ],
-    });
+    app.setMessages(current=>({
+      ...current,
+      [thread]: [...(current[thread]||[]), { id: globalThis.crypto?.randomUUID?.()||Date.now(), text: text.trim(), own: true, sender: app.workflow.role, createdAt: new Date().toISOString() }],
+    }));
+    stickToBottom.current=true;
+    setShowLatest(false);
     setText("");
   };
   return (
@@ -259,22 +260,24 @@ export function Conversation() {
           <h3>{recipient}</h3>
           <p>Ask about services and availability.</p>
         </div>
-        <div className="message-list" role="log" aria-live="polite">
+        <div className="message-list" ref={list} onScroll={onMessageScroll} role="log" aria-label={'Messages with '+recipient} aria-live="polite" aria-relevant="additions text">
           <p className="message incoming">
             Hello! How can I help with your home today?
           </p>
           {messages.map((m) => (
             <motion.p
-              initial={reduced?false:{ y: 10, opacity: 0 }}
+              initial={reduced?false:{ y: 7, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
+              transition={{duration:.18,ease:[.22,1,.36,1]}}
               className={'message '+(!m.sender||m.sender===app.workflow.role?'outgoing':'incoming')}
               key={m.id}
             >
               {m.text}
             </motion.p>
           ))}
-          <div ref={end}/>{messages.length>0&&<p className="message-saved">Saved on this device ?</p>}
+          {messages.length>0&&<p className="message-saved">Saved on this device</p>}
         </div>
+        {showLatest&&<motion.button className="chat-jump-latest" initial={{opacity:0,scale:.8}} animate={{opacity:1,scale:1}} aria-label="Jump to latest message" onClick={()=>{stickToBottom.current=true;setShowLatest(false);list.current?.scrollTo({top:list.current.scrollHeight,behavior:reduced?'auto':'smooth'})}}>↓</motion.button>}
         {!messages.length&&<div className="chat-suggestions">{["Are you available this week?","What services do you offer?","Can we discuss the booking?"].map(t=><button key={t} onClick={()=>{setText(t);composer.current?.focus()}}>{t}</button>)}</div>}
         <p className="demo-note">
           Messages are stored locally and are not sent to a real helper.

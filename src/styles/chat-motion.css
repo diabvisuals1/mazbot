@@ -1,0 +1,133 @@
+/* Keep the existing Figma chat layout; animate only the parts users touch. */
+.screen-canvas[data-screen="2051:2475"] [data-interactive],
+.screen-canvas[data-screen="2051:2607"] [data-interactive] {
+  transform-origin: center;
+  transition: transform 180ms cubic-bezier(.22,1,.36,1), filter 180ms ease, box-shadow 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.screen-canvas[data-screen="2051:2475"] [data-interactive]:active,
+.screen-canvas[data-screen="2051:2607"] [data-interactive]:active {
+  transform: scale(.985) translateZ(0);
+  filter: none;
+}
+@media (hover:hover) {
+  .screen-canvas[data-screen="2051:2475"] [data-interactive]:hover,
+  .screen-canvas[data-screen="2051:2607"] [data-interactive]:hover {
+    filter: brightness(.985);
+  }
+}
+.screen-canvas[data-screen="2051:2475"] [data-node-id="2051:2484"],
+.screen-canvas[data-screen="2051:2475"] [data-node-id="2051:2503"],
+.screen-canvas[data-screen="2051:2475"] [data-node-id="2051:2522"],
+.screen-canvas[data-screen="2051:2475"] [data-node-id="2051:2541"],
+.screen-canvas[data-screen="2051:2607"] [data-node-id="2051:2622"],
+.screen-canvas[data-screen="2051:2607"] [data-node-id="2051:2641"],
+.screen-canvas[data-screen="2051:2607"] [data-node-id="2051:2660"],
+.screen-canvas[data-screen="2051:2607"] [data-node-id="2051:2679"],
+.screen-canvas[data-screen="2051:2607"] [data-node-id="2051:2698"],
+.screen-canvas[data-screen="2051:2607"] [data-node-id="2051:2717"] {
+  animation: chat-row-arrive 340ms cubic-bezier(.22,1,.36,1) backwards;
+}
+.screen-canvas[data-screen="2051:2475"] [data-node-id="2051:2503"],
+.screen-canvas[data-screen="2051:2607"] [data-node-id="2051:2641"] { animation-delay: 28ms; }
+.screen-canvas[data-screen="2051:2475"] [data-node-id="2051:2522"],
+.screen-canvas[data-screen="2051:2607"] [data-node-id="2051:2660"] { animation-delay: 56ms; }
+.screen-canvas[data-screen="2051:2475"] [data-node-id="2051:2541"],
+.screen-canvas[data-screen="2051:2607"] [data-node-id="2051:2679"] { animation-delay: 84ms; }
+.screen-canvas[data-screen="2051:2607"] [data-node-id="2051:2698"] { animation-delay: 112ms; }
+.screen-canvas[data-screen="2051:2607"] [data-node-id="2051:2717"] { animation-delay: 140ms; }
+@keyframes chat-row-arrive {
+  from { opacity: 0; transform: translate3d(0,8px,0); }
+  to { opacity: 1; transform: translate3d(0,0,0); }
+}
+
+.chat-expanded-sheet {
+  contain: layout paint;
+  backface-visibility: hidden;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.chat-sheet-list {
+  contain: layout paint;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.chat-sheet-row {
+  transition: background-color 160ms ease, transform 160ms cubic-bezier(.22,1,.36,1);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+.chat-sheet-row:active {
+  background: #edf5ef;
+  transform: scale(.99) translateZ(0);
+}
+.chat-sheet-row > img { background: #e1ece5; }
+.chat-sheet-meta .chat-sheet-unread { color: #bf6537; font-weight: 800; font-size: 9px; }
+.chat-sheet-search:focus-within {
+  border-color: #86b9ad;
+  box-shadow: 0 0 0 3px #addedb55;
+}
+.chat-sheet-handle { touch-action: none; }
+
+.conversation {
+  position: relative;
+  height: 573px;
+  min-height: 0;
+  overflow: hidden;
+  gap: 7px;
+  padding: 13px 15px 8px;
+}
+.conversation .chat-intro { flex: none; }
+.conversation .chat-intro img { transition: transform 220ms cubic-bezier(.22,1,.36,1), box-shadow 220ms ease; }
+.conversation .chat-intro img:active { transform: scale(.96); box-shadow: 0 5px 14px #00374425; }
+.conversation .message-list {
+  flex: 1;
+  min-height: 110px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  margin: 8px 0;
+  padding: 8px 2px;
+}
+.conversation .message-list::-webkit-scrollbar { display: none; }
+.conversation .message {
+  transition: transform 180ms cubic-bezier(.22,1,.36,1), box-shadow 180ms ease;
+  box-shadow: 0 2px 6px #0020270a;
+}
+.conversation .message:active { transform: scale(.985); }
+.conversation .incoming { background: #fae4d2; }
+.conversation .outgoing { background: #c8e7df; }
+.conversation .composer { flex: none; margin-top: 0; }
+.conversation .composer input {
+  outline: 0;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.conversation .composer:focus-within input { border-color: #83b8ab; box-shadow: 0 0 0 3px #addedb55; }
+.conversation .composer .btn { transition: transform 160ms cubic-bezier(.22,1,.36,1), background-color 160ms ease; }
+.conversation .composer .btn:active:not(:disabled) { transform: scale(.96); }
+.conversation > .btn:last-child { flex: none; min-height: 42px; margin-top: 2px; font-size: 12px; }
+.conversation .demo-note { flex: none; margin: 0; font-size: 8px; text-align: center; }
+.conversation .chat-suggestions { flex: none; margin: 2px 0; }
+.chat-jump-latest {
+  position: absolute;
+  right: 23px;
+  bottom: 118px;
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  color: #003744;
+  box-shadow: 0 3px 13px #00202724;
+  font-size: 18px;
+}
+.chat-jump-latest:active { transform: scale(.93); }
+@media (prefers-reduced-motion: reduce) {
+  .screen-canvas[data-screen="2051:2475"] [data-node-id^="2051:24"],
+  .screen-canvas[data-screen="2051:2475"] [data-node-id^="2051:25"],
+  .screen-canvas[data-screen="2051:2607"] [data-node-id^="2051:26"],
+  .screen-canvas[data-screen="2051:2607"] [data-node-id^="2051:27"] { animation: none; }
+  .conversation .message-list { scroll-behavior: auto; }
+}

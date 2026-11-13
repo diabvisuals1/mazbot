@@ -140,6 +140,10 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [modal, setModal] = useState(null);
   const [chatTransition, setChatTransition] = useState(false);
+  const [chatMeta, setChatMeta] = usePersistent("chat-meta", {
+    unread: { "Souad Ibrahim": 2, "Fatma El-Sayed": 1 },
+    favorites: ["Souad Ibrahim", "Amal Mostafa"],
+  });
   const [chatListExpanded, setChatListExpanded] = useState(false);
   useLayoutEffect(() => {
     if (!chatListExpanded) return;
@@ -210,14 +214,19 @@ export default function App() {
     scroll.current?.scrollTo({ top: 0 });
     document.title =
       "MAZBOT · " +
-      (screens
-        .find((s) => s[0] === location.pathname)?.[0]
-        .split("/")
-        .filter(Boolean)
-        .at(-1) || "Your home, organized");
+      (location.pathname.startsWith("/chats")
+        ? "Chats"
+        : screens
+            .find((s) => s[0] === location.pathname)?.[0]
+            .split("/")
+            .filter(Boolean)
+            .at(-1) || "Your home, organized");
   }, [location.pathname]);
   useEffect(() => {
-    if (!location.state?.chatTransition) return;
+    if (!location.state?.chatTransition) {
+      setChatTransition(false);
+      return;
+    }
     const timer = setTimeout(() => setChatTransition(false), 760);
     return () => clearTimeout(timer);
   }, [location.key]);
@@ -344,7 +353,15 @@ export default function App() {
           setChatListExpanded(true);
           break;
         }
-        if (c.person) setPerson(c.person);
+        if (c.person) {
+          const personName = helperDirectory.find((helper) => helper.name.toLowerCase() === c.person.toLowerCase())?.name || c.person;
+          const helper = helperDirectory.find((entry) => entry.name.toLowerCase() === personName.toLowerCase());
+          const relatedBooking = [...bookings].reverse().find((booking) => booking.helper?.toLowerCase() === personName.toLowerCase());
+          setPerson(personName);
+          if (helper?.image) setHelperImage(helper.image);
+          setWorkflow((current) => ({ ...current, selectedBooking: relatedBooking?.id || null }));
+          setChatMeta((current) => ({ ...current, unread: { ...(current.unread || {}), [personName]: 0 } }));
+        }
         if (["/chats", "/chats/all"].includes(location.pathname)) {
           setChatTransition(true);
           setChatListExpanded(false);
@@ -376,6 +393,8 @@ export default function App() {
     setQuery,
     modal,
     setModal,
+    chatMeta,
+    setChatMeta,
     chatListExpanded,
     setChatListExpanded,
     saved,
@@ -434,7 +453,7 @@ export default function App() {
       <div ref={deviceRef} className={"device "+(!authPaths.includes(location.pathname)?"with-topbar":"")} >
         {!authPaths.includes(location.pathname)&&<TopBar/>}
         <div className="app-scroll" ref={scroll} inert={isFilters || !!modal || chatListExpanded}>
-          <AnimatePresence mode="wait" custom={chatTransition ? "chat-up" : null}>
+          <AnimatePresence mode={chatTransition ? "sync" : "wait"} custom={chatTransition ? "chat-up" : null}>
             <motion.div
               key={routeViewKey}
               className="route-view"
@@ -547,7 +566,7 @@ export default function App() {
             </motion.div>
           </AnimatePresence>
         </div>
-        <AnimatePresence>{chatListExpanded && <ChatExpandedSheet app={app} onClose={()=>setChatListExpanded(false)}/>}</AnimatePresence>
+        <AnimatePresence>{chatListExpanded && <ChatExpandedSheet app={app} onClose={()=>setChatListExpanded(false)} />}</AnimatePresence>
         {!isFilters && ![...authPaths,"/complete-profile","/roles"].includes(location.pathname) && <Navigation />}
         <AnimatePresence>{isFilters && <FilterSheet key="helper-filters" />}</AnimatePresence>
         <AnimatePresence>
@@ -897,7 +916,7 @@ function Enhancements({ screen }) {
         drag="y"
         dragConstraints={{ top: 0, bottom: 0 }}
         onDragEnd={(_, info) => {
-          if (Math.abs(info.offset.y) > 20) setChatListExpanded(true);
+          if (Math.abs(info.offset.y) > 20) app.setChatListExpanded(true);
         }}
         className="chat-list-handle"
         aria-label="Show all chats"

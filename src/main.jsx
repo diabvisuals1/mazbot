@@ -10,6 +10,7 @@ import "./styles/flow.css";
 import "./styles/experience.css";
 import "./styles/brand-pages.css";
 import "./styles/phone-frame.css";
+import "./styles/chat-motion.css";
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
