@@ -43,7 +43,7 @@ import { initialWorkflow, helperDirectory, roleHomes, matchesHelper } from "./da
 const Home = lazy(() => import("./pages/Screen2051_1878.jsx"));
 const Services = lazy(() => import("./pages/Screen2051_2267.jsx"));
 const Helpers = lazy(() => import("./pages/HelpersList.jsx"));
-const Profile = lazy(() => import("./pages/Screen2051_1778.original.jsx"));
+const Profile = lazy(() => import("./pages/HelperProfile.jsx"));
 const Chats = lazy(() => import("./pages/Screen2051_2475.jsx"));
 const AllChats = lazy(() => import("./pages/Screen2051_2607.jsx"));
 const StoreCategories = lazy(() => import('./pages/StoreCategories.jsx'));
