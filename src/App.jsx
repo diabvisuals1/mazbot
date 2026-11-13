@@ -20,6 +20,7 @@ import {ImageExplorer} from "./components/ImageExplorer.jsx";
 import Experience, { AnimatedNumber } from "./components/Experience.jsx";
 import PageSkeleton from "./components/PageSkeleton.jsx";
 import TopBar from "./components/TopBar.jsx";
+import PhoneStatusBar from "./components/PhoneStatusBar.jsx";
 import ChatExpandedSheet from "./components/ChatExpandedSheet.jsx";
 import Navigation from "./components/Navigation.jsx";
 import Dialog from "./components/Dialog.jsx";
@@ -572,6 +573,7 @@ export default function App() {
             </Dialog>
           )}
         </AnimatePresence>
+        <PhoneStatusBar />
         <Experience />
       </div>
       <svg className="phone-hardware" viewBox="0 0 435 872" aria-hidden="true">

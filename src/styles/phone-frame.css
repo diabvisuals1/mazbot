@@ -34,3 +34,9 @@
 /* Animate the curved reveal without reflowing its contents every frame. */
 .phone-frame .shared-topbar{will-change:height;contain:layout paint;box-shadow:none;bottom:auto;min-height:0!important;clip-path:none}
 .phone-frame .shared-topbar .notification-content{position:absolute;inset:129px 0 auto;height:683px;min-height:0;overflow-y:auto;padding-bottom:120px}
+/* Shared phone chrome above every route and toolbar overlay. */
+.phone-frame .phone-status{position:absolute;inset:0 0 auto;height:44px;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 20px 0 29px;color:#002027;pointer-events:none}
+.phone-frame .with-topbar .phone-status{color:#fff}
+.phone-status time{font-size:14px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.phone-status-icons{display:flex;align-items:center;gap:5px}
+.phone-frame .device .auth-page [data-name="Status Bar"],.phone-frame .device [data-name="StatusBar / iPhone 13"],.phone-frame .device .status-bar,.phone-frame .device .hp-status{visibility:hidden!important}
