@@ -64,13 +64,26 @@
 .hp-title button::before{content:'';position:absolute;inset:0 -6px}
 
 /* The featured helper portrait uses a circular, clipped frame. */
-[data-node-id="2051:2292"]{
+[data-node-id="2051:2271"] > .d9976ac6b7 > div:last-child{
   border-radius:50%;
-  box-shadow:0 0 0 3px #f3ebde,0 5px 14px #0020272b;
+  background:transparent;
+  box-shadow:none;
+  overflow:hidden;
 }
-[data-node-id="2051:2292"] [data-name="image 118"],
-[data-node-id="2051:2292"] [data-name="image 142"],
-[data-node-id="2051:2292"] img{border-radius:50%}
+[data-node-id="2051:2271"] > .d9976ac6b7 > div:last-child > p,
+[data-node-id="2051:2271"] > .d9976ac6b7 > div:last-child > div:not(:last-child){display:none}
+[data-node-id="2051:2271"] > .d9976ac6b7 > div:last-child > div:last-child{
+  inset:0;
+  width:100%;
+  height:100%;
+  transform:none;
+  border-radius:50%;
+  overflow:hidden;
+}
+[data-node-id="2051:2271"] > .d9976ac6b7 > div:last-child img{
+  border-radius:50%;
+  object-fit:cover!important;
+}
 
 /* Keep the watering can recognisable and proportional, with its spray below the rose. */
 [data-node-id="2051:2426"] [data-node-id="2051:2427"]{z-index:3}
@@ -87,19 +100,19 @@
 }
 [data-node-id="2051:2426"] .gardener-can{
   position:absolute;
-  left:13px;
+  left:3px;
   top:0;
-  width:96px;
-  height:117px;
+  width:116px;
+  height:141px;
   object-fit:contain;
   filter:drop-shadow(0 4px 5px #00202724);
 }
 [data-node-id="2051:2426"] .gardener-drops{
   position:absolute;
-  left:105px;
-  top:88px;
-  width:10px;
-  height:45px;
+  left:112px;
+  top:110px;
+  width:12px;
+  height:36px;
   transform:rotate(-7deg);
   opacity:.94;
 }
