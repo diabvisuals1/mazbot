@@ -55,3 +55,15 @@
 @keyframes store-filter-dim-in{from{background:#00202700}to{background:#00202785}}
 @keyframes store-filter-dim-out{from{background:#00202785}to{background:#00202700}}
 @media(prefers-reduced-motion:reduce){.device .store-sheet-backdrop,.device .store-sheet-backdrop .store-filter-sheet,.device .store-sheet-backdrop.is-closing,.device .store-sheet-backdrop.is-closing .store-filter-sheet{animation-duration:1ms}}
+/* Keep the backdrop static; animate only compositor-friendly opacity/transform. */
+.device .store-sheet-backdrop{background:transparent;animation:none;overflow:clip;isolation:isolate}
+.device .store-sheet-backdrop:before{content:'';position:absolute;inset:0;background:#00202785;z-index:-1;animation:store-dim-in 360ms ease both;pointer-events:none}
+.device .store-sheet-backdrop.is-closing{animation:none}
+.device .store-sheet-backdrop.is-closing:before{animation:store-dim-out 300ms ease both}
+.device .store-sheet-backdrop .store-filter-sheet{flex:none;align-self:flex-end;animation:store-filter-rise 360ms cubic-bezier(.22,1,.36,1) both;backface-visibility:hidden;box-shadow:0 -3px 12px #00202718}
+.device .store-sheet-backdrop.is-closing .store-filter-sheet{animation:store-filter-fall 300ms cubic-bezier(.4,0,1,1) both}
+@keyframes store-filter-rise{from{transform:translate3d(0,100%,0)}to{transform:translate3d(0,0,0)}}
+@keyframes store-filter-fall{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,100%,0)}}
+@keyframes store-dim-in{from{opacity:0}to{opacity:1}}
+@keyframes store-dim-out{from{opacity:1}to{opacity:0}}
+@media(prefers-reduced-motion:reduce){.device .store-sheet-backdrop .store-filter-sheet,.device .store-sheet-backdrop.is-closing .store-filter-sheet,.device .store-sheet-backdrop:before,.device .store-sheet-backdrop.is-closing:before{animation-duration:1ms}}

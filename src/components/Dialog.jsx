@@ -7,7 +7,7 @@ export default function Dialog({ title, onClose, children, wide = false, sheet =
   useEffect(() => {
     const prior = document.activeElement;
     const dialog = ref.current;
-    dialog.focus();
+    dialog.focus({preventScroll:true});
     const key = (e) => {
       if (e.key === "Escape") onClose();
       if (e.key === "Tab") {
@@ -24,40 +24,36 @@ export default function Dialog({ title, onClose, children, wide = false, sheet =
             document.activeElement === dialog)
         ) {
           e.preventDefault();
-          els.at(-1).focus();
+          els.at(-1).focus({preventScroll:true});
         } else if (!e.shiftKey && document.activeElement === els.at(-1)) {
           e.preventDefault();
-          els[0].focus();
+          els[0].focus({preventScroll:true});
         }
       }
     };
     document.addEventListener("keydown", key);
-    return () => {
+    const Backdrop = sheet ? "div" : motion.div;
+  const Panel = sheet ? "section" : motion.section;
+  return () => {
       document.removeEventListener("keydown", key);
-      prior?.focus();
+      prior?.focus({preventScroll:true});
     };
   }, [onClose]);
   return (
-    <motion.div
+    <Backdrop
       className={"dialog-backdrop" + (sheet ? " store-sheet-backdrop" + (closing ? " is-closing" : "") : "")}
-      initial={sheet ? false : { opacity: 0 }}
-      animate={sheet ? undefined : { opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: reduced ? 0 : .16 }}
+      {...(!sheet ? {initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},transition:{duration:reduced?0:.16}} : {})}
       onClick={onClose}
     >
-      <motion.section
+      <Panel
         ref={ref}
         tabIndex={-1}
         role="dialog"
         aria-modal="true"
         aria-label={title}
         className={"dialog " + (wide ? "viewer-dialog" : "") + (sheet ? " store-filter-sheet" : "")}
-        initial={sheet || reduced ? false : { y: 24, opacity: 0 }}
-        animate={sheet ? undefined : { y: 0, opacity: 1 }}
+        {...(!sheet ? {initial:reduced?false:{y:24,opacity:0},animate:{y:0,opacity:1},exit:{y:reduced?0:16,opacity:0},transition:{duration:reduced?0:.24,ease:[.22,1,.36,1]}} : {})}
         onAnimationEnd={e => { if (sheet && closing && e.target === e.currentTarget) onExited?.(); }}
-        exit={{ y: reduced ? 0 : 16, opacity: 0, transition: { duration: reduced ? 0 : .14 } }}
-        transition={{ duration: reduced ? 0 : .24, ease: [.22, 1, .36, 1] }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="dialog-title">
@@ -65,7 +61,7 @@ export default function Dialog({ title, onClose, children, wide = false, sheet =
           <button type="button" className="dialog-close" aria-label="Close dialog" onClick={onClose}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
         </div>
         {children}
-      </motion.section>
-    </motion.div>
+      </Panel>
+    </Backdrop>
   );
 }
