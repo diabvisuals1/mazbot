@@ -36,6 +36,7 @@ import {
 } from "./pages/JourneyPages.jsx";
 import config from "./data/controls.json";
 import catalog from "./data/catalog.json";
+const AccountProfile = lazy(() => import('./pages/AccountProfile.jsx'));
 const AuthPages = lazy(() => import("./pages/AuthPages.jsx"));
 const authPaths = ["/start","/onboarding","/onboarding/2","/onboarding/3","/auth","/signup","/forgot-password","/verify"];
 const FlowPages = lazy(() => import("./pages/FlowPages.jsx"));
@@ -516,7 +517,7 @@ export default function App() {
                   <Route path="/schedule" element={<FlowPages />} />
                   <Route path="/onboarding/*" element={<AuthPages/>}/>{authPaths.filter(path=>!path.startsWith('/onboarding')).map(path=><Route key={path} path={path} element={<AuthPages/>}/>)}
                   {["/complete-profile","/roles","/flow/*","/helper/*","/company/*","/checkout","/orders","/orders/:id"].map(path=><Route key={path} path={path} element={<FlowPages/>}/>)}
-                  <Route path="/account" element={<Account />} />
+                  <Route path="/account" element={<AccountProfile />} />
                   <Route
                     path="/chats/conversation"
                     element={<Conversation />}

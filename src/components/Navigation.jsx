@@ -17,9 +17,9 @@ export default function Navigation() {
   const navigate = useNavigate();
   if (app.workflow.role !== 'owner') {
     const entries = app.workflow.role === 'helper'
-      ? [['Home','/helper/home','⌂'],['Requests','/helper/requests','▤'],['Jobs','/helper/jobs','♧'],['Schedule','/schedule','▦'],['Roles','/roles','⇄']]
-      : [['Home','/company/dashboard','⌂'],['Helpers','/company/helpers','♧'],['Requests','/company/requests','▤'],['Services','/company/active','▦'],['Roles','/roles','⇄']];
-    return <nav className="persona-nav" aria-label="Main navigation">{entries.map(([label,path,icon])=><motion.button whileTap={reduced?undefined:{scale:.94}} key={path} aria-current={pathname===path?'page':undefined} onClick={()=>navigate(path)}>{pathname===path&&<motion.span layoutId="persona-nav" className="persona-highlight" transition={{type:"spring",stiffness:420,damping:34}}/>}<span><img src={"/assets/"+({Home:"1b54f.svg",Requests:"be0b9.svg",Jobs:"297a1.svg",Schedule:"be0b9.svg",Roles:"c94ae.svg",Helpers:"c94ae.svg",Services:"6f250.svg"}[label])} alt=""/></span>{label}</motion.button>)}</nav>;
+      ? [['Home','/helper/home','⌂'],['Requests','/helper/requests','▤'],['Jobs','/helper/jobs','♧'],['Schedule','/schedule','▦'],['Profile','/account','⇄']]
+      : [['Home','/company/dashboard','⌂'],['Helpers','/company/helpers','♧'],['Requests','/company/requests','▤'],['Services','/company/active','▦'],['Profile','/account','⇄']];
+    return <nav className="persona-nav" aria-label="Main navigation">{entries.map(([label,path,icon])=><motion.button whileTap={reduced?undefined:{scale:.94}} key={path} aria-current={pathname===path?'page':undefined} onClick={()=>navigate(path)}>{pathname===path&&<motion.span layoutId="persona-nav" className="persona-highlight" transition={{type:"spring",stiffness:420,damping:34}}/>}<span><img src={"/assets/"+({Home:"1b54f.svg",Requests:"be0b9.svg",Jobs:"297a1.svg",Schedule:"be0b9.svg",Roles:"c94ae.svg",Profile:"c94ae.svg",Helpers:"c94ae.svg",Services:"6f250.svg"}[label])} alt=""/></span>{label}</motion.button>)}</nav>;
   }
   const selected = pathname.startsWith("/store")
     ? "Store"
