@@ -108,24 +108,23 @@ export default function App() {
     const device = deviceRef.current;
     if (!device) return;
     const updateScale = () => {
-      const width = device.clientWidth || window.innerWidth;
-      const height = device.clientHeight || window.innerHeight;
-      const designScale = Math.min(1.5, width / 375);
-      const authScale = Math.min(1.35, width / 375);
-      const authHeightScale = Math.max(0.65, Math.min(1.35, height / 812));
-      device.style.setProperty("--design-scale", String(designScale));
-      device.style.setProperty("--auth-scale", String(authScale));
-      device.style.setProperty("--auth-y-adjust", String(authHeightScale / authScale));
+      const scale = Math.min(1, (window.innerWidth - 16) / 435, (window.innerHeight - 16) / 872);
+      device.parentElement.style.setProperty("--phone-scale", String(Math.max(.1, scale)));
+      device.style.setProperty("--design-scale", "1");
+      device.style.setProperty("--auth-scale", "1");
+      device.style.setProperty("--auth-y-adjust", "1");
     };
     updateScale();
     const observer = new ResizeObserver(updateScale);
     observer.observe(device);
     window.visualViewport?.addEventListener("resize", updateScale);
     window.addEventListener("orientationchange", updateScale);
+    window.addEventListener("resize", updateScale);
     return () => {
       observer.disconnect();
       window.visualViewport?.removeEventListener("resize", updateScale);
       window.removeEventListener("orientationchange", updateScale);
+      window.removeEventListener("resize", updateScale);
     };
   }, []);
   const [toast, setToast] = useState("");
@@ -398,6 +397,7 @@ export default function App() {
     location.pathname === "/chats/all";
   return (
     <ScreenContext.Provider value={app}>
+      <div className="phone-frame">
       <div ref={deviceRef} className={"device "+(!authPaths.includes(location.pathname)?"with-topbar":"")} >
         {!authPaths.includes(location.pathname)&&<TopBar/>}
         <div className="app-scroll" ref={scroll} inert={isFilters || !!modal || chatListExpanded}>
@@ -542,6 +542,16 @@ export default function App() {
           )}
         </AnimatePresence>
         <Experience />
+      </div>
+      <svg className="phone-hardware" viewBox="0 0 435 872" aria-hidden="true">
+        <path fill="black" fillRule="evenodd" d="M70 10H365A60 60 0 0 1 425 70V802A60 60 0 0 1 365 862H70A60 60 0 0 1 10 802V70A60 60 0 0 1 70 10ZM70 30A40 40 0 0 0 30 70V802A40 40 0 0 0 70 842H365A40 40 0 0 0 405 802V70A40 40 0 0 0 365 30Z"/>
+        <path fill="black" d="M151 30H284Q276 30 276 38V47Q276 56 267 56H168Q159 56 159 47V38Q159 30 151 30Z"/>
+        <rect x="2" y="205" width="10" height="27" rx="5"/>
+        <rect x="2" y="241" width="10" height="64" rx="5"/>
+        <rect x="2" y="316" width="10" height="64" rx="5"/>
+        <rect x="423" y="203" width="10" height="112" rx="5"/>
+        <rect x="159" y="831" width="117" height="5" rx="2.5"/>
+      </svg>
       </div>
     </ScreenContext.Provider>
   );

@@ -1,0 +1,24 @@
+/* A single 375 ¡Á 812 iPhone 13 mini canvas; only the surrounding phone scales. */
+#root{display:grid;place-items:center;width:100%;height:100dvh;min-height:0;padding:8px;overflow:hidden}
+.phone-frame{position:relative;isolation:isolate;width:435px;height:872px;flex:none;zoom:var(--phone-scale,1)}
+.phone-frame .device,.phone-frame .device:has(.auth-page){position:absolute;left:30px;top:30px;width:375px;max-width:none;height:812px;margin:0;border-radius:40px;zoom:1;box-shadow:none;overflow:hidden;transform:translateZ(0)}
+.phone-hardware{position:absolute;inset:0;width:435px;height:872px;z-index:1000;pointer-events:none;overflow:visible}
+.phone-frame .app-scroll,.phone-frame .route-view{width:375px}
+.phone-frame .route-view{padding-bottom:110px}
+.phone-frame .screen-canvas[data-screen]:not(:has(.flow-page)){zoom:1}
+.phone-frame .screen-canvas:has(.flow-page){width:375px;zoom:1}
+.phone-frame .auth-page{zoom:1;transform:none}
+.phone-frame .route-view:has(.auth-page){height:812px;padding:0}
+.phone-frame .flow-page{min-height:573px}
+.phone-frame .bottom-nav{bottom:28px;width:300px;gap:8px}
+.phone-frame .persona-nav{left:12px;right:12px;bottom:28px;width:auto;transform:none}
+.phone-frame .shared-topbar-row{max-width:375px}
+.phone-frame .role-selection{padding-bottom:36px}
+.phone-frame .role-art{width:112px}
+.phone-frame .role-copy strong{font-size:20px}
+.phone-frame .role-option{gap:10px}
+.phone-frame .role-intro h1{font-size:30px}
+/* Reserve the home gesture area independently of scrolling route content. */
+.phone-frame .device::after{content:"";position:absolute;z-index:200;pointer-events:none;left:0;right:0;bottom:0;height:20px;background:#fff}
+.phone-frame .device .auth-page [data-name="Home Bar"],.phone-frame .device .auth-page .auth-design-25{display:none!important}
+.phone-frame .route-content{width:375px;overflow-x:clip}
