@@ -107,7 +107,7 @@ export default function App() {
     if (chatListExpanded) { setChatListExpanded(false); return; }
     const stack = visitedScreens.current;
     if (stack.length > 1) stack.pop();
-    navigate(stack.at(-1) !== location.pathname ? stack.at(-1) : '/', {replace:true});
+    navigate(stack.at(-1) !== location.pathname + location.search ? stack.at(-1) : '/', {replace:true});
   }
   useLayoutEffect(() => {
     const host = scroll.current;

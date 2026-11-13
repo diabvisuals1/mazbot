@@ -9,7 +9,7 @@ export default function TopBar(){
  const lastPanel=useRef('notifications');
  if(open) lastPanel.current=cartOpen?'cart':'notifications';
  const cartCount=app.cart.reduce((sum,p)=>sum+p.quantity,0);
- const titles={'/helpers':'Find A Helper','/helpers/filters':'Find A Helper','/services':'Find A Helper','/store':'Store','/schedule':'Schedule','/account':'Profile','/helpers/profile':'Helper Profile','/chats':'Chats','/monitoring':'Monitoring'};
+ const titles={'/flow/requirements':'Find your match','/booking':'Booking request','/helpers':'Find A Helper','/helpers/filters':'Find A Helper','/services':'Find A Helper','/store':'Store','/schedule':'Schedule','/account':'Profile','/helpers/profile':'Helper Profile','/chats':'Chats','/monitoring':'Monitoring'};
  const home=['/','/helper/home','/company/dashboard'].includes(pathname);
  const title=open?(cartOpen?'Your cart':'Notifications'):home?'Hello, '+app.profile.name:pathname==='/chats/all'?'Chats':titles[pathname]||pathname.split('/').filter(Boolean).at(-1)?.replaceAll('-',' ');
  const dismiss=()=>app.setModal(null);

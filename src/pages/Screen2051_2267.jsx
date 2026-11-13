@@ -1,3 +1,4 @@
+import {AssistantEntry} from './BookingForm.jsx';
 import React from "react";
 import { useScreen } from "../context/ScreenContext.jsx";
 const imgImage118 = "/assets/e91be.png";
@@ -1668,6 +1669,7 @@ export default function CategoriesHomeOwner() {
           </button>
         </div>
       </div>
-    </div>
+    <div className="services-assistant"><AssistantEntry/></div>
+</div>
   );
 }
