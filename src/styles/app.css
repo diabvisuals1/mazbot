@@ -890,10 +890,15 @@ a:focus-visible {
 }
 [data-node-id="2051:2571"] {
   overflow-x: auto !important;
-  overflow-y: visible;
+  overflow-y: hidden !important;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  -ms-overflow-style: none;
   touch-action: pan-x;
 }
+[data-node-id="2051:2571"]::-webkit-scrollbar { display: none; }
 [data-node-id="2051:2449"] {
   background-color: #ff8a3d;
 }

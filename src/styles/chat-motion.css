@@ -45,16 +45,18 @@
   contain: layout paint;
   backface-visibility: hidden;
   will-change: transform;
-  transform: translateZ(0);
+  transform: translate3d(0, var(--chat-sheet-y, 192px), 0);
+  transition: transform 340ms cubic-bezier(.22,1,.36,1);
   background: #fff;
   box-shadow: none;
 }
+.chat-expanded-sheet.is-dragging { transition: none !important; }
 .screen-canvas[data-screen="2051:2475"] { background-color: #fff; }
 .screen-canvas[data-screen="2051:2475"] .d0218f7938 { background-color: #fff; }
 .chat-sheet-handle {
   appearance: none;
   width: 100%;
-  height: 20px;
+  height: 32px;
   flex: none;
   display: flex;
   align-items: center;
@@ -63,14 +65,14 @@
   padding: 0;
   background: transparent;
   color: inherit;
-  cursor: grab;
   touch-action: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
-.chat-sheet-handle:active { cursor: grabbing; }
 .chat-sheet-handle:focus-visible { outline: 2px solid #86b9ad; outline-offset: -2px; }
-.chat-sheet-handle > span { width: 76px; height: 5px; border-radius: 99px; background: #003744; }
+.chat-sheet-handle > span { width: 76px; height: 5px; border-radius: 99px; background: #003744; transition: width 140ms ease, height 140ms ease; }
+.chat-sheet-handle:active > span { width: 84px; height: 6px; }
+.device button.chat-sheet-handle { touch-action: none; }
 .chat-sheet-search { margin: 0 16px 10px; }
 .chat-sheet-list {
   contain: layout paint;
