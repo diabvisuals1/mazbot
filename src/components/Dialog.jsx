@@ -4,6 +4,8 @@ import { motion, useReducedMotion } from "motion/react";
 export default function Dialog({ title, onClose, children, wide = false, sheet = false, closing = false, onExited }) {
   const ref = useRef(null);
   const reduced = useReducedMotion();
+  const Backdrop = sheet ? "div" : motion.div;
+  const Panel = sheet ? "section" : motion.section;
   useEffect(() => {
     const prior = document.activeElement;
     const dialog = ref.current;
@@ -32,9 +34,7 @@ export default function Dialog({ title, onClose, children, wide = false, sheet =
       }
     };
     document.addEventListener("keydown", key);
-    const Backdrop = sheet ? "div" : motion.div;
-  const Panel = sheet ? "section" : motion.section;
-  return () => {
+    return () => {
       document.removeEventListener("keydown", key);
       prior?.focus({preventScroll:true});
     };
