@@ -27,6 +27,6 @@ export function localDate(value = new Date()) { const d = new Date(value); retur
 export const uid = () => globalThis.crypto?.randomUUID?.() || String(Date.now()) + Math.random().toString(16).slice(2);
 export const normalizeService = s => ({ Chef:'Cooking', Gardener:'Gardening', Nurse:'Nursing', Driver:'Driving', BabySitter:'Nanny', Cleaner:'Cleaning' }[s] || s);
 export function matchesHelper(h, filters) {
-  return h.active !== false && h.services.includes(normalizeService(filters.service || 'Cleaning')) && h.price <= Number(filters.budget) && h.rating >= Number(filters.rating) && (!filters.date || h.days.includes(new Date(filters.date + 'T12:00:00').getDay()));
+  return h.active !== false && (h.services || []).some(service => normalizeService(service) === normalizeService(filters.service || 'Cleaning')) && h.price <= (filters.budget == null || filters.budget === '' ? Infinity : Number(filters.budget)) && h.rating >= Number(filters.rating || 0) && (!filters.date || (h.days || [0,1,2,3,4,5,6]).includes(new Date(filters.date + 'T12:00:00').getDay()));
 }
 export { transitions, transitionBooking } from './bookingState.js';

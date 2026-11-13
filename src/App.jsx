@@ -42,7 +42,7 @@ const FlowPages = lazy(() => import("./pages/FlowPages.jsx"));
 import { initialWorkflow, helperDirectory, roleHomes, matchesHelper } from "./data/workflow.js";
 const Home = lazy(() => import("./pages/Screen2051_1878.jsx"));
 const Services = lazy(() => import("./pages/Screen2051_2267.jsx"));
-const Helpers = lazy(() => import("./pages/Screen2051_1435.jsx"));
+const Helpers = lazy(() => import("./pages/HelpersList.jsx"));
 const Profile = lazy(() => import("./pages/Screen2051_1778.original.jsx"));
 const Chats = lazy(() => import("./pages/Screen2051_2475.jsx"));
 const AllChats = lazy(() => import("./pages/Screen2051_2607.jsx"));
@@ -266,7 +266,7 @@ export default function App() {
         break;
       case "service":
         setService(c.category);
-        setFilters((v) => ({ ...v, service: c.category }));
+        setFilters({service:c.category,budget:10000,rating:0,date:""});
         navigate(location.pathname === "/services" ? "/helpers" : "/flow/requirements");
         break;
       case "category":
@@ -954,17 +954,7 @@ function HelperFilters() {
 function ResultsState({ screen }) {
   const app = useApp();
   const navigate = useNavigate();
-  if (screen === "2051:1435") {
-    const directory = [...helperDirectory, ...app.workflow.team.filter((helper) => helper.active !== false)];
-    if (!directory.some((helper) => matchesHelper(helper, app.filters))) {
-      return <div className="helper-empty" style={{ top: 176, minHeight: 0 }} role="status">
-        <h3>No helpers match these filters</h3>
-        <p>Try a higher budget or choose another service.</p>
-        <Button onClick={() => { app.setFilters({ service: "Cleaning", budget: 600, rating: 0, date: "" }); app.setService("Cleaning"); }}>Reset filters</Button>
-        <Button secondary onClick={() => navigate("/helpers/filters")}>Adjust filters</Button>
-      </div>;
-    }
-  }
+  if (screen === "2051:1435") return null;
   const products = Object.entries(catalog.products).filter(
     ([, p]) => p.screen === screen,
   );
