@@ -99,3 +99,9 @@ body,.device,.device *,.device *::before,.device *::after{font-family:var(--app-
 .screen-canvas[data-screen="2051:2267"] [data-node-id="2051:2325"],.screen-canvas[data-screen="2051:2267"] [data-node-id="2051:2349"]{font-size:11px;white-space:nowrap}
 .screen-canvas[data-screen="2051:1435"] .d703f2aa26{font-size:13px;white-space:nowrap}.screen-canvas[data-screen="2051:1435"] .defea19fa4{white-space:nowrap}
 .filter-sheet{padding-bottom:0;scrollbar-width:none}.filter-sheet::-webkit-scrollbar{display:none}
+/* Store hero: clear headline, one action, and a full-size product visual. */
+.store-banner{position:relative;min-height:190px;padding:23px 19px;gap:0;border-radius:32px;background:#f8dfc9;overflow:hidden;isolation:isolate}
+.store-banner>div{position:relative;z-index:1;flex:none;width:68%;min-width:0}
+.store-banner h1{font-size:27px;line-height:1.06;font-weight:800;letter-spacing:-.75px;margin:0 0 14px;color:#002027}
+.store-banner button{min-height:40px;margin:0;padding:10px 19px;border-radius:24px;background:#003744;color:white;font-size:11px;font-weight:800}
+.store-banner>img{position:absolute;right:0;bottom:8px;width:148px;height:172px;object-fit:contain;flex:none;z-index:0}
