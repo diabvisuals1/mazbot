@@ -45,3 +45,13 @@
 .helpers-live>header{display:flex;align-items:center;gap:8px;margin-bottom:18px}.helpers-live h2{font-size:21px;flex:1}.helpers-live>header>span{font-size:11px}.helpers-live>header>button{border:1px solid #003744;border-radius:20px;padding:8px 12px;font-size:12px}
 .helpers-live-list{display:grid;gap:14px}.helper-live-card{position:relative;display:flex;gap:12px;padding:14px 12px;background:#f8dfc9;border-radius:26px;min-height:156px}.helper-live-card:nth-child(even){background:#addedb}.helper-live-photo{width:80px;height:96px;object-fit:cover;border-radius:22px;align-self:center}.helper-live-card>div{flex:1;min-width:0}.helper-live-card h3{font-size:16px;padding-right:20px}.helper-live-card p{font-size:11px;margin:4px 0 8px}.helper-live-card strong{font-size:14px}.helper-live-card small{font-size:10px;font-weight:400}.helper-live-rating{display:block;font-size:11px;margin-top:5px}.helper-live-profile{display:block;font-size:12px;font-weight:700;margin-top:8px}.helper-live-save{position:absolute;right:10px;top:8px;font-size:24px;width:32px;height:36px}.helpers-live-empty{padding:30px 10px;text-align:center}.helpers-live-empty p{font-size:13px;margin:12px 0}
 .phone-frame .screen-canvas:has(.helpers-live)~.helper-empty{display:none}
+/* Store filter rises as one curved sheet; keep it mounted through dismissal. */
+.device .store-sheet-backdrop{animation:store-filter-dim-in 420ms ease both;z-index:100}
+.device .store-sheet-backdrop .store-filter-sheet{animation:store-filter-rise 420ms cubic-bezier(.4,0,.2,1) both;will-change:transform;transform-origin:bottom center;border-radius:32px 32px 0 0;max-height:calc(100% - 44px);padding-bottom:35px}
+.device .store-sheet-backdrop.is-closing{animation:store-filter-dim-out 340ms ease both;pointer-events:none}
+.device .store-sheet-backdrop.is-closing .store-filter-sheet{animation:store-filter-fall 340ms cubic-bezier(.4,0,.2,1) both}
+@keyframes store-filter-rise{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes store-filter-fall{from{transform:translateY(0)}to{transform:translateY(100%)}}
+@keyframes store-filter-dim-in{from{background:#00202700}to{background:#00202785}}
+@keyframes store-filter-dim-out{from{background:#00202785}to{background:#00202700}}
+@media(prefers-reduced-motion:reduce){.device .store-sheet-backdrop,.device .store-sheet-backdrop .store-filter-sheet,.device .store-sheet-backdrop.is-closing,.device .store-sheet-backdrop.is-closing .store-filter-sheet{animation-duration:1ms}}

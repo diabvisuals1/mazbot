@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
-export default function Dialog({ title, onClose, children, wide = false }) {
+export default function Dialog({ title, onClose, children, wide = false, sheet = false, closing = false, onExited }) {
   const ref = useRef(null);
   const reduced = useReducedMotion();
   useEffect(() => {
@@ -39,9 +39,9 @@ export default function Dialog({ title, onClose, children, wide = false }) {
   }, [onClose]);
   return (
     <motion.div
-      className="dialog-backdrop"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      className={"dialog-backdrop" + (sheet ? " store-sheet-backdrop" + (closing ? " is-closing" : "") : "")}
+      initial={sheet ? false : { opacity: 0 }}
+      animate={sheet ? undefined : { opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: reduced ? 0 : .16 }}
       onClick={onClose}
@@ -52,9 +52,10 @@ export default function Dialog({ title, onClose, children, wide = false }) {
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className={"dialog " + (wide ? "viewer-dialog" : "")}
-        initial={reduced ? false : { y: 24, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        className={"dialog " + (wide ? "viewer-dialog" : "") + (sheet ? " store-filter-sheet" : "")}
+        initial={sheet || reduced ? false : { y: 24, opacity: 0 }}
+        animate={sheet ? undefined : { y: 0, opacity: 1 }}
+        onAnimationEnd={e => { if (sheet && closing && e.target === e.currentTarget) onExited?.(); }}
         exit={{ y: reduced ? 0 : 16, opacity: 0, transition: { duration: reduced ? 0 : .14 } }}
         transition={{ duration: reduced ? 0 : .24, ease: [.22, 1, .36, 1] }}
         onClick={(e) => e.stopPropagation()}
