@@ -1,21 +1,24 @@
 import React from "react";
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
-export default function Dialog({ title, onClose, children, wide = false, sheet = false, closing = false, onExited }) {
+export default function Dialog({ title, onClose, children, wide = false, sheet = false, closing = false, onExited, active = true }) {
   const ref = useRef(null);
+  const closeRef = useRef(onClose);
+  closeRef.current = onClose;
   const reduced = useReducedMotion();
   const Backdrop = sheet ? "div" : motion.div;
   const Panel = sheet ? "section" : motion.section;
   useEffect(() => {
+    if (!active) return;
     const prior = document.activeElement;
     const dialog = ref.current;
     dialog.focus({preventScroll:true});
     const key = (e) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") { e.preventDefault(); closeRef.current(); }
       if (e.key === "Tab") {
         const els = [
           ...dialog.querySelectorAll("button,input,select,textarea,a[href]"),
-        ].filter((e) => !e.disabled);
+        ].filter((e) => !e.disabled && !e.closest('[inert]') && !e.hidden);
         if (!els.length) {
           e.preventDefault();
           return;
@@ -38,7 +41,7 @@ export default function Dialog({ title, onClose, children, wide = false, sheet =
       document.removeEventListener("keydown", key);
       prior?.focus({preventScroll:true});
     };
-  }, [onClose]);
+  }, [active]);
   return (
     <Backdrop
       className={"dialog-backdrop" + (sheet ? " store-sheet-backdrop" + (closing ? " is-closing" : "") : "")}
