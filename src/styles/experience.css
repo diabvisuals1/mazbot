@@ -63,6 +63,53 @@
 .hp-title button{position:relative;min-width:32px;min-height:44px}
 .hp-title button::before{content:'';position:absolute;inset:0 -6px}
 
+/* The featured helper portrait uses a circular, clipped frame. */
+[data-node-id="2051:2292"]{
+  border-radius:50%;
+  box-shadow:0 0 0 3px #f3ebde,0 5px 14px #0020272b;
+}
+[data-node-id="2051:2292"] [data-name="image 118"],
+[data-node-id="2051:2292"] [data-name="image 142"],
+[data-node-id="2051:2292"] img{border-radius:50%}
+
+/* Keep the watering can recognisable and proportional, with its spray below the rose. */
+[data-node-id="2051:2426"] [data-node-id="2051:2427"]{z-index:3}
+[data-node-id="2051:2426"] [data-node-id="2051:2428"],
+[data-node-id="2051:2426"] [data-node-id="2051:2429"]{z-index:2}
+[data-node-id="2051:2426"] .gardener-art{
+  position:absolute;
+  left:0;
+  top:-31px;
+  width:131px;
+  height:136px;
+  z-index:1;
+  pointer-events:none;
+}
+[data-node-id="2051:2426"] .gardener-can{
+  position:absolute;
+  left:13px;
+  top:0;
+  width:96px;
+  height:117px;
+  object-fit:contain;
+  filter:drop-shadow(0 4px 5px #00202724);
+}
+[data-node-id="2051:2426"] .gardener-drops{
+  position:absolute;
+  left:105px;
+  top:88px;
+  width:10px;
+  height:45px;
+  transform:rotate(-7deg);
+  opacity:.94;
+}
+[data-node-id="2051:2426"] .gardener-drops img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
 /* Small, compositor-friendly entrances for the helper discovery flow. */
 @keyframes helper-card-arrive{from{opacity:0;scale:.985}to{opacity:1;scale:1}}
 [data-node-id="2051:2267"] [data-node-id="2051:2273"],

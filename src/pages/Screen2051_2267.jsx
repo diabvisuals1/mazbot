@@ -1216,42 +1216,23 @@ export default function CategoriesHomeOwner() {
             <img alt="" className="d8faf267d3" src={imgVector4} />
           </div>
           <div
-            className="de1090c250"
+            className="gardener-art"
             data-node-id="2051:2430"
             {...bind("2051:2430")}
-            style={{ containerType: "size" }}
+            aria-hidden="true"
           >
-            <div
-              className="d5feca8450"
+            <img
+              className="gardener-can"
               data-node-id="2051:2431"
-              {...bind("2051:2431")}
-              style={{ containerType: "size" }}
-            >
-              <div className="d26ab09b0b">
-                <div className="d642c36f86" data-name="image 124">
-                  <div className="dfb97e384f">
-                    <img
-                      alt=""
-                      className="d1c57ddb43"
-                      src={imgImage124}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+              src={imgImage124}
+              alt=""
+            />
             <div
-              className="dac458dbf3"
+              className="gardener-drops"
               data-node-id="2051:2432"
               {...bind("2051:2432")}
-              style={{ containerType: "size" }}
             >
-              <div className="d1fe0f8394">
-                <div className="d642c36f86">
-                  <div className="d3bfde7bd9">
-                    <img alt="" className="dacc3667e9" src={imgGroup175} />
-                  </div>
-                </div>
-              </div>
+              <img src={imgGroup175} alt="" />
             </div>
           </div>
         </div>
