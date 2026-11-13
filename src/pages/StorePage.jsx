@@ -1,4 +1,4 @@
-import React,{useState,useCallback} from 'react';
+import React,{useState,useCallback,useEffect} from 'react';
 import {createPortal} from 'react-dom';
 import {useNavigate,useSearchParams} from 'react-router-dom';
 import {useApp} from '../context/ScreenContext.jsx';
@@ -11,6 +11,7 @@ export default function StorePage(){
  const [params]=useSearchParams();
  const app=useApp(),go=useNavigate(),[filters,setFilters]=useState(()=>({...defaults,category:categories.some(([name])=>name===params.get('category'))?params.get('category'):'All'})),[draft,setDraft]=useState(defaults),[open,setOpen]=useState(false);
  const [closing,setClosing]=useState(false);
+ useEffect(()=>{if(!closing)return;const timer=setTimeout(()=>{setOpen(false);setClosing(false)},380);return()=>clearTimeout(timer)},[closing]);
  const closeFilter=useCallback(()=>setClosing(true),[]);
  const saved=p=>app.saved.includes(p.id)||Object.entries(catalog.products).some(([id,q])=>q.key===p.key&&app.saved.includes(id));
  const match=f=>products.filter(p=>(f.category==='All'||p.category===f.category)&&(!f.saved||saved(p))&&(f.min===''||p.price>=Number(f.min))&&(f.max===''||p.price<=Number(f.max))&&p.name.toLowerCase().includes(app.query.toLowerCase()));
