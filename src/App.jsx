@@ -256,7 +256,7 @@ export default function App() {
         .filter((p) => p.quantity > 0),
     );
   }
-  function act(c, id, fromExpandedChatList = false) {
+  function act(c, id) {
     switch (c.action) {
       case "navigate":
         navigate(c.path);
@@ -349,10 +349,6 @@ export default function App() {
         break;
       case "chat":
         if (c.label === "Ask AI") { navigate("/flow/assistant"); break; }
-        if (!fromExpandedChatList && location.pathname === "/chats" && ["2051:2486", "2051:2505", "2051:2524", "2051:2543"].includes(id)) {
-          setChatListExpanded(true);
-          break;
-        }
         if (c.person) {
           const personName = helperDirectory.find((helper) => helper.name.toLowerCase() === c.person.toLowerCase())?.name || c.person;
           const helper = helperDirectory.find((entry) => entry.name.toLowerCase() === personName.toLowerCase());
@@ -566,7 +562,7 @@ export default function App() {
             </motion.div>
           </AnimatePresence>
         </div>
-        <AnimatePresence>{chatListExpanded && <ChatExpandedSheet app={app} onClose={()=>setChatListExpanded(false)} />}</AnimatePresence>
+        {location.pathname === "/chats" && <ChatExpandedSheet app={app} expanded={chatListExpanded} onExpandedChange={setChatListExpanded} />}
         {!isFilters && ![...authPaths,"/complete-profile","/roles"].includes(location.pathname) && <Navigation />}
         <AnimatePresence>{isFilters && <FilterSheet key="helper-filters" />}</AnimatePresence>
         <AnimatePresence>
@@ -910,19 +906,7 @@ function Enhancements({ screen }) {
         )}
       </>
     );
-  if (screen === "2051:2475")
-    return (
-      <motion.button
-        drag="y"
-        dragConstraints={{ top: 0, bottom: 0 }}
-        onDragEnd={(_, info) => {
-          if (Math.abs(info.offset.y) > 20) app.setChatListExpanded(true);
-        }}
-        className="chat-list-handle"
-        aria-label="Show all chats"
-        onClick={() => app.setChatListExpanded(true)}
-      />
-    );
+  if (screen === "2051:2475") return null;
   if (screen === "2051:2607")
     return (
       <motion.button

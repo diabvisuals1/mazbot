@@ -46,7 +46,32 @@
   backface-visibility: hidden;
   will-change: transform;
   transform: translateZ(0);
+  background: #fff;
+  box-shadow: none;
 }
+.screen-canvas[data-screen="2051:2475"] { background-color: #fff; }
+.screen-canvas[data-screen="2051:2475"] .d0218f7938 { background-color: #fff; }
+.chat-sheet-handle {
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.chat-sheet-handle:active { cursor: grabbing; }
+.chat-sheet-handle:focus-visible { outline: 2px solid #86b9ad; outline-offset: -2px; }
+.chat-sheet-handle > span { width: 76px; height: 5px; border-radius: 99px; background: #003744; }
+.chat-sheet-search { margin: 0 16px 10px; }
 .chat-sheet-list {
   contain: layout paint;
   overscroll-behavior: contain;
