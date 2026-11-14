@@ -40,7 +40,7 @@ const AccountProfile = lazy(() => import('./pages/AccountProfile.jsx'));
 const AuthPages = lazy(() => import("./pages/AuthPages.jsx"));
 const authPaths = ["/start","/onboarding","/onboarding/2","/onboarding/3","/auth","/signup","/forgot-password","/verify"];
 const FlowPages = lazy(() => import("./pages/FlowPages.jsx"));
-import { initialWorkflow, helperDirectory, roleHomes, matchesHelper } from "./data/workflow.js";
+import { initialWorkflow, helperDirectory, roleHomes, matchesHelper, uid } from "./data/workflow.js";
 const Home = lazy(() => import("./pages/Screen2051_1878.jsx"));
 const Services = lazy(() => import("./pages/Screen2051_2267.jsx"));
 const Helpers = lazy(() => import("./pages/HelpersList.jsx"));
@@ -54,7 +54,7 @@ const Equipment = lazy(() => import("./pages/Screen2051_3069.jsx"));
 const Product = lazy(() => import("./pages/ProductPage.jsx"));
 const Monitoring = lazy(() => import("./pages/MonitoringPage.jsx"));
 const AssistantChat = lazy(() => import("./pages/AssistantChat.jsx"));
-const Tracking = FlowPages;
+const Tracking = lazy(() => import('./pages/TrackingPage.jsx'));
 const Cameras = lazy(() => import("./pages/CamerasPage.jsx"));
 function usePersistent(key, initial) {
   const [value, setValue] = useState(() => {
@@ -82,7 +82,6 @@ const screens = [
   ["/store/mobility", "2051:2892", 1254, Mobility],
   ["/store/monitoring", "2051:3069", 1254, Equipment],
   ["/store/product", "2051:3241", 1254, Product],
-  ["/monitoring/tracking", "2051:2106", 810, Tracking],
 ];
 const defaultProduct = {
   key: "Monitoring Camera",
@@ -217,6 +216,7 @@ export default function App() {
         ? "Chats"
         : location.pathname === '/flow/assistant' ? 'Mazbot AI'
         : location.pathname === '/monitoring' ? 'Monitoring'
+        : location.pathname === '/monitoring/tracking' ? 'Service tracking'
         : location.pathname === '/monitoring/cameras' || location.pathname === '/flow/devices' || location.pathname.startsWith('/flow/device/') ? 'Your cameras'
         : screens
             .find((s) => s[0] === location.pathname)?.[0]
@@ -354,7 +354,9 @@ export default function App() {
         if (c.person) {
           const personName = helperDirectory.find((helper) => helper.name.toLowerCase() === c.person.toLowerCase())?.name || c.person;
           const helper = helperDirectory.find((entry) => entry.name.toLowerCase() === personName.toLowerCase());
-          const relatedBooking = [...bookings].reverse().find((booking) => booking.helper?.toLowerCase() === personName.toLowerCase());
+          const relatedBooking = c.bookingId != null
+            ? bookings.find(booking => String(booking.id) === String(c.bookingId) && booking.helper?.toLowerCase() === personName.toLowerCase())
+            : [...bookings].reverse().find((booking) => booking.helper?.toLowerCase() === personName.toLowerCase());
           setPerson(personName);
           if (helper?.image) setHelperImage(helper.image);
           setWorkflow((current) => ({ ...current, selectedBooking: relatedBooking?.id || null }));
@@ -537,6 +539,7 @@ export default function App() {
                   {["/complete-profile","/roles","/flow/*","/helper/*","/company/*","/checkout","/orders","/orders/:id"].map(path=><Route key={path} path={path} element={<FlowPages/>}/>)}
                   <Route path="/account" element={<AccountProfile />} />
                   <Route path="/monitoring" element={<Monitoring />} />
+                  <Route path="/monitoring/tracking" element={<Tracking />} />
                   <Route path="/monitoring/cameras" element={<Cameras />} />
                   <Route path="/flow/devices" element={<Cameras />} />
                   <Route path="/flow/device/:id" element={<Cameras />} />
@@ -755,7 +758,13 @@ function ModalContent({ modal, app, close }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          if (issue.trim()) setSubmitted(true);
+          if (issue.trim() && !submitted) {
+            app.setWorkflow(current => ({...current, reports:[...(current.reports || []), {
+              id: uid(), text: issue.trim(), status: 'Open',
+              bookingId: current.selectedBooking, helper: app.person, createdAt: new Date().toISOString(),
+            }]}));
+            setSubmitted(true);
+          }
         }}
       >
         <label className="field">

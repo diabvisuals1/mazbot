@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useApp } from '../context/ScreenContext.jsx';
 import Dialog from '../components/Dialog.jsx';
+import { getMonitoringVisit } from '../data/monitoring.js';
 import '../styles/monitoring.css';
 
 function Icon({ name = 'arrow', ...props }) {
@@ -13,6 +14,7 @@ function Icon({ name = 'arrow', ...props }) {
 const positions = { living: [76, 43], kitchen: [28, 64], bedroom: [42, 26], entrance: [17, 45] };
 export default function MonitoringPage() {
   const app = useApp(), go = useNavigate(), reduced = useReducedMotion();
+  const visit = getMonitoringVisit(app);
   const devices = app.workflow.devices || [], online = devices.filter(d => d.online).length;
   const [selected, setSelected] = useState(null), [closing, setClosing] = useState(false), [activityOpen, setActivityOpen] = useState(false);
   const closeTimer = useRef();
@@ -23,7 +25,7 @@ export default function MonitoringPage() {
   const show = (room, helper = false) => { clearTimeout(closeTimer.current); setClosing(false); setSelected({ room, helper }); };
   const openRoom = () => go('/monitoring/cameras?room=' + camera.id);
   const ask = () => go('/flow/assistant', { state: { prompt: selected?.helper ? 'What is my helper doing?' : `Tell me about the ${camera.name} camera.` } });
-  const chat = () => app.act({ action: 'chat', person: 'Souad Ibrahim' });
+  const chat = () => app.act({ action: 'chat', person: visit.helperName, bookingId: visit.bookingId });
   return <main className="monitor-home">
     <section className="monitor-map" aria-label="Interactive home map">
       <div className="monitor-map-title"><div><span className="monitor-eyebrow">A LITTLE CLOSER TO HOME</span><h2>{app.profile.name || 'Your'}’s home</h2></div><span className="monitor-demo">Demo home</span></div>
@@ -40,14 +42,21 @@ export default function MonitoringPage() {
       <motion.button whileTap={reduced ? undefined : { scale: .97 }} className="monitor-ai-card" onClick={() => go('/flow/assistant')}>
         <span className="monitor-eyebrow">YOUR HOME, EXPLAINED</span><img src="/assets/05d09.png" alt="Mazbot assistant"/><span className="monitor-ai-cta">Ask AI <span><Icon name="arrow"/></span></span>
       </motion.button>
-      <section className="monitor-helper-card"><div className="monitor-helper-heading"><span className="monitor-eyebrow">HELPER ACTIVITY</span><span className="monitor-sample">Sample visit</span></div><div className="monitor-helper-identity"><img src="/assets/e91be.png" alt="Souad Ibrahim"/><div><h3>Souad Ibrahim</h3><p>Living Room</p></div></div><strong>Tidying up the<br/>living room</strong><button onClick={() => show('living', true)}>View activity <Icon name="arrow"/></button></section>
+      <section className="monitor-helper-card" aria-label={`${visit.service} visit with ${visit.helperName}`}>
+        <h3 className="monitor-service-title" style={visit.service.length > 12 ? {fontSize:18} : undefined}>{visit.service}</h3>
+        <span className="monitor-visit-status"><i/>{visit.status}</span>
+        <p className="monitor-visit-time">{visit.startLabel} –<br/>{visit.endLabel}</p>
+        <img className="monitor-visit-avatar" src={visit.image} alt={visit.helperName}/>
+        <motion.button whileTap={reduced ? undefined : {scale:.95}} className="monitor-track-button" onClick={() => go('/monitoring/tracking')} aria-label={`Track ${visit.helperName}'s visit`}><img src="/assets/dfcf3.png" alt=""/><span>Track</span></motion.button>
+        <div className="monitor-visit-actions"><motion.button whileTap={reduced ? undefined : {scale:.94}} onClick={() => {app.setPerson(visit.helperName);app.setModal('call')}} aria-label={`Call ${visit.helperName}`}><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.5 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-2.5a1 1 0 0 0-.7-1l-3.5-1a1 1 0 0 0-1 .3l-1.5 1.5a15 15 0 0 1-7.6-7.6L8.2 8a1 1 0 0 0 .3-1l-1-3.3a1 1 0 0 0-1-.7Z"/></svg><span>Call</span></motion.button><motion.button whileTap={reduced ? undefined : {scale:.94}} onClick={chat} aria-label={`Chat with ${visit.helperName}`}><Icon name="chat"/><span>Chat</span></motion.button></div>
+      </section>
     </div>
 
     <motion.button whileTap={reduced ? undefined : { scale: .98 }} className="monitor-cameras-card" onClick={() => go('/monitoring/cameras')}>
       <div><span className="monitor-eyebrow">YOUR EYES AT HOME</span><h2>{online} cameras<br/>online<span className="monitor-online-dot"/></h2><p>{devices.length - online ? `${devices.length - online} needs attention` : 'All cameras connected'}</p><span className="monitor-camera-cta">View cameras <Icon name="arrow"/></span></div><img src="/assets/9d2af.png" alt=""/>
     </motion.button>
 
-    <section className="monitor-activity-card"><button className="monitor-activity-toggle" aria-expanded={activityOpen} aria-controls="monitor-activity-log" onClick={() => setActivityOpen(v => !v)}><span className="monitor-activity-icon"><Icon name="clock"/></span><span><strong>Home activity</strong><small>Your visit, at a glance</small></span><span className={'monitor-activity-chevron ' + (activityOpen ? 'is-open' : '')}><Icon name="arrow"/></span></button><AnimatePresence initial={false}>{activityOpen && <motion.div id="monitor-activity-log" initial={{height:0,opacity:0}} animate={{height:'auto',opacity:1}} exit={{height:0,opacity:0}} transition={{duration:reduced?0:.22}} style={{overflow:'hidden'}}><ol className="monitor-timeline"><li><time>10:05</time><span><strong>Souad arrived</strong><small>Ready for today’s visit</small></span></li><li><time>10:12</time><span><strong>Kitchen complete</strong><small>Surfaces and counters tidied</small></span></li><li><time>10:30</time><span><strong>Living room in progress</strong><small>Tidying and dusting</small></span></li></ol><button className="monitor-chat-action" onClick={chat}><Icon name="chat"/>Message Souad<Icon name="arrow"/></button><p className="monitor-log-note">Sample activity · not a live tracking feed</p></motion.div>}</AnimatePresence></section>
+    <section className="monitor-activity-card"><button className="monitor-activity-toggle" aria-expanded={activityOpen} aria-controls="monitor-activity-log" onClick={() => setActivityOpen(v => !v)}><span className="monitor-activity-icon"><Icon name="clock"/></span><span><strong>Home activity</strong><small>Your visit, at a glance</small></span><span className={'monitor-activity-chevron ' + (activityOpen ? 'is-open' : '')}><Icon name="arrow"/></span></button><AnimatePresence initial={false}>{activityOpen && <motion.div id="monitor-activity-log" initial={{height:0,opacity:0}} animate={{height:'auto',opacity:1}} exit={{height:0,opacity:0}} transition={{duration:reduced?0:.22}} style={{overflow:'hidden'}}>{visit.isDemo ? <ol className="monitor-timeline"><li><time>10:05</time><span><strong>Souad arrived</strong><small>Ready for today’s visit</small></span></li><li><time>10:12</time><span><strong>Kitchen complete</strong><small>Surfaces and counters tidied</small></span></li><li><time>10:30</time><span><strong>Living room in progress</strong><small>Tidying and dusting</small></span></li></ol> : <div className="monitor-saved-activity"><strong>{visit.service} &middot; {visit.status}</strong><p>{visit.activity}</p><button onClick={() => go("/monitoring/tracking")}>View visit progress <Icon name="arrow"/></button></div>}<button className="monitor-chat-action" onClick={chat}><Icon name="chat"/>Message {visit.helperName}<Icon name="arrow"/></button><p className="monitor-log-note">{visit.isDemo ? "Sample activity - not a live tracking feed" : "Saved booking update - not live tracking"}</p></motion.div>}</AnimatePresence></section>
 
     {selected && camera && createPortal(<div className="monitor-room-sheet"><Dialog title={selected.helper ? 'Helper activity' : camera.name} sheet closing={closing} onClose={close} onExited={finishClose}>
       <div className={'monitor-room-state ' + (camera.online ? '' : 'is-offline')}><Icon name="wifi"/><div><strong>{camera.online ? 'Camera connected' : 'Camera offline'}</strong><p>{camera.online ? 'Available in this demo home' : 'Check power and Wi-Fi to reconnect'}</p></div><span className="monitor-state-dot"/></div>
