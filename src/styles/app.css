@@ -213,7 +213,7 @@ a:focus-visible {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: var(--cream);
+  background: #fff;
 }
 .home-indicator {
   position: absolute;
