@@ -45,7 +45,7 @@ export function Booking() {
   };
   return (
     <>
-      <Header title={done ? "Request sent" : "Book a helper"} />
+      <Header title={done ? "Request saved" : "Book a helper"} />
       <main className="new-content">
         {done ? (
           <motion.div
@@ -60,10 +60,6 @@ export function Booking() {
             </p>
             <p>
               {form.date} at {form.time}
-            </p>
-            <p className="demo-note">
-              Saved on this device as a demo request. No booking or payment was
-              sent.
             </p>
             <Button onClick={() => navigate("/schedule")}>View schedule</Button>
             <Button secondary onClick={() => navigate("/")}>
@@ -114,9 +110,6 @@ export function Booking() {
                 placeholder="Optional instructions"
               />
             </label>
-            <p className="demo-note">
-              Demo request only. No payment is collected.
-            </p>
             <Button type="submit">Request booking</Button>
           </form>
         )}
@@ -137,7 +130,7 @@ export function Schedule() {
           <div>
             <h3>Cleaning</h3>
             <p>Today · 10:05 AM – 11:30 AM</p>
-            <span className="pill">In progress · Demo</span>
+            <span className="pill">In progress</span>
           </div>
           <Button onClick={() => navigate("/monitoring/tracking")}>
             Track service
@@ -159,7 +152,7 @@ export function Schedule() {
                   {b.date} · {b.time}
                 </p>
                 <p>{b.address}</p>
-                <span className="pill">{b.status} · Demo</span>
+                <span className="pill">{b.status}</span>
               </div>
               <Button
                 secondary
@@ -213,17 +206,14 @@ export function Account() {
             }}
           />
           <Button type="submit">Save profile</Button>
-          {saved && <p role="status">Profile saved on this device.</p>}
+          {saved && <p role="status">Profile saved.</p>}
         </form>
         <h3>Saved items</h3>
-        <p>{app.saved.length} favorites saved on this device.</p>
+        <p>{app.saved.length} favorites saved.</p>
         <Button secondary onClick={() => app.setModal("favorites")}>
           View favorites
         </Button>
-        <div className="account-links">{[['Switch persona','/roles','helper'],['Account details','/complete-profile','profile'],['Order history','/orders','order'],['Support','/flow/support','support']].map(([label,to,context])=><button key={to} onClick={()=>navigate(to)}><BrandVisual context={context}/><span>{label}</span><BrandIcon name="chevron"/></button>)}</div>
-        <p className="demo-note">
-          MAZBOT local demo. Your preferences stay in your browser.
-        </p>
+        <div className="account-links">{[['Switch account type','/roles','helper'],['Account details','/complete-profile','profile'],['Order history','/orders','order'],['Support','/flow/support','support']].map(([label,to,context])=><button key={to} onClick={()=>navigate(to)}><BrandVisual context={context}/><span>{label}</span><BrandIcon name="chevron"/></button>)}</div>
       </main>
     </>
   );
@@ -253,7 +243,7 @@ export function Conversation() {
   };
   return (
     <>
-      <Header title={recipient} subtitle="Local conversation" />
+      <Header title={recipient} subtitle="Conversation" />
       <main className="conversation">
         <div className="chat-intro">
           <img src={app.helperImage} alt="" />
@@ -275,13 +265,10 @@ export function Conversation() {
               {m.text}
             </motion.p>
           ))}
-          {messages.length>0&&<p className="message-saved">Saved on this device</p>}
+          {messages.length>0&&<p className="message-saved">Saved</p>}
         </div>
         {showLatest&&<motion.button className="chat-jump-latest" initial={{opacity:0,scale:.8}} animate={{opacity:1,scale:1}} aria-label="Jump to latest message" onClick={()=>{stickToBottom.current=true;setShowLatest(false);list.current?.scrollTo({top:list.current.scrollHeight,behavior:reduced?'auto':'smooth'})}}>↓</motion.button>}
         {!messages.length&&<div className="chat-suggestions">{["Are you available this week?","What services do you offer?","Can we discuss the booking?"].map(t=><button key={t} onClick={()=>{setText(t);composer.current?.focus()}}>{t}</button>)}</div>}
-        <p className="demo-note">
-          Messages are stored locally and are not sent to a real helper.
-        </p>
         <form className="composer" onSubmit={send}>
           <input
             ref={composer}
@@ -312,8 +299,8 @@ export function Cart() {
       <main className="new-content">
         {done ? (
           <div className="success-card">
-            <h2>Demo order saved</h2>
-            <p>No order or payment was sent.</p>
+            <h2>Order details saved</h2>
+
             <Button onClick={() => navigate("/store")}>Back to store</Button>
           </div>
         ) : (
@@ -370,9 +357,6 @@ export function Cart() {
                   <strong>Total</strong>
                   <strong><AnimatedNumber prefix="EGP " value={total}/></strong>
                 </div>
-                <p className="demo-note">
-                  Demo checkout only. No payment is collected.
-                </p>
                 <Button
                   onClick={() => navigate('/checkout')}
                 >
@@ -392,5 +376,5 @@ export function CategoryPage({ name }) {
  const items=name==='Nursing supplies'
  ? [{key:'Blood pressure monitor',name:'Blood pressure monitor',price:300,image:'/assets/8edef.png',description:'Monitor blood pressure at home'}]
  : [{key:'Cleaning spray bottle',name:'Cleaning spray bottle',price:150,image:'/assets/4d9d1.png',description:'A refillable spray bottle for everyday home cleaning'}];
- return <><Header title={name}/><main className="new-content"><h2>{name}</h2><p className="demo-note">Sample catalog for the local preview.</p>{items.map(item=><article className="category-product" key={item.key}><img src={item.image} alt={item.name}/><h3>{item.name}</h3><p>EGP {item.price}</p><Button onClick={()=>{app.setProduct(item);app.setQuantity(1);app.setAddons([]);navigate('/store/product');}}>View product</Button></article>)}<Button secondary onClick={()=>navigate('/store')}>Back to store</Button></main></>;
+ return <><Header title={name}/><main className="new-content"><h2>{name}</h2>{items.map(item=><article className="category-product" key={item.key}><img src={item.image} alt={item.name}/><h3>{item.name}</h3><p>EGP {item.price}</p><Button onClick={()=>{app.setProduct(item);app.setQuantity(1);app.setAddons([]);navigate('/store/product');}}>View product</Button></article>)}<Button secondary onClick={()=>navigate('/store')}>Back to store</Button></main></>;
 }

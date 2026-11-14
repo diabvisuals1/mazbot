@@ -42,7 +42,7 @@ export default function TrackingPage() {
     </section>
 
     <section className="tracking-progress-card" aria-label="Service progress">
-      <div className="tracking-progress-heading"><h2>Service Progress</h2><span>{visit.sourceLabel}</span></div>
+      <div className="tracking-progress-heading"><h2>Service Progress</h2></div>
       <div className="tracking-progress-body">
         <ol className="tracking-timeline">{steps.map((label, i) => <li key={label} className={i < visit.progressIndex ? 'is-done' : i === visit.progressIndex ? 'is-current' : 'is-upcoming'} aria-current={i === visit.progressIndex ? 'step' : undefined}><span className="tracking-step-dot">{i < visit.progressIndex || (i === 4 && visit.progressIndex === 4) ? <Icon name="check"/> : i === visit.progressIndex ? <span/> : null}</span><span>{label}</span></li>)}</ol>
         <motion.button className="tracking-room-vignette" whileTap={tap} aria-label="Explore the living room in 360 degrees" onClick={() => go('/monitoring/cameras?room=' + visit.roomId)}><img src="/assets/15e62.png" alt="3D living room with an orange sofa, plant and floor lamp"/><span>Explore room <Icon name="arrow"/></span></motion.button>
@@ -50,12 +50,11 @@ export default function TrackingPage() {
     </section>
 
     <motion.button className="tracking-home-card" whileTap={tap} onClick={() => go('/monitoring/cameras?room=' + visit.roomId)}>
-      <svg className="tracking-location-pin" width="23" height="23" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/></svg><span className="tracking-home-copy"><strong>At your home</strong><span className="tracking-room-chip"><i className={roomOnline ? '' : 'is-offline'}/>{visit.isDemo ? `${visit.roomName} ${roomOnline ? 'active' : 'offline'}` : 'Explore your room design'}<Icon name="arrow"/></span></span><img src="/assets/948ba.png" alt=""/>
+      <svg className="tracking-location-pin" width="23" height="23" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/></svg><span className="tracking-home-copy"><strong>At your home</strong><span className="tracking-room-chip"><i className={roomOnline ? '' : 'is-offline'}/>{visit.isDemo ? `${visit.roomName} ${roomOnline ? 'active' : 'offline'}` : 'Explore your room'}<Icon name="arrow"/></span></span><img src="/assets/948ba.png" alt=""/>
     </motion.button>
 
     <section className="tracking-actions" aria-label="Contact your helper"><motion.button whileTap={tap} onClick={chat}><Icon name="chat"/><span>Chat</span></motion.button><motion.button whileTap={tap} onClick={() => showModal('call')}><Icon name="call"/><span>Call</span></motion.button><motion.button whileTap={tap} onClick={() => showModal('issue')}><Icon name="issue"/><span>Report issue</span></motion.button></section>
 
     <motion.button className="tracking-ai-card" whileTap={tap} onClick={ask} aria-label="Ask Mazbot about this visit"><img src="/assets/05d09.png" alt=""/><span className="tracking-insight-copy"><span><Icon name="clock"/>{visit.isDemo ? `Cleaner arrived at ${visit.startLabel}` : `${visit.dateLabel ? visit.dateLabel + ' · ' : ''}Scheduled start: ${visit.startLabel}`}</span><span><Icon name="check"/>{visit.isDemo ? `Estimated completion: ${visit.endLabel}` : `Planned end: ${visit.endLabel}`}</span></span><Icon name="arrow"/></motion.button>
-    <p className="tracking-source-note">{visit.isDemo ? 'Sample visit · activity is simulated' : 'Saved booking · location and activity are not tracked live'}</p>
   </main>;
 }

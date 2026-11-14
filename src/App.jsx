@@ -641,8 +641,8 @@ function ModalContent({ modal, app, close }) {
   const [sound, setSound] = useState(app.workflow.cameraAlerts);
   const [zoom, setZoom] = useState(1);
   const [reset, setReset] = useState(0);
-  if(modal === "notifications") return <><p className="demo-note">Updates from your local workspace.</p>{!app.bookings.length&&!app.workflow.orders.length?<p>No booking or order updates yet.</p>:<>{app.bookings.slice(-3).reverse().map(b=><Button secondary key={b.id} onClick={()=>{close();navigate('/flow/bookings/'+b.id)}}>{b.service}: {b.status}</Button>)}{app.workflow.orders.slice(-2).reverse().map(o=><Button secondary key={o.id} onClick={()=>{close();navigate('/orders/'+o.id)}}>Order: {o.status}</Button>)}</>}<Button onClick={close}>Done</Button></>;
-  if(modal === "alerts") return <><p className="demo-note">Device status in this local preview.</p>{app.workflow.devices.filter(d=>!d.online).map(d=><Button secondary key={d.id} onClick={()=>{close();navigate('/flow/device/'+d.id)}}>{d.name}: offline</Button>)}{app.workflow.devices.every(d=>d.online)&&<p>No offline devices.</p>}<Button onClick={close}>Done</Button></>;
+  if(modal === "notifications") return <>{!app.bookings.length&&!app.workflow.orders.length?<p>No booking or order updates yet.</p>:<>{app.bookings.slice(-3).reverse().map(b=><Button secondary key={b.id} onClick={()=>{close();navigate('/flow/bookings/'+b.id)}}>{b.service}: {b.status}</Button>)}{app.workflow.orders.slice(-2).reverse().map(o=><Button secondary key={o.id} onClick={()=>{close();navigate('/orders/'+o.id)}}>Order: {o.status}</Button>)}</>}<Button onClick={close}>Done</Button></>;
+  if(modal === "alerts") return <>{app.workflow.devices.filter(d=>!d.online).map(d=><Button secondary key={d.id} onClick={()=>{close();navigate('/flow/device/'+d.id)}}>{d.name}: offline</Button>)}{app.workflow.devices.every(d=>d.online)&&<p>No offline devices.</p>}<Button onClick={close}>Done</Button></>;
   if (modal === "product-preview") return <ImageExplorer src={app.product.image} alt={app.product.name}/>;
   if (modal === "store-filters" || modal === "chat-filters")
     return (
@@ -685,7 +685,7 @@ function ModalContent({ modal, app, close }) {
             dragElastic={0.08}
             animate={{ scale: zoom }}
             src="/assets/living-room.png"
-            alt="Living room from the original MAZBOT design"
+            alt="Living room"
           />
         </div>
         <div className="viewer-controls">
@@ -713,23 +713,12 @@ function ModalContent({ modal, app, close }) {
             +
           </Button>
         </div>
-        <p className="demo-note">
-          Static design image. Drag and zoom to inspect. A compatible panorama
-          is required for a genuine 360° view; no live camera is connected.
-        </p>
-        <a
-          href="https://seed-swipe-81014304.figma.site"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Open original linked prototype ↗
-        </a>
+        <Button onClick={()=>{close();navigate('/monitoring/cameras?room=living');}}>Explore in 360°</Button>
       </>
     );
   if (modal === "settings")
     return (
       <>
-        <p>Camera preferences for this local demo.</p>
         <label className="toggle-row">
           Camera alerts
           <input
@@ -741,7 +730,7 @@ function ModalContent({ modal, app, close }) {
         <Button
           onClick={() => {
             app.setWorkflow(old=>({...old,cameraAlerts:sound}));
-            app.setToast("Camera preferences saved for this session");
+            app.setToast("Camera preferences saved");
             close();
           }}
         >
@@ -753,9 +742,7 @@ function ModalContent({ modal, app, close }) {
     return submitted ? (
       <>
         <h3>Report saved</h3>
-        <p>
-          This demo report stays on this device. No support request was sent.
-        </p>
+        <p>Your report details have been saved.</p>
         <Button onClick={close}>Done</Button>
       </>
     ) : (
@@ -781,16 +768,16 @@ function ModalContent({ modal, app, close }) {
           />
         </label>
         <Button type="submit" disabled={!issue.trim()}>
-          Save demo report
+          Save report
         </Button>
       </form>
     );
   if (modal === "reviews")
     return (
       <>
-        <p>★ 4.7 · 18 reviews in the source design</p>
+        <p>★ 4.7 · 18 ratings</p>
         <p className="empty">
-          Individual review text was not included in the design.
+          No written reviews yet.
         </p>
       </>
     );
@@ -798,20 +785,14 @@ function ModalContent({ modal, app, close }) {
     return (
       <>
         <p>Verified documents and profile</p>
-        <p className="demo-note">
-          This label comes from the prototype. No real identity verification is
-          available in this demo.
-        </p>
       </>
     );
   if (modal === "call")
     return (
       <>
         <p>Call {app.person}</p>
-        <p className="demo-note">
-          No phone number is provided in the source design.
-        </p>
-        <Button onClick={close}>Done</Button>
+        <p>Phone number unavailable. You can send a message instead.</p>
+        <Button onClick={()=>{close();navigate('/chats/conversation');}}>Open chat</Button>
       </>
     );
   if (modal === "favorites")
@@ -844,9 +825,6 @@ function ModalContent({ modal, app, close }) {
         {modal === "alerts"
           ? "All cameras are working properly."
           : "Your home is up to date."}
-      </p>
-      <p className="demo-note">
-        Demo status from the original design. No live services are connected.
       </p>
       <Button onClick={close}>Done</Button>
     </>
@@ -944,12 +922,6 @@ function Enhancements({ screen }) {
   if (screen === "2051:1435") return null;
   if (screen === "2051:2106") return null;
   if (screen === "2051:2015") return <div style={{position:'absolute',top:845,left:16,right:16}}><Button onClick={()=>navigate('/monitoring/tracking')}>Track your booking</Button><Button secondary onClick={()=>navigate('/flow/devices')}>Connected devices</Button></div>;
-  if (screen === "2051:2188")
-    return (
-      <span className="simulation-note">
-        Interactive demo · No live connection
-      </span>
-    );
   return null;
 }
 function HelperFilters() {

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import { useScreen } from "../context/ScreenContext.jsx";
 const imgImage178 = "/assets/living-room.png";
 const imgImage175 = "/assets/42188.png";
@@ -32,6 +33,7 @@ const imgRightSide = "/assets/8795a.svg";
 
 export default function MonitoringHomeCameras() {
   const { bind } = useScreen("2051:2188");
+  const navigate = useNavigate();
   return (
     <div
       className="d70d903686"
@@ -119,15 +121,16 @@ export default function MonitoringHomeCameras() {
             <img alt="" className="d8faf267d3" src={imgEllipse8} />
           </div>
         </div>
-        <a
+        <button
           className="d849a4a1b0"
-          href="https://seed-swipe-81014304.figma.site"
           data-node-id="2051:2200"
           {...bind("2051:2200")}
-          target="_blank"
+          type="button"
+          aria-label="Explore Living Room in 360 degrees"
+          onClick={() => navigate('/monitoring/cameras?room=living')}
         >
           <img alt="" className="d8faf267d3" src={imgFrame322} />
-        </a>
+        </button>
       </div>
       <div
         className="dfa68017fc"

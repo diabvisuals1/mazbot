@@ -41,10 +41,10 @@ export function getMonitoringVisit(app = {}) {
   const endLabel = time && Number.isFinite(hours) && hours > 0 && hours <= 24
     ? formatMinutes(time.minutes + Math.round(hours * 60)) : 'Not set';
   const status = booking.status || 'Requested';
-  const activity = status === 'Active' ? 'Service in progress · saved update'
-    : status === 'Trial' ? 'Trial visit · saved update'
+  const activity = status === 'Active' ? 'Service in progress'
+    : status === 'Trial' ? 'Trial visit in progress'
     : status === 'Confirmed' ? 'Visit confirmed · awaiting service update'
-    : ['Completed', 'Reviewed'].includes(status) ? 'Service completed · saved update'
+    : ['Completed', 'Reviewed'].includes(status) ? 'Service completed'
     : status === 'Issue reported' ? 'Issue reported · awaiting review'
     : `Booking ${status.toLowerCase()}`;
   const date = booking.date && /^\d{4}-\d{2}-\d{2}$/.test(booking.date) ? new Date(`${booking.date}T12:00:00`) : null;

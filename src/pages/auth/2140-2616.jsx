@@ -60,7 +60,7 @@ export default function SignupScreen({ui}) {
         <p className="auth-design-10">or offer your skills.</p>
       </div>
       <div className="auth-design-119" data-node-id="2140:2643">
-        <p className="auth-design-120">By continuning, you agree to our</p>
+        <p className="auth-design-120">By continuing, you agree to our</p>
         <p className="auth-design-121">{`Terms & Privacy Policy`}</p>
       </div>
       <p className="auth-design-122" data-node-id="2140:2644">{`Already have an account? `}</p>

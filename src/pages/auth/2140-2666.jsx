@@ -50,19 +50,19 @@ export default function PhoneVerificationScreen({ui}) {
         <p className="auth-design-45">phone number</p>
       </div>
       <div className="auth-design-142" data-node-id="2140:2691">
-        <p className="auth-design-47">We’ve sent a 6-digit code to</p>
+        <p className="auth-design-47">Verification code: 123456</p>
         <p className="auth-design-10">+20 10 3253 9836</p>
       </div>
       <div className="auth-design-143" data-node-id="2140:2692">
         <p className="auth-design-144" data-node-id="2140:2693">
-          <span className="auth-design-145">Resend code in</span>
+          <span className="auth-design-145">Show code in</span>
           <span className="auth-design-146">{` `}</span>
           <span className="auth-design-147">00:29</span>
         </p>
       </div>
       <div className="auth-design-148" data-node-id="2140:2694">
         <p className="auth-design-149" data-node-id="2140:2695">
-          Didn’t receive the code?
+          Need the code again?
         </p>
       </div>
       <div className="auth-design-150" data-node-id="2140:2696">

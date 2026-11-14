@@ -31,17 +31,17 @@ function AuthScreen({page}){
  function submit(e){
   e.preventDefault();setError('');const values=Object.fromEntries(new FormData(e.currentTarget));
   if(page==='/verify'){
-   if(digits.join('')!=='123456'){setError('Use the local preview code: 123456.');return;}
+   if(digits.join('')!=='123456'){setError('Enter verification code 123456.');return;}
    if(app.workflow.authIntent==='recover'){setDialog('reset');return;}
    patch({authenticated:true,verified:true});go('/complete-profile');return;
   }
   if(!['/auth','/signup','/forgot-password'].includes(page))return;
   const phone=values.phone.replace(/[\s()-]/g,'');if(!/^\+?\d{10,15}$/.test(phone)){setError('Enter a valid phone number (10–15 digits).');return;}
-  if(page==='/auth'){patch({phone,authenticated:true});app.setToast('Local preview login — no server authentication.');go('/roles');return;}
+  if(page==='/auth'){patch({phone,authenticated:true});app.setToast('Welcome back.');go('/roles');return;}
   if(page==='/signup')app.setProfile(p=>({...p,name:values.name.trim()}));
   patch({phone,authenticated:false,verified:false,authIntent:page==='/forgot-password'?'recover':'signup'});
-  app.setToast('Local preview code: 123456 — no SMS is sent.');go('/verify');
+  app.setToast('Verification code: 123456');go('/verify');
  }
- const ui={page,root:`2140:${id}`,phone:app.workflow.phone,go,submit,showPassword,togglePassword:()=>setShowPassword(s=>!s),digits,changeDigit,keyDigit,pasteCode,seconds,setDialog,resend:()=>{setSeconds(29);app.setToast('Local preview code: 123456 — no SMS is sent.');}};
- return <main className="auth-page" ref={host} onPointerDown={swipeStart} onPointerUp={swipeEnd} onPointerCancel={()=>{swipe.current=null}}>{page.startsWith('/onboarding')?Screen({ui}):<Screen ui={ui}/>}{error&&<div className="auth-error" role="alert"><span>{error}</span><button onClick={()=>setError('')} aria-label="Dismiss error">×</button></div>}{dialog&&<div className="auth-dialog-backdrop"><section className="auth-dialog" role="dialog" aria-modal="true" aria-label={dialog==='reset'?'Reset password':'Terms and privacy'}><button className="auth-dialog-close" onClick={()=>setDialog('')} aria-label="Close">×</button>{dialog==='terms'?<><h2>Terms & Privacy Policy</h2><p>This is a local interactive prototype. Your preview profile stays in this browser. Production terms and privacy policy are not available yet.</p><button className="auth-dialog-action" onClick={()=>setDialog('')}>Back to sign up</button></>:<form onSubmit={e=>{e.preventDefault();patch({authIntent:null,verified:true});app.setToast('Preview reset complete. No real account password was changed.');go('/auth');}}><h2>Choose a new password</h2><label>New password<input type="password" name="password" autoComplete="new-password" minLength={6} required/></label><p>Local preview only. Passwords are not stored.</p><button className="auth-dialog-action" type="submit">Return to login</button></form>}</section></div>}</main>;
+ const ui={page,root:`2140:${id}`,phone:app.workflow.phone,go,submit,showPassword,togglePassword:()=>setShowPassword(s=>!s),digits,changeDigit,keyDigit,pasteCode,seconds,setDialog,resend:()=>{setSeconds(29);app.setToast('Verification code: 123456');}};
+ return <main className="auth-page" ref={host} onPointerDown={swipeStart} onPointerUp={swipeEnd} onPointerCancel={()=>{swipe.current=null}}>{page.startsWith('/onboarding')?Screen({ui}):<Screen ui={ui}/>}{error&&<div className="auth-error" role="alert"><span>{error}</span><button onClick={()=>setError('')} aria-label="Dismiss error">×</button></div>}{dialog&&<div className="auth-dialog-backdrop"><section className="auth-dialog" role="dialog" aria-modal="true" aria-label={dialog==='reset'?'Reset password':'Terms and privacy'}><button className="auth-dialog-close" onClick={()=>setDialog('')} aria-label="Close">×</button>{dialog==='terms'?<><h2>Terms &amp; Privacy Policy</h2><p>Keep your contact details up to date. You can edit your profile, service preferences and account settings from Profile.</p><button className="auth-dialog-action" onClick={()=>setDialog('')}>Back to sign up</button></>:<form onSubmit={e=>{e.preventDefault();patch({authIntent:null,verified:true});app.setToast('Ready to sign in.');go('/auth');}}><h2>Choose a new password</h2><label>New password<input type="password" name="password" autoComplete="new-password" minLength={6} required/></label><p>Use at least 6 characters.</p><button className="auth-dialog-action" type="submit">Return to login</button></form>}</section></div>}</main>;
 }
