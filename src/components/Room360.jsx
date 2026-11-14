@@ -129,71 +129,146 @@ function createRoom(scene, room) {
 
 export default function Room360({ room = 'living', roomName = 'Living Room' }) {
   const host = useRef(null), engine = useRef(null), pointers = useRef(new Map()), gesture = useRef(null);
-  const [error, setError] = useState(false), [heading, setHeading] = useState(0), [fov, setFov] = useState(76);
+  const [status, setStatus] = useState('loading'), [retry, setRetry] = useState(0);
   useEffect(() => {
-    const element = host.current;
-    let renderer, frame = 0, disposed = false;
-    setError(false); setHeading(0); setFov(76);
+    const element = host.current, panoramic = room === 'living';
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#eee5d6');
+    const initialFov = panoramic ? 88 : 76, initialPitch = panoramic ? -.15 : -.13;
+    const camera = new THREE.PerspectiveCamera(initialFov, 1, .05, 30);
+    camera.position.set(0, panoramic ? 0 : 1.45, panoramic ? 0 : 1.1);
+    scene.background = new THREE.Color('#e8ddcd');
+    let renderer, observer, texture, frame = 0, disposed = false, failed = false, loaded = !panoramic;
+    let yaw = 0, pitch = initialPitch;
+    setStatus('loading');
+    element.dataset.heading = '0';
+    element.dataset.fov = String(initialFov);
+    const releasePointers = () => {
+      for (const pointerId of pointers.current.keys()) {
+        if (element.hasPointerCapture(pointerId)) element.releasePointerCapture(pointerId);
+      }
+      pointers.current.clear(); gesture.current = null;
+    };
+    const fail = () => {
+      if (disposed || failed) return;
+      failed = true; engine.current = null;
+      cancelAnimationFrame(frame); frame = 0;
+      releasePointers(); setStatus('error');
+    };
+    const draw = () => {
+      if (frame || disposed || failed || !renderer) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        if (disposed || failed) return;
+        try { renderer.render(scene, camera); } catch { fail(); }
+      });
+    };
+    const look = () => {
+      camera.lookAt(camera.position.x + Math.sin(yaw) * Math.cos(pitch), camera.position.y + Math.sin(pitch), camera.position.z - Math.cos(yaw) * Math.cos(pitch));
+      element.dataset.heading = String(Math.round(((yaw * 180 / Math.PI) % 360 + 360) % 360));
+      element.dataset.pitch = String(Math.round(pitch * 180 / Math.PI));
+      draw();
+    };
+    const zoom = value => {
+      camera.fov = clamp(value, 42, 105);
+      camera.updateProjectionMatrix();
+      element.dataset.fov = String(Math.round(camera.fov * 100) / 100);
+      draw();
+    };
+    const lost = event => { event.preventDefault(); fail(); };
     try {
-      renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'low-power' });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+      renderer = new THREE.WebGLRenderer({ antialias: !panoramic, powerPreference: 'low-power' });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, panoramic ? 2 : 1.5));
       renderer.outputColorSpace = THREE.SRGBColorSpace;
-      renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.25;
-      renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.toneMapping = panoramic ? THREE.NoToneMapping : THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = panoramic ? 1 : 1.25;
       renderer.domElement.setAttribute('aria-hidden', 'true');
       element.appendChild(renderer.domElement);
-      scene.add(new THREE.HemisphereLight('#fff4dc', '#a4a38c', 2.7));
-      const sun = new THREE.DirectionalLight('#fff1d0', 3.1);
-      sun.position.set(-3.2, 3, 1);
-      sun.castShadow = true;
-      sun.shadow.mapSize.set(512, 512);
-      sun.shadow.camera.left = -5; sun.shadow.camera.right = 5;
-      sun.shadow.camera.top = 5; sun.shadow.camera.bottom = -5;
-      sun.shadow.bias = -.003;
-      scene.add(sun);
-      createRoom(scene, room);
-      const camera = new THREE.PerspectiveCamera(76, 1, .05, 30);
-      camera.position.set(0, 1.45, 1.1);
-      let yaw = 0, pitch = -.13;
-      const render = () => { frame = 0; if (!disposed) renderer.render(scene, camera); };
-      const draw = () => { if (!frame && !disposed) frame = requestAnimationFrame(render); };
-      const look = () => {
-        camera.lookAt(camera.position.x + Math.sin(yaw) * Math.cos(pitch), camera.position.y + Math.sin(pitch), camera.position.z - Math.cos(yaw) * Math.cos(pitch));
-        setHeading(Math.round(((yaw * 180 / Math.PI) % 360 + 360) % 360));
-        draw();
-      };
-      const zoom = value => { camera.fov = clamp(value, 46, 92); camera.updateProjectionMatrix(); setFov(camera.fov); draw(); };
+      renderer.domElement.addEventListener('webglcontextlost', lost);
+      if (panoramic) {
+        const geometry = new THREE.SphereGeometry(10, 64, 40);
+        geometry.scale(-1, 1, 1);
+        const material = new THREE.MeshBasicMaterial({ color: '#ffffff', toneMapped: false });
+        const panorama = new THREE.Mesh(geometry, material);
+        // Place the sofa (55% of the source panorama width) at the initial view.
+        panorama.rotation.y = Math.PI * 2 * .55 - Math.PI * 1.5;
+        panorama.visible = false;
+        scene.add(panorama);
+        texture = new THREE.TextureLoader().load('/assets/living-room-360.jpg', image => {
+          if (disposed || failed) { image.dispose(); return; }
+          image.colorSpace = THREE.SRGBColorSpace;
+          image.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
+          image.needsUpdate = true;
+          material.map = image; material.needsUpdate = true;
+          panorama.visible = true; loaded = true;
+          setStatus('ready'); draw();
+        }, undefined, fail);
+      } else {
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        scene.add(new THREE.HemisphereLight('#fff4dc', '#a4a38c', 2.7));
+        const sun = new THREE.DirectionalLight('#fff1d0', 3.1);
+        sun.position.set(-3.2, 3, 1);
+        sun.castShadow = true; sun.shadow.mapSize.set(512, 512);
+        sun.shadow.camera.left = -5; sun.shadow.camera.right = 5;
+        sun.shadow.camera.top = 5; sun.shadow.camera.bottom = -5;
+        sun.shadow.bias = -.003;
+        scene.add(sun); createRoom(scene, room);
+        setStatus('ready');
+      }
       engine.current = {
-        move(dx, dy) { yaw -= dx * .006; pitch = clamp(pitch + dy * .004, -.65, .6); look(); },
+        move(dx, dy) {
+          if (!loaded) return;
+          // Client coordinates follow the scaled phone frame, so normalize them
+          // against the actual on-screen size rather than the design canvas.
+          const rect = element.getBoundingClientRect();
+          if (!rect.width || !rect.height) return;
+          const verticalFov = THREE.MathUtils.degToRad(camera.fov);
+          const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * camera.aspect);
+          yaw -= dx / rect.width * horizontalFov;
+          pitch = clamp(pitch + dy / rect.height * verticalFov, panoramic ? -1.45 : -.65, panoramic ? 1.45 : .6);
+          look();
+        },
+        rotate(dx, dy) {
+          yaw += dx; pitch = clamp(pitch + dy, panoramic ? -1.45 : -.65, panoramic ? 1.45 : .6); look();
+        },
         zoom,
-        reset() { yaw = 0; pitch = -.13; zoom(76); look(); },
+        reset() { yaw = 0; pitch = initialPitch; zoom(initialFov); look(); },
         getFov: () => camera.fov,
       };
-      const resize = () => { const width = element.clientWidth, height = element.clientHeight; if (!width || !height) return; renderer.setSize(width, height, false); camera.aspect = width / height; camera.updateProjectionMatrix(); draw(); };
-      const observer = new ResizeObserver(resize); observer.observe(element); resize(); look();
-      const lost = event => { event.preventDefault(); setError(true); };
-      renderer.domElement.addEventListener('webglcontextlost', lost);
-      return () => {
-        disposed = true; cancelAnimationFrame(frame); observer.disconnect(); engine.current = null; pointers.current.clear();
-        renderer.domElement.removeEventListener('webglcontextlost', lost);
-        const geometries = new Set(), materials = new Set();
-        scene.traverse(object => { if (object.geometry) geometries.add(object.geometry); if (object.material) materials.add(object.material); });
-        geometries.forEach(value => value.dispose()); materials.forEach(value => value.dispose());
-        renderer.dispose(); renderer.forceContextLoss(); renderer.domElement.remove();
+      const resize = () => {
+        const width = element.clientWidth, height = element.clientHeight;
+        if (!width || !height || disposed) return;
+        renderer.setSize(width, height, false);
+        camera.aspect = width / height; camera.updateProjectionMatrix(); draw();
       };
-    } catch {
-      renderer?.dispose(); renderer?.domElement.remove(); setError(true);
-    }
-  }, [room]);
+      observer = new ResizeObserver(resize); observer.observe(element); resize(); look();
+    } catch { fail(); }
+    return () => {
+      disposed = true;
+      cancelAnimationFrame(frame); observer?.disconnect(); engine.current = null;
+      releasePointers();
+      const geometries = new Set(), materials = new Set();
+      scene.traverse(object => {
+        if (object.geometry) geometries.add(object.geometry);
+        if (object.material) for (const material of Array.isArray(object.material) ? object.material : [object.material]) materials.add(material);
+        if (object.shadow) object.shadow.dispose();
+      });
+      texture?.dispose();
+      geometries.forEach(value => value.dispose()); materials.forEach(value => value.dispose());
+      if (renderer) {
+        renderer.domElement.removeEventListener('webglcontextlost', lost);
+        renderer.dispose(); renderer.forceContextLoss(); renderer.domElement.remove();
+      }
+    };
+  }, [room, retry]);
   const begin = event => {
-    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    if (!engine.current || status !== 'ready' || pointers.current.size >= 2 || (event.pointerType === 'mouse' && event.button !== 0)) return;
     event.currentTarget.setPointerCapture(event.pointerId);
     pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
-    if (pointers.current.size === 2) { const [a, b] = [...pointers.current.values()]; gesture.current = { distance: Math.hypot(a.x - b.x, a.y - b.y), fov: engine.current?.getFov() || 76 }; }
+    if (pointers.current.size === 2) {
+      const [a, b] = [...pointers.current.values()];
+      gesture.current = { distance: Math.hypot(a.x - b.x, a.y - b.y), fov: engine.current.getFov() };
+    }
   };
   const move = event => {
     const previous = pointers.current.get(event.pointerId); if (!previous) return;
@@ -203,13 +278,19 @@ export default function Room360({ room = 'living', roomName = 'Living Room' }) {
       if (distance > 0) engine.current?.zoom(gesture.current.fov * gesture.current.distance / distance);
     } else engine.current?.move(event.clientX - previous.x, event.clientY - previous.y);
   };
-  const end = event => { pointers.current.delete(event.pointerId); gesture.current = null; };
-  return <div className="room360">
-    <div className="room360-stage" ref={host} tabIndex={error ? -1 : 0} role="application" aria-label={`${roomName} 360 degree design preview. Swipe to look around, pinch to zoom, or use arrow keys.`} onPointerDown={begin} onPointerMove={move} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} onKeyDown={event => {
-      const directions = { ArrowLeft: [35, 0], ArrowRight: [-35, 0], ArrowUp: [0, 25], ArrowDown: [0, -25] };
-      if (directions[event.key]) { event.preventDefault(); engine.current?.move(...directions[event.key]); }
+  const end = event => {
+    pointers.current.delete(event.pointerId); gesture.current = null;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+  };
+  return <div className="room360" data-state={status}>
+    <div className="room360-stage" ref={host} tabIndex={status === 'ready' ? 0 : -1} role="application" aria-label={roomName + ' panoramic room preview. Swipe to look around, pinch to zoom, or use arrow keys.'} aria-busy={status === 'loading'} onPointerDown={begin} onPointerMove={move} onPointerUp={end} onPointerCancel={end} onLostPointerCapture={end} onKeyDown={event => {
+      const directions = { ArrowLeft: [-.14, 0], ArrowRight: [.14, 0], ArrowUp: [0, .1], ArrowDown: [0, -.1] };
+      if (directions[event.key]) { event.preventDefault(); engine.current?.rotate(...directions[event.key]); }
+      else if (event.key === '+' || event.key === '=') { event.preventDefault(); engine.current?.zoom((engine.current?.getFov() || 76) - 8); }
+      else if (event.key === '-') { event.preventDefault(); engine.current?.zoom((engine.current?.getFov() || 76) + 8); }
     }} />
-    {error ? <div className="room360-fallback"><img src="/assets/living-room.png" alt="Living room design reference"/><div><strong>Room preview</strong><p>3D is unavailable on this device. You can still view your camera details below.</p></div></div> : <><span className="room360-label">360° DESIGN PREVIEW</span><span className="room360-bearing"><span style={{ transform: `rotate(${-heading}deg)` }}>↑</span>{heading}°</span><div className="room360-hint">Swipe to look around · Pinch to zoom</div></>}
-    {!error && <div className="room360-toolbar"><button aria-label="Zoom out" disabled={fov >= 92} onClick={() => engine.current?.zoom(fov + 8)}>−</button><button onClick={() => engine.current?.reset()} aria-label="Reset room view"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M3 11a9 9 0 1 1 2.6 7M3 4v7h7"/></svg>Reset view</button><button aria-label="Zoom in" disabled={fov <= 46} onClick={() => engine.current?.zoom(fov - 8)}>+</button></div>}
+    {status === 'loading' && <div className="room360-loading" role="status" aria-label="Loading room panorama"><span aria-hidden="true"/></div>}
+    {status === 'error' && <div className="room360-error" role="alert"><p>Couldn’t load this room. Tap Reset to try again.</p></div>}
+    <button className="room360-reset" disabled={status === 'loading'} onClick={() => status === 'error' ? setRetry(value => value + 1) : engine.current?.reset()} aria-label="Reset room view"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 11a9 9 0 1 1 2.6 7M3 4v7h7"/></svg></button>
   </div>;
 }

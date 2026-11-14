@@ -41,6 +41,7 @@ const AuthPages = lazy(() => import("./pages/AuthPages.jsx"));
 const authPaths = ["/start","/onboarding","/onboarding/2","/onboarding/3","/auth","/signup","/forgot-password","/verify"];
 const FlowPages = lazy(() => import("./pages/FlowPages.jsx"));
 import { initialWorkflow, helperDirectory, roleHomes, matchesHelper, uid } from "./data/workflow.js";
+import { getCameraPreview } from './data/camera-route.js';
 const Home = lazy(() => import("./pages/Screen2051_1878.jsx"));
 const Services = lazy(() => import("./pages/Screen2051_2267.jsx"));
 const Helpers = lazy(() => import("./pages/HelpersList.jsx"));
@@ -101,12 +102,13 @@ export default function App() {
     const stack = visitedScreens.current;
     if (stack.at(-1) !== path) stack.push(path);
   }, [location.pathname, location.search]);
-  function goBack() {
+  function goBack(fallback = '/') {
     if (modal) { setModal(null); return; }
     if (chatListExpanded) { setChatListExpanded(false); return; }
     const stack = visitedScreens.current;
     if (stack.length > 1) stack.pop();
-    navigate(stack.at(-1) !== location.pathname + location.search ? stack.at(-1) : '/', {replace:true});
+    else stack[0] = fallback;
+    navigate(stack.at(-1), {replace:true});
   }
   useLayoutEffect(() => {
     const host = scroll.current;
@@ -174,6 +176,7 @@ export default function App() {
   const [toast, setToast] = useState("");
   const [saved, setSaved] = usePersistent("favorites", []);
   const [workflow, setWorkflow] = usePersistent("workflow", initialWorkflow);
+  const cameraPreview = getCameraPreview(location, workflow.devices);
   const [cart, setCart] = usePersistent("cart", []);
   const [bookings, setBookings] = usePersistent("bookings", []);
   const [bookingDraft, setBookingDraft] = usePersistent("booking-draft", null);
@@ -386,6 +389,7 @@ export default function App() {
   }
   const app = {
     goBack,
+    cameraPreview,
     workflow,
     setWorkflow,
     act,
@@ -451,7 +455,7 @@ export default function App() {
   return (
     <ScreenContext.Provider value={app}>
       <div className="phone-frame">
-      <div ref={deviceRef} className={"device "+(!authPaths.includes(location.pathname)?"with-topbar":"")} >
+      <div ref={deviceRef} className={"device "+(!authPaths.includes(location.pathname)?"with-topbar":"")+(cameraPreview?' is-room-preview':'')} >
         {!authPaths.includes(location.pathname)&&<TopBar/>}
         <div className="app-scroll" ref={scroll} inert={isFilters || !!modal || chatListExpanded}>
           <AnimatePresence key={isMonitoringJourney ? routeViewKey : 'app-routes'} mode={chatTransition ? "sync" : "wait"} custom={chatTransition ? "chat-up" : null}>
@@ -574,7 +578,7 @@ export default function App() {
           </AnimatePresence>
         </div>
         {location.pathname === "/chats" && <ChatExpandedSheet app={app} expanded={chatListExpanded} onExpandedChange={setChatListExpanded} />}
-        {!isFilters && ![...authPaths,"/complete-profile","/roles"].includes(location.pathname) && <Navigation />}
+        {!cameraPreview && !isFilters && ![...authPaths,"/complete-profile","/roles"].includes(location.pathname) && <Navigation />}
         <AnimatePresence>{isFilters && <FilterSheet key="helper-filters" />}</AnimatePresence>
         <AnimatePresence>
           {toast && (

@@ -29,7 +29,14 @@
 .phone-frame .route-view{padding-bottom:110px}
 .phone-frame .flow-page{min-height:0}
 .phone-frame .flow-content,.phone-frame .new-content{padding-bottom:0}
-.phone-frame .device:not(:has(.bottom-nav)):not(:has(.persona-nav)) .route-view:not(:has(.auth-page)){padding-bottom:36px}
+.phone-frame .device:not(.is-room-preview):not(:has(.bottom-nav)):not(:has(.persona-nav)) .route-view:not(:has(.auth-page)){padding-bottom:36px}
+
+/* The room extends beneath the shared header's curve, down to the home gesture. */
+.phone-frame .device.is-room-preview>.app-scroll{top:94px;bottom:0;min-height:0;overflow:hidden;overscroll-behavior:none;background:#e8d6bc}
+.phone-frame .device.is-room-preview .route-view{height:100%;min-height:0;padding:0;background:transparent}
+.phone-frame .device.is-room-preview .route-content{height:100%;overflow:hidden}
+.phone-frame .device.is-room-preview::after{background:transparent}
+.phone-frame .shared-topbar-preview .shared-topbar-row{justify-content:flex-start}
 
 /* Animate the curved reveal without reflowing its contents every frame. */
 .phone-frame .shared-topbar{will-change:height;contain:layout paint;box-shadow:none;bottom:auto;min-height:0!important;clip-path:none}

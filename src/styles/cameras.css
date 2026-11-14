@@ -46,24 +46,18 @@
 .camera-detail-title h2{font-weight:800;font-size:24px;letter-spacing:-.6px;margin-top:5px}
 .camera-detail-title>.camera-status-pill{align-self:center;padding:6px 10px;font-size:10px}
 .camera-detail-assistant{display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px 17px;margin-top:20px;border:1px solid #cdded3;border-radius:24px;font-size:12px;font-weight:700;background:#e6f0e9}
-.room360{position:relative;background:#f1e8da;border-radius:26px;overflow:hidden}
-.room360-stage{height:310px;width:100%;touch-action:none;outline-offset:-4px}
+.cameras-page-immersive{height:100%;padding:0;overflow:hidden;background:#e8d6bc}
+.cameras-page-immersive .camera-view-loading{height:100%;border-radius:0}
+.room360{position:relative;width:100%;height:100%;background:#e8d6bc;overflow:hidden;isolation:isolate}
+.room360-stage{height:100%;width:100%;touch-action:none;overscroll-behavior:none;outline-offset:-4px;user-select:none;-webkit-user-select:none}
 .room360-stage canvas{display:block;width:100%;height:100%}
-.room360-label{pointer-events:none;position:absolute;top:14px;left:13px;font-size:8px;letter-spacing:1px;font-weight:800;background:#fffcf0de;color:#314b43;padding:7px 9px;border-radius:20px}
-.room360-bearing{position:absolute;pointer-events:none;top:12px;right:12px;display:flex;align-items:center;gap:5px;font-size:10px;min-width:54px;background:#002027d9;color:white;border-radius:18px;padding:6px 9px;font-variant-numeric:tabular-nums}
-.room360-bearing>span{display:block;font-size:15px;font-weight:700}
-.room360-hint{position:absolute;pointer-events:none;bottom:62px;left:0;right:0;margin:auto;width:max-content;max-width:90%;padding:7px 12px;border-radius:20px;background:#fffaf1db;color:#314b43;font-size:9px;font-weight:600}
-.room360-toolbar{height:50px;padding:4px 12px;background:#fffaf1;display:flex;justify-content:space-between;align-items:center}
-.room360-toolbar button{display:flex;align-items:center;justify-content:center;gap:7px;min-width:40px;min-height:40px;font-size:11px;font-weight:700}
-.room360-toolbar button:first-child,.room360-toolbar button:last-child{font-size:23px;font-weight:500}
-.room360-fallback{position:absolute;inset:0;background:#f7efdf}
-.room360-fallback>img{height:190px;width:100%;object-fit:cover}
-.room360-fallback>div{padding:15px}.room360-fallback strong{font-size:14px;font-weight:700}.room360-fallback p{font-size:11px;line-height:1.6;margin-top:4px}
-.camera-connection-row{display:flex;align-items:center;gap:11px;padding:16px 3px 8px}
-.camera-connection-row>div{display:flex;flex-direction:column;gap:3px;flex:1}
-.camera-connection-row strong{font-size:12px;font-weight:700}.camera-connection-row span{font-size:9px;color:#6f817a}
-.camera-connection-row>i{width:8px;height:8px;box-shadow:0 0 0 5px #deeee6}
-.camera-preview-note{font-size:10px;line-height:1.65;color:#7a837d;margin:8px 3px 0}
+.room360-reset{position:absolute;z-index:3;right:18px;bottom:34px;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:#002027;color:#fff;box-shadow:0 4px 18px #00202730;touch-action:manipulation;transition:transform 160ms ease}
+.room360-reset:active{transform:scale(.92)}
+.room360-reset:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.room360-reset:disabled{opacity:.5}
+.room360-loading,.room360-error{position:absolute;inset:0;display:grid;place-items:center;padding:30px;background:#e8ddcd}
+.room360-loading{background:linear-gradient(110deg,#e8ddcd 20%,#f2eadd 40%,#e8ddcd 60%);background-size:250% 100%;animation:camera-loading 1.6s linear infinite}
+.room360-error p{max-width:240px;font-size:13px;line-height:1.7;text-align:center;color:#002027}
 .camera-offline{padding:23px 20px 20px;border-radius:27px;background:#f7ede2;text-align:center}
 .camera-offline-icon{width:54px;height:54px;background:#f1d2b8;border-radius:19px;display:grid;place-items:center;margin:0 auto 13px;color:#875f44}
 .camera-offline h3{font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px}.camera-offline>p{font-size:11px;line-height:1.7;color:#786b5e}
@@ -73,4 +67,4 @@
 .cameras-empty{text-align:center;padding:24px 10px;color:#688176}.cameras-empty>svg{display:block;margin:0 auto 10px}.cameras-empty h2{font-size:15px;font-weight:700}.cameras-empty p{font-size:11px;margin-top:6px}
 .camera-view-loading{height:360px;border-radius:26px;background:linear-gradient(110deg,#e5e9e0 20%,#f7f8f0 40%,#e5e9e0 60%);background-size:250% 100%;animation:camera-loading 1.6s linear infinite;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#66867a;font-size:11px}
 @keyframes camera-loading{to{background-position:-250% 0}}
-@media(prefers-reduced-motion:reduce){.camera-view-loading{animation:none}}
+@media(prefers-reduced-motion:reduce){.camera-view-loading,.room360-loading{animation:none}.room360-reset{transition:none}}
