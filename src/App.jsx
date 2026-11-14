@@ -110,6 +110,16 @@ export default function App() {
     else stack[0] = fallback;
     navigate(stack.at(-1), {replace:true});
   }
+  function logout() {
+    setWorkflow(current => ({ ...current, authenticated: false, verified: false, onboarded: false, authIntent: null }));
+    visitedScreens.current = ['/start'];
+    setModal(null);
+    setChatListExpanded(false);
+    setChatTransition(false);
+    setQuery('');
+    setToast('');
+    navigate('/start', { replace: true });
+  }
   useLayoutEffect(() => {
     const host = scroll.current;
     if (!host) return;
@@ -389,6 +399,7 @@ export default function App() {
   }
   const app = {
     goBack,
+    logout,
     cameraPreview,
     workflow,
     setWorkflow,

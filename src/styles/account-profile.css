@@ -2,3 +2,4 @@
 .shared-topbar-row>button>.top-account-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover}
 /* Profile begins directly with the account portrait, without a decorative cover. */
 .account-profile .account-identity{margin-top:0;padding-top:24px}
+.account-footer-links .account-logout{color:#9b452b;font-weight:700}
