@@ -52,9 +52,10 @@ const Store = lazy(() => import("./pages/StorePage.jsx"));
 const Mobility = lazy(() => import("./pages/Screen2051_2892.jsx"));
 const Equipment = lazy(() => import("./pages/Screen2051_3069.jsx"));
 const Product = lazy(() => import("./pages/ProductPage.jsx"));
-const Monitoring = lazy(() => import("./pages/Screen2051_2015.jsx"));
+const Monitoring = lazy(() => import("./pages/MonitoringPage.jsx"));
+const AssistantChat = lazy(() => import("./pages/AssistantChat.jsx"));
 const Tracking = FlowPages;
-const Cameras = lazy(() => import("./pages/Screen2051_2188.jsx"));
+const Cameras = lazy(() => import("./pages/CamerasPage.jsx"));
 function usePersistent(key, initial) {
   const [value, setValue] = useState(() => {
     try {
@@ -81,9 +82,7 @@ const screens = [
   ["/store/mobility", "2051:2892", 1254, Mobility],
   ["/store/monitoring", "2051:3069", 1254, Equipment],
   ["/store/product", "2051:3241", 1254, Product],
-  ["/monitoring", "2051:2015", 934, Monitoring],
   ["/monitoring/tracking", "2051:2106", 810, Tracking],
-  ["/monitoring/cameras", "2051:2188", 835, Cameras],
 ];
 const defaultProduct = {
   key: "Monitoring Camera",
@@ -216,6 +215,9 @@ export default function App() {
       "MAZBOT · " +
       (location.pathname.startsWith("/chats")
         ? "Chats"
+        : location.pathname === '/flow/assistant' ? 'Mazbot AI'
+        : location.pathname === '/monitoring' ? 'Monitoring'
+        : location.pathname === '/monitoring/cameras' || location.pathname === '/flow/devices' || location.pathname.startsWith('/flow/device/') ? 'Your cameras'
         : screens
             .find((s) => s[0] === location.pathname)?.[0]
             .split("/")
@@ -433,6 +435,7 @@ export default function App() {
   const active = screens.find((s) => s[0] === location.pathname);
   const isFilters = location.pathname === "/helpers/filters";
   const isHelperJourney = ["/services", "/helpers", "/helpers/filters", "/helpers/profile"].includes(location.pathname);
+  const isMonitoringJourney = location.pathname.startsWith('/monitoring') || location.pathname === '/flow/assistant' || location.pathname === '/flow/devices' || location.pathname.startsWith('/flow/device/');
   const routeLocation = isFilters ? { ...location, pathname: "/helpers" } : location;
   const routeViewKey = location.pathname === "/helpers/filters"
     ? "/helpers"
@@ -449,7 +452,7 @@ export default function App() {
       <div ref={deviceRef} className={"device "+(!authPaths.includes(location.pathname)?"with-topbar":"")} >
         {!authPaths.includes(location.pathname)&&<TopBar/>}
         <div className="app-scroll" ref={scroll} inert={isFilters || !!modal || chatListExpanded}>
-          <AnimatePresence mode={chatTransition ? "sync" : "wait"} custom={chatTransition ? "chat-up" : null}>
+          <AnimatePresence key={isMonitoringJourney ? routeViewKey : 'app-routes'} mode={chatTransition ? "sync" : "wait"} custom={chatTransition ? "chat-up" : null}>
             <motion.div
               key={routeViewKey}
               className="route-view"
@@ -533,6 +536,11 @@ export default function App() {
                   <Route path="/onboarding/*" element={<AuthPages/>}/>{authPaths.filter(path=>!path.startsWith('/onboarding')).map(path=><Route key={path} path={path} element={<AuthPages/>}/>)}
                   {["/complete-profile","/roles","/flow/*","/helper/*","/company/*","/checkout","/orders","/orders/:id"].map(path=><Route key={path} path={path} element={<FlowPages/>}/>)}
                   <Route path="/account" element={<AccountProfile />} />
+                  <Route path="/monitoring" element={<Monitoring />} />
+                  <Route path="/monitoring/cameras" element={<Cameras />} />
+                  <Route path="/flow/devices" element={<Cameras />} />
+                  <Route path="/flow/device/:id" element={<Cameras />} />
+                  <Route path="/flow/assistant" element={<AssistantChat />} />
                   <Route
                     path="/chats/conversation"
                     element={<Conversation />}

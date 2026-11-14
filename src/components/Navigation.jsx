@@ -23,7 +23,7 @@ export default function Navigation() {
   }
   const selected = pathname.startsWith("/store")
     ? "Store"
-    : pathname.startsWith("/monitoring")
+    : pathname.startsWith("/monitoring") || pathname === '/flow/assistant' || pathname === '/flow/devices' || pathname.startsWith('/flow/device/')
       ? "Monitoring"
       : pathname === "/schedule"
         ? "Schedule"

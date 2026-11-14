@@ -1,0 +1,60 @@
+.cameras-page{padding:22px 16px 0;color:#002027;background:#fff;min-width:0}
+.cameras-intro{display:flex;align-items:center;justify-content:space-between;min-height:122px;position:relative}
+.cameras-eyebrow{display:block;font-size:8px;line-height:1.5;font-weight:800;letter-spacing:1.5px;color:#58716e}
+.cameras-intro h2{font-size:31px;line-height:1.16;letter-spacing:-1.3px;font-weight:800;margin-top:9px}
+.cameras-intro h2 em{font-style:normal;color:#547e71}
+.cameras-intro>img{width:108px;height:119px;object-fit:contain;filter:drop-shadow(0 9px 7px #00202712)}
+.cameras-summary{display:flex;align-items:center;gap:17px;margin:19px 0 22px;padding:12px 14px;border:1px solid #e2eae4;border-radius:16px;font-size:11px;font-weight:700}
+.cameras-summary>span{display:flex;align-items:center;gap:6px}
+.cameras-summary i,.camera-tile-status i,.camera-connection-row>i{display:inline-block;width:6px;height:6px;border-radius:100%;background:#288774}
+.cameras-summary .is-offline i,.camera-tile-status.is-offline i{background:#df885a}
+.cameras-summary small{font-size:9px;color:#6e827e;margin-left:auto;font-weight:500}
+.cameras-tabs{display:flex;gap:7px;margin-bottom:15px}
+.cameras-tabs button{display:flex;align-items:center;gap:6px;min-height:40px;padding:8px 11px;border:1px solid #e1e9e5;border-radius:24px;font-size:10px;font-weight:700;flex:1;justify-content:center}
+.cameras-tabs button[aria-pressed=true]{background:#002027;border-color:#002027;color:white}
+.cameras-tabs button>span{font-size:9px;opacity:.7}
+.camera-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.camera-tile{position:relative;min-height:174px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;background:#e4eee6;border:2px solid transparent;border-radius:25px;padding:12px 13px 11px}
+.camera-tile.peach{background:#fae7d6}.camera-tile.sand{background:#f4ede2}
+.camera-tile.selected{border-color:#426e62}
+.camera-tile>svg{margin:6px auto 3px;width:72px;height:60px}
+.camera-tile-status{display:flex;align-items:center;gap:5px;font-size:9px;font-weight:600;color:#355b51}
+.camera-tile-status.is-offline{color:#886246}
+.camera-tile strong{font-size:14px;font-weight:800;line-height:1.6;letter-spacing:-.3px}
+.camera-tile-link{display:flex;width:100%;align-items:center;justify-content:space-between;font-size:9px;color:#58706b;margin-top:2px}
+.camera-tile-link>span{font-size:17px;color:#003744;font-weight:600}
+.camera-details{scroll-margin-top:16px;margin-top:22px}
+.camera-detail-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.camera-detail-title h3{font-weight:800;font-size:21px;letter-spacing:-.6px;margin-top:4px}
+.camera-detail-title>button{width:40px;height:40px;display:grid;place-items:center;background:#f2f5f0;border-radius:50%}
+.room360{position:relative;background:#f1e8da;border-radius:26px;overflow:hidden}
+.room360-stage{height:310px;width:100%;touch-action:none;outline-offset:-4px}
+.room360-stage canvas{display:block;width:100%;height:100%}
+.room360-label{pointer-events:none;position:absolute;top:14px;left:13px;font-size:8px;letter-spacing:1px;font-weight:800;background:#fffcf0de;color:#314b43;padding:7px 9px;border-radius:20px}
+.room360-bearing{position:absolute;pointer-events:none;top:12px;right:12px;display:flex;align-items:center;gap:5px;font-size:10px;min-width:54px;background:#002027d9;color:white;border-radius:18px;padding:6px 9px;font-variant-numeric:tabular-nums}
+.room360-bearing>span{display:block;font-size:15px;font-weight:700}
+.room360-hint{position:absolute;pointer-events:none;bottom:62px;left:0;right:0;margin:auto;width:max-content;max-width:90%;padding:7px 12px;border-radius:20px;background:#fffaf1db;color:#314b43;font-size:9px;font-weight:600}
+.room360-toolbar{height:50px;padding:4px 12px;background:#fffaf1;display:flex;justify-content:space-between;align-items:center}
+.room360-toolbar button{display:flex;align-items:center;justify-content:center;gap:7px;min-width:40px;min-height:40px;font-size:11px;font-weight:700}
+.room360-toolbar button:first-child,.room360-toolbar button:last-child{font-size:23px;font-weight:500}
+.room360-fallback{position:absolute;inset:0;background:#f7efdf}
+.room360-fallback>img{height:190px;width:100%;object-fit:cover}
+.room360-fallback>div{padding:15px}.room360-fallback strong{font-size:14px;font-weight:700}.room360-fallback p{font-size:11px;line-height:1.6;margin-top:4px}
+.camera-connection-row{display:flex;align-items:center;gap:11px;padding:16px 3px 8px}
+.camera-connection-row>div{display:flex;flex-direction:column;gap:3px;flex:1}
+.camera-connection-row strong{font-size:12px;font-weight:700}.camera-connection-row span{font-size:9px;color:#6f817a}
+.camera-connection-row>i{width:8px;height:8px;box-shadow:0 0 0 5px #deeee6}
+.camera-preview-note{font-size:10px;line-height:1.65;color:#7a837d;margin:8px 3px 0}
+.camera-offline{padding:23px 20px 20px;border-radius:27px;background:#f7ede2;text-align:center}
+.camera-offline-icon{width:54px;height:54px;background:#f1d2b8;border-radius:19px;display:grid;place-items:center;margin:0 auto 13px;color:#875f44}
+.camera-offline h4{font-size:17px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px}.camera-offline>p{font-size:11px;line-height:1.7;color:#786b5e}
+.camera-offline ol{padding:0;list-style:none;text-align:left;display:grid;gap:12px;margin:20px 0}.camera-offline li{display:flex;gap:9px;align-items:center;font-size:11px}.camera-offline li>span{display:grid;place-items:center;width:23px;height:23px;flex:none;border-radius:50%;background:#fffaf2;font-weight:700;font-size:10px}
+.camera-offline>button{display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px 16px;border-radius:25px;background:#002027;color:#fff;font-size:12px;font-weight:700}
+.camera-offline .camera-recheck{font-size:10px;margin-top:14px;color:#765943}
+.camera-select-hint{display:flex;gap:12px;align-items:center;padding:17px 14px;border:1px dashed #b7cec3;border-radius:20px;color:#567367}.camera-select-hint>span{width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:#e5eee7;font-size:21px;flex:none}
+.camera-select-hint p{font-size:10px;line-height:1.6}.camera-select-hint strong{display:block;font-size:12px;margin-bottom:3px;color:#234c42}
+.camera-assistant-link{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;padding:18px 0 0;margin-top:20px;border-top:1px solid #e8eee9}.camera-assistant-link strong{display:block;font-size:11px;font-weight:700}.camera-assistant-link small{display:block;font-size:10px;color:#78887f;margin-top:4px}.camera-assistant-link>span:last-child{font-weight:800;font-size:11px;white-space:nowrap}
+.cameras-empty{text-align:center;padding:24px 10px;color:#688176}.cameras-empty>svg{display:block;margin:0 auto 10px}.cameras-empty h3{font-size:15px;font-weight:700}.cameras-empty p{font-size:11px;margin-top:6px}.cameras-empty button{font-size:12px;text-decoration:underline;margin-top:8px}
+.camera-view-loading{height:360px;border-radius:26px;background:linear-gradient(110deg,#e5e9e0 20%,#f7f8f0 40%,#e5e9e0 60%);background-size:250% 100%;animation:camera-loading 1.6s linear infinite;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#66867a;font-size:11px}
+@keyframes camera-loading{to{background-position:-250% 0}}
+@media(prefers-reduced-motion:reduce){.camera-view-loading{animation:none}}
